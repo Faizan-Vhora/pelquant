@@ -1,49 +1,16 @@
-# pelquant
+# React + Vite
 
-Coming Soon page for pelquant - Fullstack Development and SecOps
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Description
-A modern, dark-themed coming soon page with a tech-focused design.
+Currently, two official plugins are available:
 
-## Deployment to Cloudflare Workers
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### Prerequisites
-- Cloudflare account
-- Wrangler CLI: `npm install -g wrangler`
+## React Compiler
 
-### Local Development
-```bash
-npm install
-npm start
-```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-### Build
-```bash
-npm run build
-```
+## Expanding the ESLint configuration
 
-### Deploy to Cloudflare Workers
-
-1. Login to Cloudflare:
-```bash
-wrangler login
-```
-
-2. Deploy:
-```bash
-wrangler deploy
-```
-
-### CI/CD with GitHub Actions
-
-The project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) for automatic deployment.
-
-**Setup:**
-1. Get your Cloudflare API Token from: https://dash.cloudflare.com/profile/api-tokens
-2. Add it as a GitHub secret named `CLOUDFLARE_API_TOKEN`
-3. Push to `main` branch to trigger deployment
-
-### Manual Deployment
-```bash
-wrangler deploy
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
