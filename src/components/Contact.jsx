@@ -70,7 +70,7 @@ export default function Contact() {
               </svg>
               <div>
                 <div className="info-label">Email</div>
-                <div className="info-value">hello@pelquant.com</div>
+                <div className="info-value">info@pelquant.com</div>
               </div>
             </div>
 
