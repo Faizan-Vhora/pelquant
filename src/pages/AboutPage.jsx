@@ -89,7 +89,6 @@ export default function AboutPage() {
           </h2>
           <div className="why-grid">
             <div className="why-card card-purple fade-up" style={{ animationDelay: '0ms' }}>
-              <div className="card-icon icon-purple">🏗️</div>
               <h3 className="card-title">Already Built Real Products</h3>
               <p className="card-desc">
                 We've deployed multiple production AI products. We know exactly what it takes to move 
@@ -97,7 +96,6 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="why-card card-cyan fade-up" style={{ animationDelay: '80ms' }}>
-              <div className="card-icon icon-cyan">🧠</div>
               <h3 className="card-title">AI-First, Not AI-Added</h3>
               <p className="card-desc">
                 We design systems with AI as the foundation — smarter architecture, better performance, 
@@ -105,7 +103,6 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="why-card card-green fade-up" style={{ animationDelay: '160ms' }}>
-              <div className="card-icon icon-green">🔗</div>
               <h3 className="card-title">Technology + Marketing</h3>
               <p className="card-desc">
                 Most agencies do one or the other. We do both — creating the integration where real 
@@ -113,7 +110,6 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="why-card card-amber fade-up" style={{ animationDelay: '240ms' }}>
-              <div className="card-icon icon-amber">📊</div>
               <h3 className="card-title">Outcome-Driven Approach</h3>
               <p className="card-desc">
                 We measure success by business impact — revenue, efficiency, acquisition. Not hours 
@@ -121,7 +117,6 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="why-card card-pink fade-up" style={{ animationDelay: '320ms' }}>
-              <div className="card-icon icon-pink">🌍</div>
               <h3 className="card-title">Global Experience, Local Focus</h3>
               <p className="card-desc">
                 We work across industries and geographies — bringing perspective on what actually works 
@@ -141,7 +136,6 @@ export default function AboutPage() {
           </h2>
           <div className="partners-grid">
             <div className="partner-card partner-green fade-up" style={{ animationDelay: '0ms' }}>
-              <div className="partner-icon">🌱</div>
               <h3 className="partner-title">Startups</h3>
               <p className="partner-sub">Building First Product or Scaling to Market</p>
               <p className="partner-desc">
@@ -151,7 +145,6 @@ export default function AboutPage() {
               <span className="partner-tag tag-green">MVP → Product-Market Fit</span>
             </div>
             <div className="partner-card partner-cyan fade-up" style={{ animationDelay: '80ms' }}>
-              <div className="partner-icon">📈</div>
               <h3 className="partner-title">Growing Companies</h3>
               <p className="partner-sub">Automating Operations & Expanding Market Presence</p>
               <p className="partner-desc">
@@ -161,7 +154,6 @@ export default function AboutPage() {
               <span className="partner-tag tag-cyan">Scale → Automate → Dominate</span>
             </div>
             <div className="partner-card partner-purple fade-up" style={{ animationDelay: '160ms' }}>
-              <div className="partner-icon">🏢</div>
               <h3 className="partner-title">Enterprises</h3>
               <p className="partner-sub">Modernizing Legacy Systems & Adopting AI</p>
               <p className="partner-desc">
@@ -171,7 +163,6 @@ export default function AboutPage() {
               <span className="partner-tag tag-purple">Legacy → Intelligent</span>
             </div>
             <div className="partner-card partner-orange fade-up" style={{ animationDelay: '240ms' }}>
-              <div className="partner-icon">🚀</div>
               <h3 className="partner-title">Any Ambitious Business</h3>
               <p className="partner-sub">Serious About Tech & Marketing Advantage</p>
               <p className="partner-desc">
