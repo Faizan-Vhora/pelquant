@@ -25,16 +25,16 @@
 }
 
 .logo {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-family: 'Bungee', var(--font-display);
+  font-weight: 400;
+  font-size: 1.35rem;
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
 }
 
 .logo-bracket {
   color: var(--accent);
-  margin-right: 2px;
+  margin-right: 4px;
 }
 
 .nav {
