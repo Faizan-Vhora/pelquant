@@ -1,11 +1,16 @@
 # PELQUANT Logo
 
-## Text Logo
-```
-[PELQUANT
+## Text Logo SVG (Header Logo)
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40">
+  <text x="0" y="30" font-family="Space Grotesk, sans-serif" font-size="24" font-weight="700" fill="#FF6B2B">
+    <tspan fill="#FF6B2B">[</tspan>
+    <tspan fill="#F2F2FA">PELQUANT</tspan>
+  </text>
+</svg>
 ```
 
-## SVG Logo (Favicon)
+## Favicon SVG
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <rect width="100" height="100" fill="#090910"/>
@@ -20,4 +25,4 @@
 - Bracket: Uses accent color
 
 ## Usage
-The logo uses a bracket `[` followed by the text `PELQUANT` in the brand's accent color.
+The logo uses a bracket `[` in orange followed by the text `PELQUANT` in white.
