@@ -7,6 +7,11 @@ export default function Hero() {
       <div className="hero-grid"></div>
       
       <div className="hero-content">
+        <div className="hero-badge">
+          <span className="badge-dot"></span>
+          AI-First Technology & Growth Partner
+        </div>
+
         <h1 className="hero-headline" style={{ lineHeight: '1.2', letterSpacing: '-0.025em' }}>
           Frontier <span className="highlight">AI</span>. Intelligent Growth.
         </h1>
