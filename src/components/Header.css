@@ -30,6 +30,8 @@
   font-size: 1.3rem;
   color: var(--text-primary);
   letter-spacing: 0.05em;
+  text-decoration: none;
+  display: block;
 }
 
 .logo-bracket {

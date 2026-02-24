@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -11,18 +13,31 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHome = location.pathname === '/';
+
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
-        <div className="logo">
+        <Link to="/" className="logo">
           <span className="logo-bracket">[</span>PELQUANT
-        </div>
+        </Link>
 
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#marketing">Marketing</a>
-          <a href="#contact">Contact</a>
+          {isHome ? (
+            <>
+              <a href="#services">Services</a>
+              <Link to="/about">About</Link>
+              <a href="#marketing">Marketing</a>
+              <a href="#contact">Contact</a>
+            </>
+          ) : (
+            <>
+              <Link to="/#services">Services</Link>
+              <Link to="/about">About</Link>
+              <Link to="/#marketing">Marketing</Link>
+              <Link to="/#contact">Contact</Link>
+            </>
+          )}
         </nav>
 
         <div className="header-actions">
