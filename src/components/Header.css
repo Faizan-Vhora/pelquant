@@ -25,11 +25,11 @@
 }
 
 .logo {
-  font-family: 'Bungee', var(--font-display);
+  font-family: 'Audiowide', var(--font-display);
   font-weight: 400;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   color: var(--text-primary);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.05em;
 }
 
 .logo-bracket {
