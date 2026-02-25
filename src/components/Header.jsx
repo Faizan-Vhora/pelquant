@@ -25,14 +25,14 @@ export default function Header() {
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
           {isHome ? (
             <>
-              <a href="#services">Services</a>
+              <Link to="/services">Services</Link>
               <Link to="/about">About</Link>
               <a href="#marketing">Marketing</a>
               <Link to="/contact">Contact</Link>
             </>
           ) : (
             <>
-              <Link to="/#services">Services</Link>
+              <Link to="/services">Services</Link>
               <Link to="/about">About</Link>
               <Link to="/#marketing">Marketing</Link>
               <Link to="/contact">Contact</Link>
