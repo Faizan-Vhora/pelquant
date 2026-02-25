@@ -12,7 +12,7 @@ export default function Hero() {
           AI-First Technology & Growth Partner
         </div>
 
-        <h1 className="hero-headline" style={{ lineHeight: '1.2', letterSpacing: '-0.025em' }}>
+        <h1 className="hero-headline">
           Frontier <span className="highlight">AI</span>. Intelligent Growth.
         </h1>
 
