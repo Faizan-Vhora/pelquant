@@ -71,7 +71,7 @@
 
 .hero-content .hero-headline {
   font-family: 'Pixelify Sans', monospace !important;
-  font-size: 60px !important;
+  font-size: 52px !important;
   font-weight: 500 !important;
   line-height: 1 !important;
   color: #FFF0C3 !important;
@@ -85,13 +85,13 @@
 
 @media (min-width: 768px) {
   .hero-content .hero-headline {
-    font-size: 120px !important;
+    font-size: 100px !important;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-content .hero-headline {
-    font-size: 180px !important;
+    font-size: 160px !important;
   }
 }
 
