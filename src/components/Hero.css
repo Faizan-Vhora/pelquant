@@ -71,12 +71,15 @@
 
 .hero-content .hero-headline {
   font-family: 'Pixelify Sans', monospace !important;
-  font-size: 64px !important;
+  font-size: 48px !important;
   font-weight: 500 !important;
   line-height: 1.15 !important;
   color: #FFF0C3 !important;
   margin-bottom: 1.5rem;
   letter-spacing: 0 !important;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
   image-rendering: pixelated;
@@ -85,13 +88,15 @@
 
 @media (min-width: 768px) {
   .hero-content .hero-headline {
-    font-size: 96px !important;
+    font-size: 68px !important;
+    max-width: 850px;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-content .hero-headline {
-    font-size: 128px !important;
+    font-size: 88px !important;
+    max-width: 1100px;
   }
 }
 
