@@ -67,7 +67,7 @@ h1, h2 {
   color: var(--terminal-text);
   line-height: 1;
   letter-spacing: 0;
-  font-weight: 700;
+  font-weight: 500;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
   image-rendering: pixelated;
