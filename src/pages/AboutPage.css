@@ -96,7 +96,6 @@
     font-size: 88px;
   }
 }
-}
 
 .gradient-text {
   background: linear-gradient(135deg, var(--accent) 0%, #ff8f5a 100%);
