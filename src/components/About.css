@@ -29,12 +29,28 @@
 }
 
 .about-headline {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  font-family: 'Pixelify Sans', monospace !important;
+  font-size: 36px;
+  font-weight: 500;
+  color: #FFF0C3 !important;
+  line-height: 1.15;
+  letter-spacing: 0;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
+  text-rendering: geometricPrecision;
+}
+
+@media (min-width: 768px) {
+  .about-headline {
+    font-size: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-headline {
+    font-size: 72px;
+  }
 }
 
 .about-text {
