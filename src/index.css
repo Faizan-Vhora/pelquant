@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=block');
+
 :root {
   --bg-primary: #090910;
   --bg-secondary: #0e0e18;
@@ -9,6 +11,8 @@
   --accent-glow: rgba(255,107,43,0.18);
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
+  --terminal-bg: #07090D;
+  --terminal-text: #FFF0C3;
 }
 
 @font-face {
@@ -55,4 +59,43 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
+}
+
+/* Pixel Terminal Heading Style */
+h1, h2 {
+  font-family: 'Pixelify Sans', monospace;
+  color: var(--terminal-text);
+  line-height: 1;
+  letter-spacing: 0;
+  font-weight: 700;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
+  text-rendering: geometricPrecision;
+}
+
+h1 {
+  font-size: 52px;
+}
+
+h2 {
+  font-size: 42px;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 100px;
+  }
+  h2 {
+    font-size: 72px;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 160px;
+  }
+  h2 {
+    font-size: 100px;
+  }
 }
