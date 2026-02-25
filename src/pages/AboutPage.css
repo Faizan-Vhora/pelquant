@@ -72,12 +72,30 @@
 }
 
 .hero-headline {
-  font-family: 'Syne', sans-serif;
-  font-size: 72px;
-  font-weight: 800;
-  line-height: 1.1;
+  font-family: 'Pixelify Sans', monospace !important;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.15;
   margin-bottom: 24px;
-  color: var(--tx1);
+  color: #FFF0C3 !important;
+  letter-spacing: 0;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
+  text-rendering: geometricPrecision;
+}
+
+@media (min-width: 768px) {
+  .hero-headline {
+    font-size: 68px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-headline {
+    font-size: 88px;
+  }
+}
 }
 
 .gradient-text {
@@ -203,11 +221,29 @@
 }
 
 .section-headline {
-  font-family: 'Syne', sans-serif;
-  font-size: 48px;
-  font-weight: 700;
+  font-family: 'Pixelify Sans', monospace !important;
+  font-size: 36px;
+  font-weight: 500;
   margin-bottom: 60px;
-  color: var(--tx1);
+  color: #FFF0C3 !important;
+  letter-spacing: 0;
+  line-height: 1.15;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
+  text-rendering: geometricPrecision;
+}
+
+@media (min-width: 768px) {
+  .section-headline {
+    font-size: 56px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-headline {
+    font-size: 72px;
+  }
 }
 
 .orange-text {
