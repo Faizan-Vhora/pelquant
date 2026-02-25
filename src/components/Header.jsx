@@ -28,14 +28,14 @@ export default function Header() {
               <a href="#services">Services</a>
               <Link to="/about">About</Link>
               <a href="#marketing">Marketing</a>
-              <a href="#contact">Contact</a>
+              <Link to="/contact">Contact</Link>
             </>
           ) : (
             <>
               <Link to="/#services">Services</Link>
               <Link to="/about">About</Link>
               <Link to="/#marketing">Marketing</Link>
-              <Link to="/#contact">Contact</Link>
+              <Link to="/contact">Contact</Link>
             </>
           )}
         </nav>
