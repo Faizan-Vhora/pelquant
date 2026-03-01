@@ -61,7 +61,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div className="footer-copyright">
-            © 2025 Pelquant. All rights reserved.
+            © {new Date().getFullYear()} Pelquant. All rights reserved.
           </div>
           <div className="footer-legal">
             <a href="#">Privacy Policy</a>
