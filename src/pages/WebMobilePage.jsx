@@ -43,13 +43,13 @@ export default function WebMobilePage() {
     },
     {
       num: '04',
-      title: 'Frontend Development',
-      desc: 'Pixel-perfect implementation in React, Next.js, Vue.js, or Angular. Optimized for Core Web Vitals, cross-browser compatibility, and responsive across all device sizes.'
+      title: 'Backend & API Development',
+      desc: 'Scalable server-side logic, secure authentication (OAuth2/JWT/SSO), business rule engines, and well-documented API layers.'
     },
     {
       num: '05',
-      title: 'Backend & API Development',
-      desc: 'Scalable server-side logic, secure authentication (OAuth2/JWT/SSO), business rule engines, and well-documented API layers.'
+      title: 'Frontend Development',
+      desc: 'Pixel-perfect implementation in React, Next.js, Vue.js, or Angular. Optimized for Core Web Vitals, cross-browser compatibility, and responsive across all device sizes.'
     },
     {
       num: '06',

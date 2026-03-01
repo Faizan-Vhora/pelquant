@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import './About.css';
 
-const features = [
-  'AI-First',
-  'Real Products Built',
-  'Tech + Marketing',
-  'Outcome-Driven'
+const capabilities = [
+  { label: '13 Core Services', desc: 'Technology & Marketing' },
+  { label: '12 Industry Verticals', desc: 'Domain Expertise' },
+  { label: 'AI-Native Architecture', desc: 'Built for Scale' },
+  { label: 'Enterprise Security', desc: 'SOC 2, HIPAA, PCI-DSS' }
 ];
 
 export default function About() {
@@ -13,51 +14,47 @@ export default function About() {
       <div className="about-accent-line"></div>
       <div className="about-container">
         <div className="about-content">
-          <h2 className="about-headline">We Don't Add AI. We Build With It.</h2>
+          <span className="section-label">WHO WE ARE</span>
+          <h2 className="about-headline">Enterprise Technology Partner Across Every Industry</h2>
           
           <div className="about-text">
             <p>
-              At Pelquant, AI isn't a feature we bolt on—it's the foundation of everything we create. 
-              We architect intelligent systems that learn, adapt, and scale with your business.
+              We deliver enterprise-grade technology and growth solutions across 12 industries. From AI systems 
+              to performance marketing, we combine deep technical expertise with domain knowledge that drives results.
             </p>
             <p>
-              Our approach combines deep technical expertise with strategic growth thinking. We don't 
-              just build software; we engineer competitive advantages that compound over time.
-            </p>
-            <p>
-              From startups finding product-market fit to enterprises scaling globally, we've been 
-              the technical partner that turns ambitious visions into market-leading realities.
-            </p>
-            <p>
-              We measure success not in features shipped, but in outcomes delivered—revenue growth, 
-              operational efficiency, and sustainable competitive moats built through technology.
+              Whether you're building new products, modernizing infrastructure, or scaling globally—we bring 
+              the capabilities and experience to execute flawlessly.
             </p>
           </div>
 
-          <div className="about-features">
-            {features.map((feature, i) => (
-              <div key={i} className="feature-item">
-                <svg className="check-icon" viewBox="0 0 24 24" fill="none">
-                  <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <span>{feature}</span>
+          <div className="about-capabilities">
+            {capabilities.map((cap, i) => (
+              <div key={i} className="capability-item">
+                <div className="capability-label">{cap.label}</div>
+                <div className="capability-desc">{cap.desc}</div>
               </div>
             ))}
+          </div>
+
+          <div className="about-ctas">
+            <Link to="/about" className="btn-primary">Learn More About Us</Link>
+            <Link to="/solutions" className="btn-ghost">View Industry Solutions</Link>
           </div>
         </div>
 
         <div className="about-visual">
           <div className="visual-orb"></div>
           <div className="journey-card card-1">
-            <div className="card-label">Startups</div>
+            <div className="card-label">Technology</div>
             <div className="card-line"></div>
           </div>
           <div className="journey-card card-2">
-            <div className="card-label">Scale-ups</div>
+            <div className="card-label">Marketing</div>
             <div className="card-line"></div>
           </div>
           <div className="journey-card card-3">
-            <div className="card-label">Enterprises</div>
+            <div className="card-label">Security</div>
             <div className="card-line"></div>
           </div>
         </div>

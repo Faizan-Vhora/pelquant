@@ -72,7 +72,7 @@
 
 .services-hero-headline {
   font-family: 'Pixelify Sans', monospace;
-  font-size: 56px;
+  font-size: 32px;
   font-weight: 500;
   line-height: 1.15;
   margin-bottom: 36px;
@@ -86,13 +86,13 @@
 
 @media (min-width: 768px) {
   .services-hero-headline {
-    font-size: 76px;
+    font-size: 42px;
   }
 }
 
 @media (min-width: 1024px) {
   .services-hero-headline {
-    font-size: 96px;
+    font-size: 52px;
   }
 }
 
