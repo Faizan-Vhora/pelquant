@@ -13,7 +13,7 @@
   font-family: var(--font-display);
   font-size: clamp(6rem, 15vw, 12rem);
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.015);
+  color: rgba(255, 255, 255, 0.03);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
@@ -33,7 +33,7 @@
 
 .contact-headline {
   font-family: 'Pixelify Sans', monospace !important;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 500;
   color: #FFF0C3 !important;
   margin-bottom: 1rem;
@@ -47,13 +47,13 @@
 
 @media (min-width: 768px) {
   .contact-headline {
-    font-size: 56px;
+    font-size: 42px;
   }
 }
 
 @media (min-width: 1024px) {
   .contact-headline {
-    font-size: 72px;
+    font-size: 52px;
   }
 }
 

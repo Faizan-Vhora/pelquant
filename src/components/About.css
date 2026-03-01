@@ -14,27 +14,26 @@
 }
 
 .about-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 60% 40%;
-  gap: 4rem;
-  align-items: center;
+  text-align: center;
 }
 
 .about-content {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  align-items: center;
 }
 
 .about-headline {
   font-family: 'Pixelify Sans', monospace !important;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 500;
   color: #FFF0C3 !important;
   line-height: 1.15;
   letter-spacing: 0;
+  text-align: center;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
   image-rendering: pixelated;
@@ -43,13 +42,13 @@
 
 @media (min-width: 768px) {
   .about-headline {
-    font-size: 56px;
+    font-size: 42px;
   }
 }
 
 @media (min-width: 1024px) {
   .about-headline {
-    font-size: 72px;
+    font-size: 52px;
   }
 }
 
@@ -57,118 +56,99 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  max-width: 700px;
 }
 
 .about-text p {
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.7;
+  text-align: center;
 }
 
-.about-features {
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.about-capabilities {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
 }
 
-.feature-item {
+.capability-item {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 500;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.capability-label {
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
-.check-icon {
-  width: 24px;
-  height: 24px;
+.capability-desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.about-ctas {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.btn-primary, .btn-ghost {
+  padding: 0.875rem 1.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-primary);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #ff8c4d;
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
   color: var(--accent);
-  flex-shrink: 0;
 }
 
 .about-visual {
-  position: relative;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.visual-orb {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255, 107, 43, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(40px);
-}
-
-.journey-card {
-  position: relative;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.5rem 2rem;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.journey-card:hover {
-  border-color: var(--accent);
-  transform: translateX(8px);
-}
-
-.card-1 {
-  margin-left: 0;
-}
-
-.card-2 {
-  margin-left: 2rem;
-}
-
-.card-3 {
-  margin-left: 4rem;
-}
-
-.card-label {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.card-line {
-  position: absolute;
-  right: -2rem;
-  top: 50%;
-  width: 2rem;
-  height: 2px;
-  background: var(--accent);
-  opacity: 0.5;
-}
-
-.card-3 .card-line {
   display: none;
 }
 
 @media (max-width: 1024px) {
-  .about-container {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-  }
-
-  .about-visual {
-    height: 400px;
-  }
-
-  .visual-orb {
-    width: 250px;
-    height: 250px;
+  .about-capabilities {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -181,19 +161,19 @@
     font-size: 2rem;
   }
 
-  .about-features {
+  .about-capabilities {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .about-visual {
-    height: 350px;
+  .about-ctas {
+    flex-direction: column;
+    width: 100%;
   }
 
-  .card-1, .card-2, .card-3 {
-    margin-left: 0;
-  }
-
-  .card-line {
-    display: none;
+  .about-ctas .btn-primary,
+  .about-ctas .btn-ghost {
+    width: 100%;
+    text-align: center;
   }
 }
