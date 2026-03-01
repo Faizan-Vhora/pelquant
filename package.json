@@ -11,6 +11,8 @@
     "deploy": "npx wrangler deploy --assets=dist"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "nodemailer": "^8.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1"

@@ -3,13 +3,44 @@ import './Contact.css';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: '', email: '', company: '', message: '' });
+    setIsSubmitting(true);
+    setStatus('');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/faizanvhoradev@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || 'Not provided',
+          message: formData.message,
+          _subject: '📧 New Contact - Pelquant',
+          _template: 'box',
+          _captcha: 'false'
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', company: '', message: '' });
+        setTimeout(() => setStatus(''), 5000);
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -60,7 +91,9 @@ export default function Contact() {
               onChange={handleChange}
               required
             ></textarea>
-            <button type="submit" className="submit-btn">Send Message</button>
+            <button type="submit" className="submit-btn" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
           </form>
 
           <div className="contact-info">
@@ -96,12 +129,17 @@ export default function Contact() {
           </div>
         </div>
 
-        {submitted && (
+        {status === 'success' && (
           <div className="success-message">
             <svg viewBox="0 0 24 24" fill="none">
               <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            Message sent successfully!
+            Message sent successfully! We'll get back to you within 24 hours.
+          </div>
+        )}
+        {status === 'error' && (
+          <div className="error-message">
+            Something went wrong. Please try again or email us directly at faizanvhora999@gmail.com
           </div>
         )}
       </div>
