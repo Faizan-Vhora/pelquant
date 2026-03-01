@@ -6,6 +6,7 @@
   justify-content: center;
   overflow: hidden;
   background: var(--bg-primary);
+  padding-top: 80px;
 }
 
 .hero-glow {

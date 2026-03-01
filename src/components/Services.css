@@ -96,6 +96,10 @@
   transition: all 0.3s ease;
   opacity: 0;
   transform: translateY(30px);
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  cursor: pointer;
 }
 
 .service-card.visible {
