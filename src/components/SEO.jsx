@@ -181,6 +181,12 @@ const seoData = {
     description: 'Get in touch with PELQUANT. Start your project with our enterprise technology and growth marketing team.',
     keywords: 'contact, get in touch, project inquiry, consultation',
     ogImage: '/og-contact.jpg'
+  },
+  '/careers': {
+    title: 'Careers at PELQUANT - Join Our Team',
+    description: 'Join PELQUANT. Work on cutting-edge AI and full-stack projects. Remote-first, global team, competitive compensation.',
+    keywords: 'careers, jobs, hiring, remote jobs, AI jobs, software engineer jobs',
+    ogImage: '/og-careers.jpg'
   }
 };
 

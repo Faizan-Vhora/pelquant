@@ -1,10 +1,36 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
-const techLinks = ['Custom Software Dev', 'Full-Stack Web & Mobile', 'AI & LLM Integrations', 'AI-Powered Automation', 'SecOps with AI', 'DevOps & Cloud'];
-const marketingLinks = ['Technical SEO', 'On-Page & Growth SEO', 'SMM', 'Meta & Google Ads', 'Performance Marketing'];
-const companyLinks = ['About', 'Contact', 'Careers'];
+const techLinks = [
+  { name: 'Custom Software Dev', path: '/services/custom-software-development' },
+  { name: 'Full-Stack Web & Mobile', path: '/services/web-mobile-development' },
+  { name: 'AI & LLM Integrations', path: '/services/ai-llm-integration' },
+  { name: 'AI-Powered Automation', path: '/services/ai-automation' },
+  { name: 'SecOps with AI', path: '/services/secops' },
+  { name: 'DevOps & Cloud', path: '/services/devops-cloud' }
+];
+
+const marketingLinks = [
+  { name: 'Technical SEO', path: '/services/technical-seo' },
+  { name: 'On-Page & Growth SEO', path: '/services/growth-seo' },
+  { name: 'SMM', path: '/services/social-media-marketing' },
+  { name: 'Meta & Google Ads', path: '/services/paid-advertising' },
+  { name: 'Performance Marketing', path: '/services/performance-marketing' }
+];
+
+const companyLinks = [
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' },
+  { name: 'Careers', path: '/careers' },
+  { name: 'Services', path: '/services' },
+  { name: 'Solutions', path: '/solutions' }
+];
 
 export default function Footer() {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -39,21 +65,21 @@ export default function Footer() {
             <div className="link-column">
               <h4 className="column-header">TECHNOLOGY</h4>
               {techLinks.map((link, i) => (
-                <a key={i} href="#" className="footer-link">{link}</a>
+                <Link key={i} to={link.path} onClick={handleLinkClick} className="footer-link">{link.name}</Link>
               ))}
             </div>
 
             <div className="link-column">
               <h4 className="column-header">MARKETING</h4>
               {marketingLinks.map((link, i) => (
-                <a key={i} href="#" className="footer-link">{link}</a>
+                <Link key={i} to={link.path} onClick={handleLinkClick} className="footer-link">{link.name}</Link>
               ))}
             </div>
 
             <div className="link-column">
               <h4 className="column-header">COMPANY</h4>
               {companyLinks.map((link, i) => (
-                <a key={i} href="#" className="footer-link">{link}</a>
+                <Link key={i} to={link.path} onClick={handleLinkClick} className="footer-link">{link.name}</Link>
               ))}
             </div>
           </div>
