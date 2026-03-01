@@ -9,6 +9,8 @@ export default function ContactPage() {
     company: '',
     message: ''
   });
+  const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -29,10 +31,40 @@ export default function ContactPage() {
     return () => observerRef.current?.disconnect();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
+    setIsSubmitting(true);
+    setStatus('');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/faizanvhoradev@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || 'Not provided',
+          message: formData.message,
+          _subject: '📧 New Contact - Pelquant',
+          _template: 'box',
+          _captcha: 'false'
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', company: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -115,9 +147,20 @@ export default function ContactPage() {
                 ></textarea>
               </div>
 
-              <button type="submit" className="submit-btn">
-                Send Message →
+              <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message →'}
               </button>
+
+              {status === 'success' && (
+                <div className="form-message success">
+                  ✓ Message sent successfully! We'll get back to you within 24 hours.
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="form-message error">
+                  ✗ Something went wrong. Please try again or email us directly at faizanvhora999@gmail.com
+                </div>
+              )}
             </form>
           </div>
 
