@@ -8,6 +8,7 @@ import TrustBar from './components/TrustBar';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import SEO from './components/SEO';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ServicesPage from './pages/ServicesPage';
@@ -74,6 +75,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <SEO />
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }}></div>
       <Header />
       <Routes>
