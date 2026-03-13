@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 160px 20px 120px;
+  padding: 10rem 2rem 6rem;
   position: relative;
   overflow: hidden;
 }
@@ -155,7 +155,7 @@
 /* Mission Section */
 .mission-section {
   background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
-  padding: 140px 20px;
+  padding: 8rem 20px;
   border-top: 1px solid var(--border);
   position: relative;
 }
@@ -293,7 +293,7 @@
 /* Why Section */
 .why-section {
   background: var(--bg2);
-  padding: 140px 20px;
+  padding: 8rem 20px;
   position: relative;
 }
 
@@ -433,7 +433,7 @@
 /* Partners Section */
 .partners-section {
   background: var(--bg);
-  padding: 120px 20px;
+  padding: 8rem 20px;
 }
 
 .partners-container {
@@ -515,7 +515,7 @@
 /* Philosophy Banner */
 .philosophy-banner {
   background: linear-gradient(180deg, var(--bg) 0%, #070710 100%);
-  padding: 120px 20px;
+  padding: 8rem 20px;
   position: relative;
 }
 
@@ -637,7 +637,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .about-hero {
-    padding: 120px 20px 80px;
+    padding: 8rem 20px 80px;
   }
 
   .hero-headline {

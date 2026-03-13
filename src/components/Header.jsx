@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
@@ -7,13 +7,33 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
+  const searchRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setSearchOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    setMenuOpen(false);
+    setServicesOpen(false);
+    setSolutionsOpen(false);
+    setSearchOpen(false);
+  }, [location]);
 
   const isMobile = window.innerWidth <= 968;
 
@@ -28,6 +48,13 @@ export default function Header() {
     if (isMobile) {
       e.preventDefault();
       setSolutionsOpen(!solutionsOpen);
+    }
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      console.log('Search:', searchQuery);
     }
   };
 
@@ -48,23 +75,23 @@ export default function Header() {
             {servicesOpen && (
               <div className="dropdown-menu">
                 <div className="dropdown-section">
-                  <h4>Technology</h4>
-                  <Link to="/services/ai-llm-integration" onClick={() => setMenuOpen(false)}>AI & LLM Integration</Link>
-                  <Link to="/services/custom-software-development" onClick={() => setMenuOpen(false)}>Custom Software</Link>
-                  <Link to="/services/web-mobile-development" onClick={() => setMenuOpen(false)}>Web & Mobile</Link>
-                  <Link to="/services/devops-cloud" onClick={() => setMenuOpen(false)}>DevOps & Cloud</Link>
-                  <Link to="/services/ai-automation" onClick={() => setMenuOpen(false)}>AI Automation</Link>
-                  <Link to="/services/siem" onClick={() => setMenuOpen(false)}>SIEM</Link>
-                  <Link to="/services/soar" onClick={() => setMenuOpen(false)}>SOAR</Link>
-                  <Link to="/services/secops" onClick={() => setMenuOpen(false)}>SecOps</Link>
+                  <h4 className="tech-header">Technology</h4>
+                  <Link to="/services/ai-llm-integration">AI & LLM Integration</Link>
+                  <Link to="/services/custom-software-development">Custom Software</Link>
+                  <Link to="/services/web-mobile-development">Web & Mobile</Link>
+                  <Link to="/services/devops-cloud">DevOps & Cloud</Link>
+                  <Link to="/services/ai-automation">AI Automation</Link>
+                  <Link to="/services/siem">SIEM</Link>
+                  <Link to="/services/soar">SOAR</Link>
+                  <Link to="/services/secops">SecOps</Link>
                 </div>
                 <div className="dropdown-section">
-                  <h4>Marketing</h4>
-                  <Link to="/services/performance-marketing" onClick={() => setMenuOpen(false)}>Performance Marketing</Link>
-                  <Link to="/services/technical-seo" onClick={() => setMenuOpen(false)}>Technical SEO</Link>
-                  <Link to="/services/growth-seo" onClick={() => setMenuOpen(false)}>Growth SEO</Link>
-                  <Link to="/services/paid-advertising" onClick={() => setMenuOpen(false)}>Paid Advertising</Link>
-                  <Link to="/services/social-media-marketing" onClick={() => setMenuOpen(false)}>Social Media</Link>
+                  <h4 className="marketing-header">Marketing</h4>
+                  <Link to="/services/performance-marketing">Performance Marketing</Link>
+                  <Link to="/services/technical-seo">Technical SEO</Link>
+                  <Link to="/services/growth-seo">Growth SEO</Link>
+                  <Link to="/services/paid-advertising">Paid Advertising</Link>
+                  <Link to="/services/social-media-marketing">Social Media</Link>
                 </div>
               </div>
             )}
@@ -79,37 +106,66 @@ export default function Header() {
             {solutionsOpen && (
               <div className="dropdown-menu">
                 <div className="dropdown-section">
-                  <h4>Industries</h4>
-                  <Link to="/solutions/fintech" onClick={() => setMenuOpen(false)}>FinTech</Link>
-                  <Link to="/solutions/healthtech" onClick={() => setMenuOpen(false)}>HealthTech</Link>
-                  <Link to="/solutions/ecommerce" onClick={() => setMenuOpen(false)}>eCommerce</Link>
-                  <Link to="/solutions/logistics" onClick={() => setMenuOpen(false)}>Logistics</Link>
-                  <Link to="/solutions/edtech" onClick={() => setMenuOpen(false)}>EdTech</Link>
-                  <Link to="/solutions/legaltech" onClick={() => setMenuOpen(false)}>LegalTech</Link>
+                  <h4 className="industries-header">Industries</h4>
+                  <Link to="/solutions/fintech">FinTech</Link>
+                  <Link to="/solutions/healthtech">HealthTech</Link>
+                  <Link to="/solutions/ecommerce">eCommerce</Link>
+                  <Link to="/solutions/logistics">Logistics</Link>
+                  <Link to="/solutions/edtech">EdTech</Link>
+                  <Link to="/solutions/legaltech">LegalTech</Link>
                 </div>
                 <div className="dropdown-section">
-                  <h4>More Industries</h4>
-                  <Link to="/solutions/proptech" onClick={() => setMenuOpen(false)}>PropTech</Link>
-                  <Link to="/solutions/hrtech" onClick={() => setMenuOpen(false)}>HR Technology</Link>
-                  <Link to="/solutions/govtech" onClick={() => setMenuOpen(false)}>GovTech</Link>
-                  <Link to="/solutions/saas" onClick={() => setMenuOpen(false)}>SaaS</Link>
-                  <Link to="/solutions/media" onClick={() => setMenuOpen(false)}>Media</Link>
-                  <Link to="/solutions/manufacturing" onClick={() => setMenuOpen(false)}>Manufacturing</Link>
+                  <h4 className="industries-header">More Industries</h4>
+                  <Link to="/solutions/proptech">PropTech</Link>
+                  <Link to="/solutions/hrtech">HR Technology</Link>
+                  <Link to="/solutions/govtech">GovTech</Link>
+                  <Link to="/solutions/saas">SaaS</Link>
+                  <Link to="/solutions/media">Media</Link>
+                  <Link to="/solutions/manufacturing">Manufacturing</Link>
                 </div>
               </div>
             )}
           </div>
 
-          <Link to="/about" className="nav-link" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link to="/contact" className="nav-link" onClick={() => setMenuOpen(false)}>Contact</Link>
+          <Link to="/about" className="nav-link">About</Link>
+          <Link to="/contact" className="nav-link">Contact</Link>
         </nav>
 
         <div className="header-actions">
+          <div className="search-container" ref={searchRef}>
+            <button 
+              className={`search-toggle ${searchOpen ? 'active' : ''}`}
+              onClick={() => setSearchOpen(!searchOpen)}
+              aria-label="Search"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+              </svg>
+            </button>
+            {searchOpen && (
+              <form className="search-dropdown" onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  placeholder="Search services, solutions..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  autoFocus
+                />
+                <button type="submit">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                  </svg>
+                </button>
+              </form>
+            )}
+          </div>
           <Link to="/contact" className="btn-ghost">Talk to Sales</Link>
           <Link to="/contact" className="btn-primary">Get Started</Link>
         </div>
 
-        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+        <button className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
           <span></span>
           <span></span>
           <span></span>

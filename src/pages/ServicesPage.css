@@ -22,7 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 160px 20px 120px;
+  padding: 10rem 2rem 6rem;
   position: relative;
   overflow: hidden;
 }
@@ -112,13 +112,13 @@
 /* Services Sections */
 .tech-services-section {
   background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  padding: 140px 20px;
+  padding: 8rem 20px;
   border-top: 1px solid var(--border);
 }
 
 .marketing-services-section {
   background: var(--bg-secondary);
-  padding: 140px 20px;
+  padding: 8rem 20px;
 }
 
 .services-container {
@@ -234,7 +234,7 @@
 /* Process Section */
 .process-section {
   background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-  padding: 140px 20px;
+  padding: 8rem 20px;
 }
 
 .process-container {
@@ -295,7 +295,7 @@
 /* CTA Section */
 .services-cta {
   background: var(--bg-primary);
-  padding: 120px 20px;
+  padding: 8rem 20px;
   border-top: 1px solid var(--border);
 }
 
@@ -376,7 +376,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .services-hero {
-    padding: 120px 20px 80px;
+    padding: 8rem 20px 80px;
   }
 
   .services-hero-headline {

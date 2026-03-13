@@ -5,14 +5,30 @@
 
 /* Hero Section */
 .solutions-hero {
-  padding: 140px 2rem 80px;
-  background: linear-gradient(180deg, rgba(255, 107, 43, 0.05) 0%, transparent 100%);
+  padding: 10rem 2rem 6rem;
+  background: linear-gradient(180deg, rgba(255, 107, 43, 0.08) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+.solutions-hero::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 107, 43, 0.1) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .solutions-hero-container {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .solutions-tag {
@@ -52,7 +68,14 @@
 
 /* Industries Section */
 .industries-section {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
+  text-align: center;
+}
+
+.industries-section .section-tag,
+.industries-section .section-headline {
+  display: block;
+  text-align: center;
 }
 
 .solutions-container {
@@ -88,37 +111,68 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .industry-card {
   padding: 2.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.industry-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #ff8555);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .industry-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(255, 107, 43, 0.15);
+  border-color: rgba(255, 107, 43, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255, 107, 43, 0.15);
+}
+
+.industry-card:hover::before {
+  opacity: 1;
 }
 
 .industry-icon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, rgba(255, 107, 43, 0.15) 0%, rgba(255, 107, 43, 0.05) 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--accent);
   margin-bottom: 1.25rem;
   stroke-width: 1.5;
+  transition: all 0.3s ease;
+}
+
+.industry-card:hover .industry-icon {
+  background: linear-gradient(135deg, var(--accent) 0%, #ff8555 100%);
+  color: white;
+  transform: scale(1.05) rotate(-3deg);
 }
 
 .industry-name {
   font-size: 1.5rem;
-  color: var(--text-primary);
+  color: var(--heading-gold);
   margin-bottom: 0.75rem;
   font-weight: 600;
 }
@@ -140,7 +194,7 @@
 
 /* Why Domain Section */
 .why-domain {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -153,40 +207,54 @@
 
 .why-domain-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   gap: 2rem;
 }
 
 .why-domain-item {
   padding: 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
   text-align: center;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .why-domain-item:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
+  border-color: rgba(255, 107, 43, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(255, 107, 43, 0.1);
 }
 
 .why-domain-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, rgba(255, 107, 43, 0.15) 0%, rgba(255, 107, 43, 0.05) 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--accent);
+  margin: 0 auto 1rem;
+  transition: all 0.3s ease;
+}
+
+.why-domain-item:hover .why-domain-icon {
+  background: linear-gradient(135deg, var(--accent) 0%, #ff8555 100%);
+  color: white;
+  transform: scale(1.1);
 }
 
 .why-domain-icon svg {
-  width: 100%;
-  height: 100%;
+  width: 26px;
+  height: 26px;
 }
 
 .why-domain-item h3 {
-  font-size: 1.125rem;
-  color: var(--text-primary);
+  font-size: 1.25rem;
+  color: var(--heading-gold);
   margin-bottom: 0.75rem;
 }
 
@@ -198,7 +266,7 @@
 
 /* CTA Section */
 .solutions-cta {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .solutions-cta-container {
@@ -278,7 +346,7 @@
 }
 
 .solutions-content {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .solutions-list {
@@ -316,13 +384,13 @@
 }
 
 .ai-section {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
 .ai-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -366,7 +434,7 @@
 }
 
 .compliance-section {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .compliance-list {

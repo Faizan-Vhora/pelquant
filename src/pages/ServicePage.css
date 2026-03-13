@@ -5,14 +5,30 @@
 
 /* Hero Section */
 .service-hero {
-  padding: 140px 2rem 80px;
-  background: linear-gradient(180deg, rgba(255, 107, 43, 0.05) 0%, transparent 100%);
+  padding: 10rem 2rem 6rem;
+  background: linear-gradient(180deg, rgba(255, 107, 43, 0.08) 0%, transparent 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-hero::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 107, 43, 0.1) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .service-hero-container {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .breadcrumb {
@@ -64,8 +80,12 @@
 }
 
 /* Benefits Section */
-.service-benefits {
-  padding: 80px 2rem;
+.service-benefits,
+.service-products,
+.service-tech,
+.service-why,
+.service-related {
+  padding: 8rem 2rem;
 }
 
 .service-container {
@@ -81,28 +101,59 @@
 
 .benefit-card {
   padding: 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  transition: all 0.3s;
+  background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #ff8555);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .benefit-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
+  border-color: rgba(255, 107, 43, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(255, 107, 43, 0.1);
+}
+
+.benefit-card:hover::before {
+  opacity: 1;
 }
 
 .benefit-icon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, rgba(255, 107, 43, 0.15) 0%, rgba(255, 107, 43, 0.05) 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--accent);
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  transition: all 0.3s ease;
 }
 
 .benefit-icon svg {
-  width: 100%;
-  height: 100%;
+  width: 26px;
+  height: 26px;
   stroke-width: 1.5;
+}
+
+.benefit-card:hover .benefit-icon {
+  background: linear-gradient(135deg, var(--accent) 0%, #ff8555 100%);
+  color: white;
+  transform: scale(1.05) rotate(-3deg);
 }
 
 .benefit-card h3 {
@@ -119,7 +170,7 @@
 
 /* Process Section */
 .service-process {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -157,7 +208,12 @@
   gap: 2rem;
   margin-bottom: 2.5rem;
   padding-bottom: 2.5rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.process-item:hover {
+  border-bottom-color: rgba(255, 107, 43, 0.3);
 }
 
 .process-item:last-child {
@@ -167,10 +223,12 @@
 }
 
 .process-number {
-  font-size: 2rem;
-  font-weight: 700;
+  font-family: 'Pixelify Sans', monospace;
+  font-size: 2.25rem;
+  font-weight: 600;
   color: var(--accent);
-  min-width: 60px;
+  min-width: 70px;
+  text-shadow: 0 0 20px rgba(255, 107, 43, 0.3);
 }
 
 .process-content {
@@ -190,7 +248,7 @@
 
 /* Products Section */
 .service-products {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .products-list {
@@ -202,23 +260,25 @@
   display: flex;
   gap: 1rem;
   align-items: flex-start;
-  padding: 1.25rem;
+  padding: 1.5rem;
   margin-bottom: 1rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  transition: all 0.3s;
+  background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
 .product-item:hover {
-  border-color: var(--accent);
-  transform: translateX(8px);
+  border-color: rgba(255, 107, 43, 0.3);
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(255, 107, 43, 0.08);
 }
 
 .product-bullet {
   color: var(--accent);
   font-size: 1.25rem;
   font-weight: 600;
+  min-width: 24px;
 }
 
 .product-item p {
@@ -229,26 +289,33 @@
 
 /* Tech Stack Section */
 .service-tech {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   gap: 2rem;
 }
 
 .tech-category {
   padding: 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.tech-category:hover {
+  border-color: rgba(255, 107, 43, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(255, 107, 43, 0.08);
 }
 
 .tech-category-name {
-  font-size: 1.125rem;
-  color: var(--text-primary);
+  font-size: 1.25rem;
+  color: var(--heading-gold);
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid var(--accent);
@@ -261,17 +328,24 @@
 }
 
 .tech-tag {
-  padding: 0.4rem 0.9rem;
-  background: rgba(255, 107, 43, 0.1);
-  border: 1px solid rgba(255, 107, 43, 0.3);
-  border-radius: 6px;
-  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 107, 43, 0.08);
+  border: 1px solid rgba(255, 107, 43, 0.2);
+  border-radius: 8px;
+  font-size: 0.875rem;
   color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(255, 107, 43, 0.15);
+  color: var(--text-primary);
+  border-color: rgba(255, 107, 43, 0.4);
 }
 
 /* Why Section */
 .service-why {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .why-content {
@@ -320,7 +394,7 @@
 
 /* Related Services */
 .service-related {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -341,22 +415,40 @@
 
 .related-card {
   padding: 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
   text-decoration: none;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  overflow: hidden;
+}
+
+.related-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #ff8555);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .related-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
+  border-color: rgba(255, 107, 43, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(255, 107, 43, 0.12);
+}
+
+.related-card:hover::before {
+  opacity: 1;
 }
 
 .related-card h3 {
   font-size: 1.25rem;
-  color: var(--text-primary);
+  color: var(--heading-gold);
   margin-bottom: 0.75rem;
 }
 
@@ -372,11 +464,16 @@
   position: absolute;
   bottom: 1.5rem;
   right: 2rem;
+  transition: all 0.3s ease;
+}
+
+.related-card:hover .related-arrow {
+  transform: translateX(5px);
 }
 
 /* CTA Section */
 .service-cta {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .service-cta-container {
@@ -384,15 +481,30 @@
   margin: 0 auto;
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, rgba(255, 107, 43, 0.1) 0%, rgba(255, 107, 43, 0.05) 100%);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 107, 43, 0.08) 0%, rgba(255, 107, 43, 0.02) 100%);
+  border: 1px solid rgba(255, 107, 43, 0.15);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-cta-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 107, 43, 0.05) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .cta-headline {
   font-size: 2.5rem;
-  color: var(--text-primary);
+  color: var(--heading-gold);
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .cta-subtext {
@@ -400,6 +512,8 @@
   color: var(--text-secondary);
   margin-bottom: 2rem;
   line-height: 1.6;
+  position: relative;
+  z-index: 1;
 }
 
 /* Animations */
@@ -599,7 +713,7 @@
 
 /* ROI Section */
 .service-roi {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -644,7 +758,7 @@
 
 /* SecOps Specific Styles */
 .service-mitre {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -688,7 +802,7 @@
 
 /* Integration Section */
 .service-integration {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -736,7 +850,7 @@
 
 /* Performance Section */
 .service-performance {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -829,7 +943,7 @@
 
 /* DevOps Maturity */
 .service-maturity {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -865,7 +979,7 @@
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  min-width: 180px;
+  min-width: 18rem;
   transition: all 0.3s;
 }
 
@@ -913,7 +1027,7 @@
 
 /* SEO Specific Styles */
 .service-vitals {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -942,7 +1056,7 @@
 
 .vitals-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   gap: 2rem;
 }
 
@@ -987,7 +1101,7 @@
 
 /* Tools Section */
 .service-tools {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .tools-grid {
@@ -1017,7 +1131,7 @@
 
 /* E-E-A-T Section */
 .service-eeat {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -1079,7 +1193,7 @@
 
 /* Link Building Section */
 .service-linkbuilding {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .linkbuilding-content {
@@ -1139,7 +1253,7 @@
 /* Social Media Specific */
 .social-platforms {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1185,7 +1299,7 @@
 
 /* Metrics Section */
 .service-metrics {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -1303,7 +1417,7 @@
 
 /* Testing Section */
 .service-testing {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
@@ -1363,12 +1477,12 @@
 
 /* Ad Metrics */
 .service-ad-metrics {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .ad-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1476,13 +1590,13 @@
 
 /* PM Metrics */
 .service-pm-metrics {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
 .pm-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1523,7 +1637,7 @@
 
 /* Growth Framework */
 .service-framework {
-  padding: 80px 2rem;
+  padding: 8rem 2rem;
 }
 
 .framework-content {

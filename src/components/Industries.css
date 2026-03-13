@@ -1,7 +1,7 @@
 .industries {
   position: relative;
   padding: 8rem 2rem;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   overflow: hidden;
 }
 

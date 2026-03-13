@@ -89,6 +89,10 @@ export default function Services() {
               <div className="card-icon">{service.icon}</div>
               <h4 className="card-title">{service.title}</h4>
               <p className="card-desc">{service.desc}</p>
+              <span className={`card-category ${service.category.toLowerCase()}`}>
+                <span className="card-category-dot"></span>
+                {service.category}
+              </span>
               <span className="card-arrow">→</span>
             </Link>
           ))}

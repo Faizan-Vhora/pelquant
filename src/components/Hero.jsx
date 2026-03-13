@@ -38,18 +38,26 @@ export default function Hero() {
   const [currentHeadline, setCurrentHeadline] = useState(0);
 
   useEffect(() => {
-    const now = new Date();
-    const minutes = now.getHours() * 60 + now.getMinutes();
-    const index = Math.floor(minutes / 10) % headlines.length;
-    setCurrentHeadline(index);
+    const interval = setInterval(() => {
+      setCurrentHeadline((prev) => (prev + 1) % headlines.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <section className="hero">
       <div className="hero-glow"></div>
+      <div className="hero-glow-2"></div>
       <div className="hero-grid"></div>
       
-      <div className="hero-content">
+      <div className="hero-shapes">
+        <div className="shape shape-1"></div>
+        <div className="shape shape-2"></div>
+        <div className="shape shape-3"></div>
+      </div>
+      
+      <div className="hero-content visible">
         <div className="hero-badge">
           <span className="badge-dot"></span>
           Enterprise AI & Digital Transformation
@@ -64,24 +72,48 @@ export default function Hero() {
         </p>
 
         <div className="hero-ctas">
-          <button className="btn-primary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+          <button className="btn-primary btn-large" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
             Start Building
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
           </button>
-          <button className="btn-ghost" onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
+          <button className="btn-ghost btn-large" onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
             Explore Services
           </button>
         </div>
 
+        <div className="headline-dots">
+          {headlines.slice(0, 5).map((_, i) => (
+            <button 
+              key={i} 
+              className={`dot ${i === currentHeadline % 5 ? 'active' : ''}`}
+              onClick={() => setCurrentHeadline(i)}
+              aria-label={`View headline ${i + 1}`}
+            />
+          ))}
+        </div>
+
         <div className="hero-stats">
-          <div className="stat">13 Services</div>
+          <div className="stat">
+            <span className="stat-number">13</span>
+            <span className="stat-label">Services</span>
+          </div>
           <div className="stat-divider"></div>
-          <div className="stat">12 Industries</div>
+          <div className="stat">
+            <span className="stat-number">12+</span>
+            <span className="stat-label">Industries</span>
+          </div>
           <div className="stat-divider"></div>
-          <div className="stat">AI-Powered</div>
+          <div className="stat">
+            <span className="stat-number">AI</span>
+            <span className="stat-label">Powered</span>
+          </div>
           <div className="stat-divider"></div>
-          <div className="stat">Enterprise-Grade</div>
-          <div className="stat-divider"></div>
-          <div className="stat">Global Scale</div>
+          <div className="stat">
+            <span className="stat-number">24/7</span>
+            <span className="stat-label">Support</span>
+          </div>
         </div>
       </div>
     </section>
