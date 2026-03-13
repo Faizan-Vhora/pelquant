@@ -47,25 +47,17 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-glow"></div>
       <div className="footer-container">
-        <div className="footer-main">
+        <div className="footer-top">
           <div className="footer-brand">
             <Link to="/" className="footer-logo" onClick={handleLinkClick}>
               <span className="logo-bracket">[</span>PELQUANT
             </Link>
             <p className="footer-desc">
-              AI-First Technology & Growth Partner transforming businesses with intelligent solutions
+              AI-First Technology & Growth Partner transforming businesses with intelligent solutions.
             </p>
-            
-            <div className="contact-info">
-              <a href="mailto:hello@pelquant.com" className="contact-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-                hello@pelquant.com
-              </a>
-            </div>
-
+            <a href="mailto:hello@pelquant.com" className="footer-email">
+              hello@pelquant.com
+            </a>
             <div className="social-icons">
               <a href="#" className="social-icon" aria-label="Twitter">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -90,45 +82,40 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="footer-links-section">
-            <div className="footer-links">
-              <div className="link-column">
-                <h4 className="column-header">TECHNOLOGY</h4>
-                {techLinks.map((link, i) => (
-                  <Link key={i} to={link.path} onClick={handleLinkClick} className="footer-link">{link.name}</Link>
-                ))}
-              </div>
-
-              <div className="link-column">
-                <h4 className="column-header">MARKETING</h4>
-                {marketingLinks.map((link, i) => (
-                  <Link key={i} to={link.path} onClick={handleLinkClick} className="footer-link">{link.name}</Link>
-                ))}
-              </div>
-
-              <div className="link-column">
-                <h4 className="column-header">COMPANY</h4>
-                {companyLinks.map((link, i) => (
-                  <Link key={i} to={link.path} onClick={handleLinkClick} className="footer-link">{link.name}</Link>
-                ))}
-              </div>
+          <div className="footer-links-grid">
+            <div className="link-column">
+              <h4>Technology</h4>
+              {techLinks.map((link, i) => (
+                <Link key={i} to={link.path} onClick={handleLinkClick}>{link.name}</Link>
+              ))}
             </div>
-
-            <div className="newsletter">
-              <h4 className="column-header">STAY UPDATED</h4>
-              <p className="newsletter-desc">Get the latest insights on AI, tech, and growth delivered to your inbox.</p>
+            <div className="link-column">
+              <h4>Marketing</h4>
+              {marketingLinks.map((link, i) => (
+                <Link key={i} to={link.path} onClick={handleLinkClick}>{link.name}</Link>
+              ))}
+            </div>
+            <div className="link-column">
+              <h4>Company</h4>
+              {companyLinks.map((link, i) => (
+                <Link key={i} to={link.path} onClick={handleLinkClick}>{link.name}</Link>
+              ))}
+            </div>
+            <div className="link-column newsletter-col">
+              <h4>Stay Updated</h4>
+              <p className="newsletter-desc">Get the latest insights on AI, tech, and growth.</p>
               {subscribed ? (
                 <div className="subscribed-message">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M20 6L9 17l-5-5"/>
                   </svg>
-                  Thanks for subscribing!
+                  Thanks!
                 </div>
               ) : (
                 <form className="newsletter-form" onSubmit={handleSubscribe}>
                   <input
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="Your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -149,9 +136,9 @@ export default function Footer() {
             © {new Date().getFullYear()} Pelquant. All rights reserved.
           </div>
           <div className="footer-legal">
-            <a href="#">Privacy Policy</a>
+            <a href="#">Privacy</a>
             <span>·</span>
-            <a href="#">Terms of Service</a>
+            <a href="#">Terms</a>
             <span>·</span>
             <a href="#">Cookies</a>
           </div>
