@@ -1,6 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import './Hero.css';
 
+const headlines = [
+  { line1: 'We Build the Software.', line2: 'We Grow the Business.' },
+  { line1: 'AI-First Engineering.', line2: 'Performance-Led Growth.' },
+  { line1: 'From Code to Product.', line2: 'To the First Page.' },
+  { line1: 'One Partner.', line2: 'Every Capability.' },
+  { line1: 'Intelligent Software.', line2: 'Measurable Outcomes.' },
+];
+
 const marqueeItems = [
   'AI & LLM Integration',
   'Custom Software',
@@ -28,8 +36,21 @@ const stats = [
 ];
 
 export default function Hero() {
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
   const statsRef = useRef(null);
   const [statsVisible, setStatsVisible] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimating(true);
+      setTimeout(() => {
+        setCurrent(prev => (prev + 1) % headlines.length);
+        setAnimating(false);
+      }, 300);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -53,12 +74,26 @@ export default function Hero() {
           Enterprise AI &amp; Digital Transformation
         </div>
 
-        {/* Headline */}
-        <h1 className="hero-headline">
-          We Build the Software.
-          <br />
-          <span className="headline-accent">We Grow the Business.</span>
-        </h1>
+        {/* Headline — rotates every 4s, fixed-height wrapper prevents layout shift */}
+        <div className="hero-headline-wrap">
+          <h1 className={`hero-headline ${animating ? 'fade-out' : 'fade-in'}`}>
+            {headlines[current].line1}
+            <br />
+            <span className="headline-accent">{headlines[current].line2}</span>
+          </h1>
+        </div>
+
+        {/* Dots */}
+        <div className="hero-dots">
+          {headlines.map((_, i) => (
+            <button
+              key={i}
+              className={`dot ${i === current ? 'active' : ''}`}
+              onClick={() => { setAnimating(true); setTimeout(() => { setCurrent(i); setAnimating(false); }, 300); }}
+              aria-label={`Headline ${i + 1}`}
+            />
+          ))}
+        </div>
 
         {/* Sub */}
         <p className="hero-sub">
