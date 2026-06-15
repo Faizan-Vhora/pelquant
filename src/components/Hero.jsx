@@ -140,11 +140,6 @@ export default function Hero() {
               <Row label="Active Projects" value="24"          cls="" />
               <Row label="AI Requests/s"  value="1,847"       cls="orange" />
               <Row label="Uptime"         value="99.97%"      cls="blue" />
-              <div className="mini-bars">
-                {[70,45,85,55,90,60,80].map((h,i)=>(
-                  <div key={i} className="bar" style={{ height:`${h}%`, animationDelay:`${i*0.1}s` }} />
-                ))}
-              </div>
             </div>
           </div>
 
