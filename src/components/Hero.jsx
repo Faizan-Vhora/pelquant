@@ -2,246 +2,195 @@ import { useState, useEffect, useRef } from 'react';
 import './Hero.css';
 
 const headlines = [
-  'AI-First. Full-Stack. Growth-Obsessed.',
-  'We Build Intelligent Software That Scales.',
-  'Code Smarter. Grow Faster. Powered by AI.',
-  'From First Line of Code to First Page of Google.',
-  'AI-Powered Software. Performance-Driven Growth.',
-  'Build with AI. Scale with Strategy.',
-  'Full-Stack Development Meets AI-First Thinking.',
-  'We Engineer Software. We Engineer Growth.',
-  'Intelligent Systems. Measurable Results.',
-  'Your AI Technology & Growth Partner.',
-];
-
-const techStack = ['React', 'Next.js', 'Python', 'LangChain', 'OpenAI', 'AWS', 'Kubernetes', 'PostgreSQL'];
-const liveMetrics = [
-  { label: 'AI Models Deployed', value: '200+' },
-  { label: 'Avg. ROI Delivered', value: '340%' },
-  { label: 'Client Retention', value: '98%' },
+  { pre: 'Build Smarter.', accent: 'Grow Faster.', post: 'Powered by AI.' },
+  { pre: 'From First Line of Code', accent: null, post: 'to First Page of Google.' },
+  { pre: 'AI-First Engineering.', accent: 'Performance-Driven', post: 'Growth.' },
+  { pre: 'One Partner.', accent: 'Every Capability.', post: 'Real Results.' },
+  { pre: 'Intelligent Software.', accent: null, post: 'Measurable Outcomes.' },
 ];
 
 export default function Hero() {
-  const [currentHeadline, setCurrentHeadline] = useState(0);
-  const [displayText, setDisplayText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
-  const [metricIndex, setMetricIndex] = useState(0);
-  const [statsVisible, setStatsVisible] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
   const statsRef = useRef(null);
+  const [statsVisible, setStatsVisible] = useState(false);
 
-  // Typewriter effect for headlines
-  useEffect(() => {
-    const target = headlines[currentHeadline];
-    let i = 0;
-    setDisplayText('');
-    setIsTyping(true);
-
-    const typeInterval = setInterval(() => {
-      if (i <= target.length) {
-        setDisplayText(target.slice(0, i));
-        i++;
-      } else {
-        setIsTyping(false);
-        clearInterval(typeInterval);
-      }
-    }, 38);
-
-    return () => clearInterval(typeInterval);
-  }, [currentHeadline]);
-
-  // Rotate headlines
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentHeadline((prev) => (prev + 1) % headlines.length);
+      setAnimating(true);
+      setTimeout(() => {
+        setCurrent(prev => (prev + 1) % headlines.length);
+        setAnimating(false);
+      }, 300);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-  // Rotate live metrics
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMetricIndex((prev) => (prev + 1) % liveMetrics.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Stats counter animation trigger
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setStatsVisible(true); },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
     if (statsRef.current) observer.observe(statsRef.current);
     return () => observer.disconnect();
   }, []);
 
+  const h = headlines[current];
+
   return (
     <section className="hero">
-      <div className="hero-glow"></div>
-      <div className="hero-glow-2"></div>
-      <div className="hero-grid"></div>
-      <div className="hero-particles">
-        {[...Array(20)].map((_, i) => (
-          <div key={i} className={`particle particle-${(i % 5) + 1}`}></div>
-        ))}
-      </div>
+      {/* Subtle grid background */}
+      <div className="hero-grid" aria-hidden="true"></div>
+      {/* Soft gradient orbs */}
+      <div className="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div className="hero-orb hero-orb-2" aria-hidden="true"></div>
 
       <div className="hero-inner">
-        {/* Left Column */}
-        <div className="hero-content visible">
+        {/* ── LEFT ── */}
+        <div className="hero-left">
           <div className="hero-badge">
             <span className="badge-dot"></span>
-            Enterprise AI & Digital Transformation
-            <span className="badge-live">LIVE</span>
+            Enterprise AI &amp; Digital Transformation
           </div>
 
-          <h1 className="hero-headline">
-            {displayText}
-            <span className={`cursor ${isTyping ? 'blinking' : 'hidden'}`}>|</span>
+          <h1 className={`hero-headline ${animating ? 'fade-out' : 'fade-in'}`}>
+            {h.pre}{' '}
+            {h.accent && <span className="headline-accent">{h.accent}</span>}
+            {h.accent && ' '}
+            {h.post}
           </h1>
 
-          <p className="hero-subheadline">
-            Full-stack technology and growth solutions for enterprises across 12+ industries.
-            From AI systems to market leadership — all under one roof.
+          <p className="hero-sub">
+            Full-stack technology and growth solutions for enterprises across
+            12+ industries. From AI systems to market leadership —
+            all under one roof.
           </p>
 
-          <div className="hero-social-proof">
-            <div className="proof-avatars">
-              {['F', 'S', 'M', 'A'].map((l, i) => (
-                <div key={i} className="avatar">{l}</div>
+          {/* Social proof */}
+          <div className="hero-proof">
+            <div className="proof-faces">
+              {['F','S','M','A'].map((l, i) => (
+                <span key={i} className="face">{l}</span>
               ))}
             </div>
-            <span className="proof-text">Trusted by 50+ growing businesses worldwide</span>
+            <span>Trusted by <strong>50+</strong> growing businesses worldwide</span>
           </div>
 
+          {/* CTAs */}
           <div className="hero-ctas">
-            <button className="btn-primary btn-large" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+            <button
+              className="btn-primary"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Start Building
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </button>
-            <button className="btn-ghost btn-large" onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}>
+            <button
+              className="btn-ghost"
+              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Explore Services
             </button>
           </div>
 
-          <div className="headline-dots">
-            {headlines.slice(0, 5).map((_, i) => (
+          {/* Headline dots */}
+          <div className="hero-dots">
+            {headlines.map((_, i) => (
               <button
                 key={i}
-                className={`dot ${i === currentHeadline % 5 ? 'active' : ''}`}
-                onClick={() => setCurrentHeadline(i)}
-                aria-label={`View headline ${i + 1}`}
+                className={`dot ${i === current ? 'active' : ''}`}
+                onClick={() => { setAnimating(true); setTimeout(() => { setCurrent(i); setAnimating(false); }, 300); }}
+                aria-label={`Headline ${i + 1}`}
               />
             ))}
           </div>
 
+          {/* Stats */}
           <div className="hero-stats" ref={statsRef}>
             {[
-              { number: 13, suffix: '', label: 'Services' },
-              { number: 12, suffix: '+', label: 'Industries' },
-              { number: 100, suffix: '%', label: 'AI-Native' },
-              { number: 24, suffix: '/7', label: 'Support' },
-            ].map((stat, i) => (
-              <div key={i} className="stat-item">
-                {i > 0 && <div className="stat-divider"></div>}
-                <div className="stat">
-                  <CountUp end={stat.number} suffix={stat.suffix} active={statsVisible} />
-                  <span className="stat-label">{stat.label}</span>
+              { end: 13, suffix: '', label: 'Services' },
+              { end: 12, suffix: '+', label: 'Industries' },
+              { end: 100, suffix: '%', label: 'Cloud‑Native' },
+              { end: 24, suffix: '/7', label: 'Support' },
+            ].map((s, i) => (
+              <div key={i} className="stat">
+                {i > 0 && <div className="stat-sep" />}
+                <div className="stat-inner">
+                  <CountUp end={s.end} suffix={s.suffix} active={statsVisible} />
+                  <span className="stat-label">{s.label}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Right Column — Visual Panel */}
-        <div className="hero-visual">
-          <div className="visual-card main-card">
-            <div className="card-header">
-              <div className="traffic-lights">
-                <span className="tl red"></span>
-                <span className="tl yellow"></span>
-                <span className="tl green"></span>
+        {/* ── RIGHT — Dashboard Panel ── */}
+        <div className="hero-right">
+          <div className="dashboard-card">
+            <div className="dash-header">
+              <div className="dots-row">
+                <span className="dot-r" /><span className="dot-y" /><span className="dot-g" />
               </div>
-              <span className="card-tag">AI Dashboard</span>
+              <span className="dash-title">AI DASHBOARD</span>
             </div>
-            <div className="card-body">
-              <div className="metric-row">
-                <span className="metric-key">Status</span>
-                <span className="metric-val online">● Online</span>
-              </div>
-              <div className="metric-row">
-                <span className="metric-key">Active Projects</span>
-                <span className="metric-val">24</span>
-              </div>
-              <div className="metric-row">
-                <span className="metric-key">AI Requests/s</span>
-                <span className="metric-val accent">1,847</span>
-              </div>
-              <div className="metric-row">
-                <span className="metric-key">Uptime</span>
-                <span className="metric-val success">99.97%</span>
-              </div>
+            <div className="dash-body">
+              <Row label="Status"         value="● Online"    cls="green" />
+              <Row label="Active Projects" value="24"          cls="" />
+              <Row label="AI Requests/s"  value="1,847"       cls="orange" />
+              <Row label="Uptime"         value="99.97%"      cls="blue" />
               <div className="mini-bars">
-                {[90, 65, 80, 45, 95, 70].map((h, i) => (
-                  <div key={i} className="bar" style={{ height: `${h}%`, animationDelay: `${i * 0.15}s` }}></div>
+                {[70,45,85,55,90,60,80].map((h,i)=>(
+                  <div key={i} className="bar" style={{ height:`${h}%`, animationDelay:`${i*0.1}s` }} />
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="visual-card stack-card">
-            <div className="stack-label">Tech Stack</div>
+          <div className="stack-card">
+            <span className="stack-label">TECH STACK</span>
             <div className="stack-pills">
-              {techStack.map((tech, i) => (
-                <span key={i} className="stack-pill" style={{ animationDelay: `${i * 0.1}s` }}>{tech}</span>
+              {['React','Next.js','Python','LangChain','OpenAI','AWS','Kubernetes','PostgreSQL'].map(t => (
+                <span key={t} className="pill">{t}</span>
               ))}
             </div>
           </div>
 
-          <div className="visual-card metric-card">
-            <div className="live-dot"></div>
-            <div className="live-metric-label">{liveMetrics[metricIndex].label}</div>
-            <div className="live-metric-value">{liveMetrics[metricIndex].value}</div>
+          <div className="live-card">
+            <span className="live-indicator" />
+            <div>
+              <div className="live-label">Avg. ROI Delivered</div>
+              <div className="live-value">340%</div>
+            </div>
           </div>
-
-          <div className="visual-orb"></div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="scroll-hint">
-        <div className="scroll-mouse">
-          <div className="scroll-wheel"></div>
-        </div>
-        <span>Scroll to explore</span>
       </div>
     </section>
   );
 }
 
+function Row({ label, value, cls }) {
+  return (
+    <div className="dash-row">
+      <span className="dash-key">{label}</span>
+      <span className={`dash-val ${cls}`}>{value}</span>
+    </div>
+  );
+}
+
 function CountUp({ end, suffix, active }) {
   const [count, setCount] = useState(0);
-
   useEffect(() => {
     if (!active) return;
-    let start = 0;
-    const duration = 1500;
-    const increment = end / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(timer);
+    let n = 0;
+    const step = end / 40;
+    const t = setInterval(() => {
+      n = Math.min(n + step, end);
+      setCount(Math.floor(n));
+      if (n >= end) clearInterval(t);
+    }, 30);
+    return () => clearInterval(t);
   }, [active, end]);
-
-  return (
-    <span className="stat-number">{count}{suffix}</span>
-  );
+  return <span className="stat-num">{count}{suffix}</span>;
 }

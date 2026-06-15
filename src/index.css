@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --bg-primary: #0b0b14;
-  --bg-secondary: #10101c;
-  --bg-card: rgba(255,255,255,0.065);
-  --border: rgba(255,255,255,0.14);
-  --text-primary: #F0F0FA;
-  --text-secondary: #a8a8c4;
+  --bg-primary: #080810;
+  --bg-secondary: #0d0d18;
+  --bg-card: rgba(255,255,255,0.055);
+  --border: rgba(255,255,255,0.1);
+  --text-primary: #EBEBF5;
+  --text-secondary: #9090b0;
   --accent: #FF6B2B;
-  --accent-glow: rgba(255,107,43,0.22);
+  --accent-glow: rgba(255,107,43,0.2);
   --accent-light: #ff8555;
-  --heading-gold: #FFE8A0;
-  --font-display: 'Space Grotesk', sans-serif;
+  --heading-gold: #FFFFFF;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
   --terminal-bg: #07090D;
   --terminal-text: #FFF0C3;
@@ -82,28 +82,17 @@ body::before {
 }
 
 h1, h2, h3 {
-  font-family: 'Pixelify Sans', var(--font-display);
-  color: var(--heading-gold);
-  line-height: 1.2;
-  letter-spacing: 0;
-  font-weight: 600;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
-  image-rendering: pixelated;
-  text-rendering: geometricPrecision;
+  font-family: 'Inter', sans-serif;
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-}
-
-h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-}
-
-h3 {
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
-}
+h1 { font-size: clamp(2.75rem, 5vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.4rem); }
 
 h4 {
   font-size: 1.125rem;

@@ -31,15 +31,15 @@
 }
 
 .section-title {
-  font-family: 'Pixelify Sans', monospace !important;
-  font-size: 2.75rem !important;
-  font-weight: 600 !important;
-  color: #FFF0C3 !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: clamp(2.25rem, 4vw, 3.25rem) !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.035em !important;
   margin-bottom: 1rem;
-  -webkit-font-smoothing: none;
-  text-rendering: geometricPrecision;
+  
+  
 }
 
 @media (min-width: 1024px) {

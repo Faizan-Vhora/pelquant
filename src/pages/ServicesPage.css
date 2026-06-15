@@ -71,17 +71,17 @@
 }
 
 .services-hero-headline {
-  font-family: 'Pixelify Sans', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 32px;
   font-weight: 500;
   line-height: 1.15;
   margin-bottom: 36px;
-  color: #FFF0C3;
+  color: #FFFFFF;
   letter-spacing: 0;
-  -webkit-font-smoothing: none;
+  
   -moz-osx-font-smoothing: grayscale;
-  image-rendering: pixelated;
-  text-rendering: geometricPrecision;
+  
+  
 }
 
 @media (min-width: 768px) {
@@ -143,17 +143,17 @@
 }
 
 .section-headline {
-  font-family: 'Pixelify Sans', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 44px;
   font-weight: 500;
   margin-bottom: 80px;
-  color: #FFF0C3;
+  color: #FFFFFF;
   letter-spacing: 0;
   line-height: 1.2;
-  -webkit-font-smoothing: none;
+  
   -moz-osx-font-smoothing: grayscale;
-  image-rendering: pixelated;
-  text-rendering: geometricPrecision;
+  
+  
 }
 
 @media (min-width: 768px) {
@@ -268,7 +268,7 @@
 }
 
 .step-number {
-  font-family: 'Pixelify Sans', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 48px;
   font-weight: 500;
   color: var(--accent);
@@ -306,10 +306,10 @@
 }
 
 .cta-headline {
-  font-family: 'Pixelify Sans', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 48px;
   font-weight: 500;
-  color: #FFF0C3;
+  color: #FFFFFF;
   letter-spacing: 0;
   line-height: 1.2;
   margin-bottom: 24px;
