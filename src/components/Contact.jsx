@@ -1,10 +1,28 @@
 import { useState } from 'react';
 import './Contact.css';
 
+const services = [
+  'AI & LLM Integration',
+  'Custom Software Development',
+  'Web & Mobile Development',
+  'DevOps & Cloud',
+  'AI Automation',
+  'SecOps / SIEM / SOAR',
+  'Technical SEO',
+  'Growth SEO',
+  'Social Media Marketing',
+  'Paid Advertising',
+  'Performance Marketing',
+  'Other / Not Sure Yet',
+];
+
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '', email: '', company: '', service: '', message: ''
+  });
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [focused, setFocused] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +40,7 @@ export default function Contact() {
           name: formData.name,
           email: formData.email,
           company: formData.company || 'Not provided',
+          service: formData.service || 'Not specified',
           message: formData.message,
           _subject: '📧 New Contact - Pelquant',
           _template: 'box',
@@ -31,12 +50,12 @@ export default function Contact() {
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', company: '', message: '' });
-        setTimeout(() => setStatus(''), 5000);
+        setFormData({ name: '', email: '', company: '', service: '', message: '' });
+        setTimeout(() => setStatus(''), 6000);
       } else {
         setStatus('error');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -47,99 +66,202 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleFocus = (field) => setFocused(f => ({ ...f, [field]: true }));
+  const handleBlur = (field) => setFocused(f => ({ ...f, [field]: false }));
+
+  const isFloated = (field) => focused[field] || formData[field];
+
   return (
     <section className="contact" id="contact">
+      <div className="contact-bg-glow"></div>
       <div className="contact-watermark">PELQUANT</div>
       <div className="contact-container">
-        <div className="contact-header">
+
+        <div className="contact-header fade-up">
+          <span className="section-label">GET IN TOUCH</span>
           <h2 className="contact-headline">Let's Build Something Real.</h2>
           <p className="contact-subtext">
-            Tell us what you're working on — we'll tell you how we can help.
+            Tell us what you're working on — we'll tell you exactly how we can help.
           </p>
         </div>
 
         <div className="contact-content">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="text"
-              name="company"
-              placeholder="Company"
-              value={formData.company}
-              onChange={handleChange}
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              rows="5"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-            <button type="submit" className="submit-btn" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-            </button>
-          </form>
+          {/* Form */}
+          <div className="contact-form-wrap fade-up">
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <div className="form-row">
+                <div className={`form-field ${isFloated('name') ? 'floated' : ''}`}>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus('name')}
+                    onBlur={() => handleBlur('name')}
+                    required
+                    autoComplete="name"
+                  />
+                  <label htmlFor="name">Your Name *</label>
+                  <div className="field-line"></div>
+                </div>
 
-          <div className="contact-info">
-            <div className="info-block">
-              <svg className="info-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M3 8L10.89 13.26C11.54 13.67 12.46 13.67 13.11 13.26L21 8M5 19H19C20.1 19 21 18.1 21 17V7C21 5.9 20.1 5 19 5H5C3.9 5 3 5.9 3 7V17C3 18.1 3.9 19 5 19Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+                <div className={`form-field ${isFloated('email') ? 'floated' : ''}`}>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus('email')}
+                    onBlur={() => handleBlur('email')}
+                    required
+                    autoComplete="email"
+                  />
+                  <label htmlFor="email">Work Email *</label>
+                  <div className="field-line"></div>
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className={`form-field ${isFloated('company') ? 'floated' : ''}`}>
+                  <input
+                    type="text"
+                    name="company"
+                    id="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus('company')}
+                    onBlur={() => handleBlur('company')}
+                    autoComplete="organization"
+                  />
+                  <label htmlFor="company">Company Name</label>
+                  <div className="field-line"></div>
+                </div>
+
+                <div className={`form-field select-field ${formData.service ? 'floated' : ''}`}>
+                  <select
+                    name="service"
+                    id="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    onFocus={() => handleFocus('service')}
+                    onBlur={() => handleBlur('service')}
+                  >
+                    <option value=""></option>
+                    {services.map(s => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                  <label htmlFor="service">Service Interest</label>
+                  <div className="field-line"></div>
+                  <svg className="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M6 9l6 6 6-6"/>
+                  </svg>
+                </div>
+              </div>
+
+              <div className={`form-field ${isFloated('message') ? 'floated' : ''}`}>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
+                  onFocus={() => handleFocus('message')}
+                  onBlur={() => handleBlur('message')}
+                  required
+                ></textarea>
+                <label htmlFor="message">Tell us about your project *</label>
+                <div className="field-line"></div>
+              </div>
+
+              <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <span className="spinner"></span>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                  </>
+                )}
+              </button>
+
+              <p className="form-disclaimer">
+                We respond within 24 hours. No spam, ever.
+              </p>
+            </form>
+          </div>
+
+          {/* Info Sidebar */}
+          <div className="contact-sidebar fade-up">
+            <div className="sidebar-card">
+              <div className="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M3 8L10.89 13.26C11.54 13.67 12.46 13.67 13.11 13.26L21 8M5 19H19C20.1 19 21 18.1 21 17V7C21 5.9 20.1 5 19 5H5C3.9 5 3 5.9 3 7V17C3 18.1 3.9 19 5 19Z" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
               <div>
-                <div className="info-label">Email</div>
-                <div className="info-value">info@pelquant.com</div>
+                <div className="sidebar-label">Email</div>
+                <a href="mailto:info@pelquant.com" className="sidebar-value">info@pelquant.com</a>
               </div>
             </div>
 
-            <div className="info-block">
-              <svg className="info-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M16 8C16 10.21 14.21 12 12 12C9.79 12 8 10.21 8 8C8 5.79 9.79 4 12 4C14.21 4 16 5.79 16 8ZM12 14C8.67 14 2 15.67 2 19V20C2 20.55 2.45 21 3 21H21C21.55 21 22 20.55 22 20V19C22 15.67 15.33 14 12 14Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            <div className="sidebar-card">
+              <div className="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </div>
               <div>
-                <div className="info-label">LinkedIn</div>
-                <div className="info-value">@pelquant</div>
+                <div className="sidebar-label">LinkedIn</div>
+                <a href="https://linkedin.com/company/pelquant" target="_blank" rel="noreferrer" className="sidebar-value">@pelquant</a>
               </div>
             </div>
 
-            <div className="info-block">
-              <svg className="info-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            <div className="sidebar-card">
+              <div className="sidebar-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+                </svg>
+              </div>
               <div>
-                <div className="info-label">Global Clients</div>
-                <div className="info-value">Worldwide</div>
+                <div className="sidebar-label">Coverage</div>
+                <div className="sidebar-value">Global Clients</div>
+              </div>
+            </div>
+
+            <div className="response-guarantee">
+              <div className="guarantee-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <div>
+                <div className="guarantee-title">24-Hour Response</div>
+                <div className="guarantee-desc">We'll get back to you within one business day — guaranteed.</div>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Notifications */}
         {status === 'success' && (
-          <div className="success-message">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <div className="status-toast success">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            Message sent successfully! We'll get back to you within 24 hours.
+            Message sent! We'll be in touch within 24 hours.
           </div>
         )}
         {status === 'error' && (
-          <div className="error-message">
-            Something went wrong. Please try again or email us directly at faizanvhora999@gmail.com
+          <div className="status-toast error">
+            Something went wrong. Email us directly at info@pelquant.com
           </div>
         )}
       </div>

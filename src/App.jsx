@@ -70,6 +70,33 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Global fade-up Intersection Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const observe = () => {
+      document.querySelectorAll('.fade-up:not(.visible)').forEach((el) => observer.observe(el));
+    };
+
+    observe();
+    // Re-observe on route changes (slight delay for DOM to update)
+    const timer = setTimeout(observe, 300);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timer);
+    };
+  });
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
