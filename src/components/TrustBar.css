@@ -48,11 +48,12 @@
   display: flex;
   align-items: center;
   gap: 0.875rem;
-  padding: 1.5rem 1.25rem;
-  background: var(--bg-secondary);
+  padding: 1.5rem 1.5rem;
+  background: rgba(255,255,255,0.03);
   opacity: 0;
   transform: translateY(16px);
   transition: all 0.5s ease;
+  justify-content: flex-start;
 }
 
 .trust-metric.visible {
@@ -86,14 +87,14 @@
 .metric-value {
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #F0F0FA;
   font-family: var(--font-display);
   line-height: 1;
 }
 
 .metric-label {
   font-size: 0.72rem;
-  color: var(--text-secondary);
+  color: #c0c0dc;
   font-weight: 500;
   white-space: nowrap;
 }

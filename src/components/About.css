@@ -64,7 +64,7 @@
 
 .about-intro {
   font-size: 1.05rem;
-  color: var(--text-secondary);
+  color: #c0c0dc;
   line-height: 1.75;
   max-width: 600px;
   margin: 0 auto;
@@ -84,7 +84,7 @@
 
 .about-stat {
   padding: 2rem 1.5rem;
-  background: var(--bg-secondary);
+  background: rgba(255,255,255,0.03);
   text-align: center;
   transition: background 0.3s ease;
 }
@@ -202,7 +202,7 @@
 
 .step-desc {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: #c0c0dc;
   line-height: 1.65;
 }
 
@@ -214,8 +214,8 @@
 }
 
 .visual-panel {
-  background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: 16px;
   overflow: hidden;
 }
