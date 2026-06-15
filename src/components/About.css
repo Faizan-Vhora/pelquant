@@ -114,7 +114,8 @@
 .about-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  width: 100%;
+  gap: 3.5rem;
   align-items: start;
 }
 
