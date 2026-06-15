@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import './Hero.css';
 
 const headlines = [
-  { pre: 'Build Smarter.', accent: 'Grow Faster.', post: 'Powered by AI.' },
-  { pre: 'From First Line of Code', accent: null, post: 'to First Page of Google.' },
-  { pre: 'AI-First Engineering.', accent: 'Performance-Driven', post: 'Growth.' },
-  { pre: 'One Partner.', accent: 'Every Capability.', post: 'Real Results.' },
-  { pre: 'Intelligent Software.', accent: null, post: 'Measurable Outcomes.' },
+  { line1: 'Build Smarter.', line2: 'Grow Faster with AI.' },
+  { line1: 'From Code to Product.', line2: 'To the First Page.' },
+  { line1: 'AI-First Engineering.', line2: 'Performance-Led Growth.' },
+  { line1: 'One Partner.', line2: 'Every Capability.' },
+  { line1: 'Intelligent Software.', line2: 'Measurable Outcomes.' },
 ];
 
 export default function Hero() {
@@ -39,9 +39,7 @@ export default function Hero() {
 
   return (
     <section className="hero">
-      {/* Subtle grid background */}
       <div className="hero-grid" aria-hidden="true"></div>
-      {/* Soft gradient orbs */}
       <div className="hero-orb hero-orb-1" aria-hidden="true"></div>
       <div className="hero-orb hero-orb-2" aria-hidden="true"></div>
 
@@ -53,12 +51,14 @@ export default function Hero() {
             Enterprise AI &amp; Digital Transformation
           </div>
 
-          <h1 className={`hero-headline ${animating ? 'fade-out' : 'fade-in'}`}>
-            {h.pre}{' '}
-            {h.accent && <span className="headline-accent">{h.accent}</span>}
-            {h.accent && ' '}
-            {h.post}
-          </h1>
+          {/* Fixed-height headline container — prevents layout shift on rotation */}
+          <div className="hero-headline-wrap">
+            <h1 className={`hero-headline ${animating ? 'fade-out' : 'fade-in'}`}>
+              {h.line1}
+              <br />
+              <span className="headline-accent">{h.line2}</span>
+            </h1>
+          </div>
 
           <p className="hero-sub">
             Full-stack technology and growth solutions for enterprises across
@@ -126,37 +126,47 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ── RIGHT — Dashboard Panel ── */}
+        {/* ── RIGHT — Project showcase panel ── */}
         <div className="hero-right">
-          <div className="dashboard-card">
-            <div className="dash-header">
-              <div className="dots-row">
-                <span className="dot-r" /><span className="dot-y" /><span className="dot-g" />
+          {/* Recent work */}
+          <div className="showcase-card">
+            <div className="showcase-header">
+              <span className="showcase-eyebrow">Recent Work</span>
+              <span className="showcase-status"><span className="live-dot" />Live</span>
+            </div>
+            <div className="showcase-projects">
+              <ShowcaseItem
+                title="FinTech Lending Platform"
+                tag="AI + Engineering"
+                metric="+280% loan approvals"
+              />
+              <ShowcaseItem
+                title="eCommerce Growth Engine"
+                tag="Performance Marketing"
+                metric="3.4× ROAS in 60 days"
+              />
+              <ShowcaseItem
+                title="HealthTech EHR Migration"
+                tag="DevOps + Cloud"
+                metric="Zero-downtime cutover"
+              />
+            </div>
+          </div>
+
+          {/* Stack + outcome */}
+          <div className="hero-meta-row">
+            <div className="meta-block">
+              <span className="meta-label">Stack</span>
+              <div className="meta-pills">
+                {['React','Next.js','Python','AWS','K8s'].map(t => (
+                  <span key={t} className="pill">{t}</span>
+                ))}
               </div>
-              <span className="dash-title">AI DASHBOARD</span>
             </div>
-            <div className="dash-body">
-              <Row label="Status"         value="● Online"    cls="green" />
-              <Row label="Active Projects" value="24"          cls="" />
-              <Row label="AI Requests/s"  value="1,847"       cls="orange" />
-              <Row label="Uptime"         value="99.97%"      cls="blue" />
-            </div>
-          </div>
-
-          <div className="stack-card">
-            <span className="stack-label">TECH STACK</span>
-            <div className="stack-pills">
-              {['React','Next.js','Python','LangChain','OpenAI','AWS','Kubernetes','PostgreSQL'].map(t => (
-                <span key={t} className="pill">{t}</span>
-              ))}
-            </div>
-          </div>
-
-          <div className="live-card">
-            <span className="live-indicator" />
-            <div>
-              <div className="live-label">Avg. ROI Delivered</div>
-              <div className="live-value">340%</div>
+            <div className="meta-divider" />
+            <div className="meta-block meta-outcome">
+              <span className="meta-big">340%</span>
+              <span className="meta-label">Avg. ROI</span>
             </div>
           </div>
         </div>
@@ -165,11 +175,14 @@ export default function Hero() {
   );
 }
 
-function Row({ label, value, cls }) {
+function ShowcaseItem({ title, tag, metric }) {
   return (
-    <div className="dash-row">
-      <span className="dash-key">{label}</span>
-      <span className={`dash-val ${cls}`}>{value}</span>
+    <div className="showcase-item">
+      <div className="showcase-item-top">
+        <span className="showcase-item-title">{title}</span>
+        <span className="showcase-item-tag">{tag}</span>
+      </div>
+      <span className="showcase-item-metric">{metric}</span>
     </div>
   );
 }
