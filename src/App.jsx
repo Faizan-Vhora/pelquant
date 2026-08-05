@@ -70,7 +70,10 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Global fade-up Intersection Observer
+  // Global fade-up Intersection Observer — set up once, then use a
+  // MutationObserver to pick up newly-mounted .fade-up elements (e.g.
+  // after route navigation) instead of recreating the observer on
+  // every scroll-driven re-render.
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -88,14 +91,15 @@ function App() {
     };
 
     observe();
-    // Re-observe on route changes (slight delay for DOM to update)
-    const timer = setTimeout(observe, 300);
+
+    const mutationObserver = new MutationObserver(observe);
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       observer.disconnect();
-      clearTimeout(timer);
+      mutationObserver.disconnect();
     };
-  });
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
