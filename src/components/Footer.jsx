@@ -136,11 +136,11 @@ export default function Footer() {
             © {new Date().getFullYear()} Pelquant. All rights reserved.
           </div>
           <div className="footer-legal">
-            <a href="#">Privacy</a>
+            <Link to="/privacy" onClick={handleLinkClick}>Privacy</Link>
             <span>·</span>
-            <a href="#">Terms</a>
+            <Link to="/terms" onClick={handleLinkClick}>Terms</Link>
             <span>·</span>
-            <a href="#">Cookies</a>
+            <Link to="/cookies" onClick={handleLinkClick}>Cookies</Link>
           </div>
         </div>
       </div>
