@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
 import './AboutPage.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 export default function AboutPage() {
   const observerRef = useRef(null);
@@ -27,7 +25,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <Header />
       <div className="about-page">
         <section className="about-hero">
           <div className="hero-container">
@@ -160,7 +157,6 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
-      <Footer />
     </>
   );
 }
