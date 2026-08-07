@@ -300,6 +300,14 @@
   align-self: center;
 }
 
+/* ── Banner slot — reserved for a custom animated banner. Collapses to
+   zero height by default so it's a no-op until content is added. ── */
+.hero-banner-slot {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
 /* ═══════════════════════════════════════════
    SERVICE MARQUEE — full width strip
 ═══════════════════════════════════════════ */
