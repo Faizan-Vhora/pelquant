@@ -145,6 +145,10 @@ export default function Hero() {
 
       </div>
 
+      {/* Banner slot — full-width, reserved for a custom animated banner.
+          Empty by default so it's a no-op until content is added here. */}
+      <div id="hero-banner-slot" className="hero-banner-slot" aria-hidden="true"></div>
+
       {/* Service marquee — full width, outside inner */}
       <div className="hero-marquee" aria-hidden="true">
         <div className="marquee-track">
