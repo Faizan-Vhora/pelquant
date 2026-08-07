@@ -267,12 +267,14 @@
   top: calc(100% + 0.5rem);
   right: 0;
   display: flex;
+  flex-direction: column;
   background: rgba(14, 14, 24, 0.98);
   border: 1px solid rgba(255, 107, 43, 0.2);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
   animation: slideDown 0.2s ease;
+  width: 320px;
 }
 
 @keyframes slideDown {
@@ -286,36 +288,87 @@
   }
 }
 
-.search-dropdown input {
+.search-bar {
+  display: flex;
+}
+
+.search-bar input {
   background: transparent;
   border: none;
   padding: 0.75rem 1rem;
   color: var(--text-primary);
   font-size: 0.9rem;
-  width: 250px;
+  width: 100%;
   outline: none;
 }
 
-.search-dropdown input::placeholder {
+.search-bar input::placeholder {
   color: var(--text-secondary);
 }
 
-.search-dropdown button {
+.search-bar button {
   background: var(--accent);
   border: none;
   padding: 0.75rem;
   cursor: pointer;
   transition: background 0.3s ease;
+  flex-shrink: 0;
 }
 
-.search-dropdown button:hover {
+.search-bar button:hover {
   background: #ff8555;
 }
 
-.search-dropdown button svg {
+.search-bar button svg {
   width: 18px;
   height: 18px;
   color: white;
+}
+
+.search-results {
+  max-height: 320px;
+  overflow-y: auto;
+  border-top: 1px solid var(--border);
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.search-result-item:hover {
+  background: rgba(255, 107, 43, 0.08);
+}
+
+.search-result-label {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-result-category {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.search-no-results {
+  padding: 0.875rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
 }
 
 .btn-ghost,
@@ -476,7 +529,7 @@
     width: auto;
   }
 
-  .search-dropdown input {
+  .search-bar input {
     width: 100%;
   }
 }

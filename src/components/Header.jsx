@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { searchIndex } from '../searchIndex';
 import './Header.css';
 
 export default function Header() {
@@ -10,6 +11,7 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
   const searchRef = useRef(null);
 
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 968);
@@ -57,10 +59,21 @@ export default function Header() {
     }
   };
 
+  const trimmedQuery = searchQuery.trim().toLowerCase();
+  const searchResults = trimmedQuery
+    ? searchIndex.filter((item) => item.label.toLowerCase().includes(trimmedQuery)).slice(0, 8)
+    : [];
+
+  const goToResult = (path) => {
+    setSearchOpen(false);
+    setSearchQuery('');
+    navigate(path);
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
-    if (searchQuery.trim()) {
-      console.log('Search:', searchQuery);
+    if (searchResults.length > 0) {
+      goToResult(searchResults[0].path);
     }
   };
 
@@ -150,21 +163,43 @@ export default function Header() {
               </svg>
             </button>
             {searchOpen && (
-              <form className="search-dropdown" onSubmit={handleSearch}>
-                <input
-                  type="text"
-                  placeholder="Search services, solutions..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  autoFocus
-                />
-                <button type="submit">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="11" cy="11" r="8"/>
-                    <path d="M21 21l-4.35-4.35"/>
-                  </svg>
-                </button>
-              </form>
+              <div className="search-dropdown">
+                <form className="search-bar" onSubmit={handleSearch}>
+                  <input
+                    type="text"
+                    aria-label="Search services, solutions, and pages"
+                    placeholder="Search services, solutions..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    autoFocus
+                  />
+                  <button type="submit" aria-label="Submit search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="11" cy="11" r="8"/>
+                      <path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                  </button>
+                </form>
+                {trimmedQuery && (
+                  <div className="search-results">
+                    {searchResults.length > 0 ? (
+                      searchResults.map((result) => (
+                        <button
+                          key={result.path}
+                          type="button"
+                          className="search-result-item"
+                          onClick={() => goToResult(result.path)}
+                        >
+                          <span className="search-result-label">{result.label}</span>
+                          <span className="search-result-category">{result.category}</span>
+                        </button>
+                      ))
+                    ) : (
+                      <div className="search-no-results">No results for "{searchQuery}"</div>
+                    )}
+                  </div>
+                )}
+              </div>
             )}
           </div>
           <a href="mailto:info@pelquant.com" className="btn-ghost">Talk to Sales</a>
