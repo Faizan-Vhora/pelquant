@@ -18,7 +18,7 @@ const services = [
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '', email: '', company: '', service: '', message: ''
+    name: '', email: '', company: '', service: '', message: '', website: ''
   });
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -26,6 +26,12 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Honeypot: bots fill every field including hidden ones, real users never see this
+    if (formData.website) {
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus('');
 
@@ -43,14 +49,13 @@ export default function Contact() {
           service: formData.service || 'Not specified',
           message: formData.message,
           _subject: '📧 New Contact - Pelquant',
-          _template: 'box',
-          _captcha: 'false'
+          _template: 'box'
         }),
       });
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', company: '', service: '', message: '' });
+        setFormData({ name: '', email: '', company: '', service: '', message: '', website: '' });
         setTimeout(() => setStatus(''), 6000);
       } else {
         setStatus('error');
@@ -89,6 +94,17 @@ export default function Contact() {
           {/* Form */}
           <div className="contact-form-wrap fade-up">
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                className="hp-field"
+                tabIndex="-1"
+                autoComplete="off"
+                aria-hidden="true"
+              />
+
               <div className="form-row">
                 <div className={`form-field ${isFloated('name') ? 'floated' : ''}`}>
                   <input
@@ -251,19 +267,21 @@ export default function Contact() {
         </div>
 
         {/* Notifications */}
-        {status === 'success' && (
-          <div className="status-toast success">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Message sent! We'll be in touch within 24 hours.
-          </div>
-        )}
-        {status === 'error' && (
-          <div className="status-toast error">
-            Something went wrong. Email us directly at info@pelquant.com
-          </div>
-        )}
+        <div aria-live="polite">
+          {status === 'success' && (
+            <div className="status-toast success">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Message sent! We'll be in touch within 24 hours.
+            </div>
+          )}
+          {status === 'error' && (
+            <div className="status-toast error">
+              Something went wrong. Email us directly at info@pelquant.com
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
