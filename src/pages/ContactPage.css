@@ -3,6 +3,14 @@
   color: var(--text-primary);
 }
 
+.hp-field {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
 /* Fade Up Animation */
 .fade-up {
   opacity: 0;
