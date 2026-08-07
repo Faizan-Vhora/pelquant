@@ -167,12 +167,13 @@ export default function Header() {
                 <form className="search-bar" onSubmit={handleSearch}>
                   <input
                     type="text"
+                    aria-label="Search services, solutions, and pages"
                     placeholder="Search services, solutions..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     autoFocus
                   />
-                  <button type="submit">
+                  <button type="submit" aria-label="Submit search">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <circle cx="11" cy="11" r="8"/>
                       <path d="M21 21l-4.35-4.35"/>
