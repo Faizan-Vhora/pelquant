@@ -16,6 +16,9 @@ export default function PropTechPage() {
       'Smart building IoT management'
     ],
     aiCapabilities: [
+      { title: 'Buyer & Tenant Chatbot Agent', desc: 'RAG-powered conversational agent that answers buyer and tenant questions across listings, floor plans, and building documents in natural language' },
+      { title: 'Lease & Contract Review Agent', desc: 'Automated agent that reads lease and contract documents, flags key terms, and surfaces risks before signing' },
+      { title: 'Enterprise Workflow Automation', desc: 'Agentic automation for back-office real estate operations — maintenance requests, approvals, and reporting pipelines' },
       { title: 'Automated Property Valuation', desc: 'ML-based price prediction models' },
       { title: 'AI-Powered Property Search', desc: 'Natural language queries and preference matching' },
       { title: 'Predictive Maintenance', desc: 'IoT sensor data analysis and failure prediction' },

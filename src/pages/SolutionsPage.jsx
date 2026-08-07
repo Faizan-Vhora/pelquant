@@ -102,7 +102,7 @@ export default function SolutionsPage() {
           <polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
       ),
-      desc: 'Property management, real estate platforms, smart buildings, and IoT',
+      desc: 'AI agents for property search and leasing, real estate platforms, and enterprise automation for back-office operations',
       link: '/solutions/proptech'
     },
     {
@@ -203,6 +203,38 @@ export default function SolutionsPage() {
                 <span className="industry-arrow">→</span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI Agents & Automation */}
+      <section className="ai-section">
+        <div className="solutions-container">
+          <span className="section-tag fade-up">AI AGENTS & AUTOMATION</span>
+          <h2 className="section-headline fade-up">
+            Every Industry Solution, <span className="orange-text">Built AI-First</span>
+          </h2>
+          <div className="ai-grid">
+            <div className="ai-card fade-up" style={{ animationDelay: '0ms' }}>
+              <div className="ai-card-icon"><Icons.MessageCircle /></div>
+              <h3>Conversational AI Agents</h3>
+              <p>RAG-powered assistants that answer questions across your documents, products, or systems in natural language — production-deployed, not a demo.</p>
+            </div>
+            <div className="ai-card fade-up" style={{ animationDelay: '100ms' }}>
+              <div className="ai-card-icon"><Icons.Cpu /></div>
+              <h3>Enterprise Workflow Automation</h3>
+              <p>Multi-step agentic automation that handles repetitive operations, approvals, and data pipelines end-to-end, so your team works on what actually needs a human.</p>
+            </div>
+            <div className="ai-card fade-up" style={{ animationDelay: '200ms' }}>
+              <div className="ai-card-icon"><Icons.Layers /></div>
+              <h3>Retrieval-Augmented Generation</h3>
+              <p>Custom knowledge bases wired into LLMs so answers are grounded in your own data — not generic model training, hallucination-prone guesses.</p>
+            </div>
+            <div className="ai-card fade-up" style={{ animationDelay: '300ms' }}>
+              <div className="ai-card-icon"><Icons.Link /></div>
+              <h3>LLM Integration & Orchestration</h3>
+              <p>Production-ready integration of GPT, Claude, and custom models into your existing software stack — architected to scale, not bolted on.</p>
+            </div>
           </div>
         </div>
       </section>
