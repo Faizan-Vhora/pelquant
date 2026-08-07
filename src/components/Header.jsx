@@ -12,10 +12,18 @@ export default function Header() {
   const location = useLocation();
   const searchRef = useRef(null);
 
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 968);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 968);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -34,8 +42,6 @@ export default function Header() {
     setSolutionsOpen(false);
     setSearchOpen(false);
   }, [location]);
-
-  const isMobile = window.innerWidth <= 968;
 
   const handleServicesClick = (e) => {
     if (isMobile) {
@@ -161,7 +167,7 @@ export default function Header() {
               </form>
             )}
           </div>
-          <Link to="/contact" className="btn-ghost">Talk to Sales</Link>
+          <a href="mailto:info@pelquant.com" className="btn-ghost">Talk to Sales</a>
           <Link to="/contact" className="btn-primary">Get Started</Link>
         </div>
 
