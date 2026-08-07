@@ -29,13 +29,34 @@ const companyLinks = [
 
 export default function Footer() {
   const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
+  const [status, setStatus] = useState('idle');
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail('');
+    setStatus('submitting');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/faizanvhoradev@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          _subject: '📧 New Newsletter Subscriber - Pelquant',
+          _template: 'box'
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
     }
   };
 
@@ -104,7 +125,7 @@ export default function Footer() {
             <div className="link-column newsletter-col">
               <h4>Stay Updated</h4>
               <p className="newsletter-desc">Get the latest insights on AI, tech, and growth.</p>
-              {subscribed ? (
+              {status === 'success' ? (
                 <div className="subscribed-message">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M20 6L9 17l-5-5"/>
@@ -115,17 +136,21 @@ export default function Footer() {
                 <form className="newsletter-form" onSubmit={handleSubscribe}>
                   <input
                     type="email"
+                    aria-label="Email address for newsletter"
                     placeholder="Your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  <button type="submit">
+                  <button type="submit" aria-label="Subscribe to newsletter" disabled={status === 'submitting'}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                   </button>
                 </form>
+              )}
+              {status === 'error' && (
+                <p className="newsletter-error">Something went wrong. Please try again.</p>
               )}
             </div>
           </div>
