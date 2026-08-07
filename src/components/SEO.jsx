@@ -187,6 +187,24 @@ const seoData = {
     description: 'Join PELQUANT. Work on cutting-edge AI and full-stack projects. Remote-first, global team, competitive compensation.',
     keywords: 'careers, jobs, hiring, remote jobs, AI jobs, software engineer jobs',
     ogImage: '/og-careers.jpg'
+  },
+  '/privacy': {
+    title: 'Privacy Policy | PELQUANT',
+    description: 'How PELQUANT collects, uses, and protects your information.',
+    keywords: 'privacy policy, data protection',
+    ogImage: '/og-home.jpg'
+  },
+  '/terms': {
+    title: 'Terms of Service | PELQUANT',
+    description: 'The terms that govern your use of the PELQUANT website.',
+    keywords: 'terms of service, terms and conditions',
+    ogImage: '/og-home.jpg'
+  },
+  '/cookies': {
+    title: 'Cookie Policy | PELQUANT',
+    description: 'How PELQUANT uses cookies on this website.',
+    keywords: 'cookie policy, cookies',
+    ogImage: '/og-home.jpg'
   }
 };
 

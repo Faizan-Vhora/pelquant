@@ -12,6 +12,9 @@ import SEO from './components/SEO';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import CareersPage from './pages/CareersPage';
+import PrivacyPage from './pages/PrivacyPage';
+import TermsPage from './pages/TermsPage';
+import CookiesPage from './pages/CookiesPage';
 import ServicesPage from './pages/ServicesPage';
 import AILLMPage from './pages/AILLMPage';
 import SIEMPage from './pages/SIEMPage';
@@ -142,6 +145,9 @@ function App() {
         <Route path="/solutions/manufacturing" element={<ManufacturingPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/careers" element={<CareersPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/cookies" element={<CookiesPage />} />
       </Routes>
       <Footer />
       {showScrollTop && (
