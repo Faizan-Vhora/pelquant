@@ -300,12 +300,25 @@
   align-self: center;
 }
 
-/* ── Banner slot — reserved for a custom animated banner. Collapses to
-   zero height by default so it's a no-op until content is added. ── */
+/* ── Banner slot — ambient particle-network animation ── */
 .hero-banner-slot {
   position: relative;
   z-index: 1;
   width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .hero-banner-slot {
+    aspect-ratio: 16 / 7;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-banner-slot {
+    aspect-ratio: 21 / 6;
+  }
 }
 
 /* ═══════════════════════════════════════════
