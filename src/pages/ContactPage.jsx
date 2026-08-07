@@ -7,7 +7,8 @@ export default function ContactPage() {
     name: '',
     email: '',
     company: '',
-    message: ''
+    message: '',
+    website: ''
   });
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,6 +34,12 @@ export default function ContactPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Honeypot: bots fill every field including hidden ones, real users never see this
+    if (formData.website) {
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus('');
 
@@ -49,14 +56,13 @@ export default function ContactPage() {
           company: formData.company || 'Not provided',
           message: formData.message,
           _subject: '📧 New Contact - Pelquant',
-          _template: 'box',
-          _captcha: 'false'
+          _template: 'box'
         }),
       });
 
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', company: '', message: '' });
+        setFormData({ name: '', email: '', company: '', message: '', website: '' });
       } else {
         setStatus('error');
       }
@@ -96,6 +102,17 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div className="contact-form-wrapper fade-up">
             <form className="contact-form" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={handleChange}
+                className="hp-field"
+                tabIndex="-1"
+                autoComplete="off"
+                aria-hidden="true"
+              />
+
               <div className="form-group">
                 <label htmlFor="name">Your Name</label>
                 <input
@@ -151,16 +168,18 @@ export default function ContactPage() {
                 {isSubmitting ? 'Sending...' : 'Send Message →'}
               </button>
 
-              {status === 'success' && (
-                <div className="form-message success">
-                  ✓ Message sent successfully! We'll get back to you within 24 hours.
-                </div>
-              )}
-              {status === 'error' && (
-                <div className="form-message error">
-                  ✗ Something went wrong. Please try again or email us directly at faizanvhora999@gmail.com
-                </div>
-              )}
+              <div aria-live="polite">
+                {status === 'success' && (
+                  <div className="form-message success">
+                    ✓ Message sent successfully! We'll get back to you within 24 hours.
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div className="form-message error">
+                    ✗ Something went wrong. Please try again or email us directly at info@pelquant.com
+                  </div>
+                )}
+              </div>
             </form>
           </div>
 
