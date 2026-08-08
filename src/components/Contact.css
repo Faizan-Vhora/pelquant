@@ -1,7 +1,7 @@
 .contact {
   position: relative;
   padding: 7rem 2rem;
-  background: var(--bg-secondary);
+  background: transparent;
   overflow: hidden;
 }
 

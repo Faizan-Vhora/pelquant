@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './HeroBanner.css';
+import './AmbientBackground.css';
 
 const HOT = '255, 107, 43';   // --accent
 const HOT_GLOW = '255, 133, 85'; // --accent-light
@@ -10,43 +10,33 @@ function rand(min, max) {
   return min + Math.random() * (max - min);
 }
 
-function pick(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-// Nodes are concentrated toward the left/right edges, sparse in the center —
-// matching the reference composition (negative space for headline content).
+// Uniform sparse scatter across the full viewport — this sits behind page
+// content everywhere (not just a hero strip), so density and opacity stay
+// low so it never competes with text readability.
 function buildScene(width, height) {
+  const nodeCount = Math.round((width * height) / 42000);
   const nodes = [];
-  const bands = [
-    { x0: 0, x1: width * 0.34, count: Math.round(width / 34) },
-    { x0: width * 0.66, x1: width, count: Math.round(width / 34) },
-    { x0: width * 0.34, x1: width * 0.66, count: Math.round(width / 140) },
-  ];
+  for (let i = 0; i < nodeCount; i++) {
+    const layer = Math.random() < 0.5 ? 0 : Math.random() < 0.75 ? 1 : 2;
+    nodes.push({
+      x: rand(0, width),
+      y: rand(0, height),
+      r: layer === 2 ? rand(1.8, 2.8) : layer === 1 ? rand(1.2, 2) : rand(0.7, 1.3),
+      isHot: Math.random() < 0.16,
+      layer,
+      phase: rand(0, Math.PI * 2),
+      speed: rand(0.15, 0.4),
+    });
+  }
 
-  bands.forEach(({ x0, x1, count }) => {
-    for (let i = 0; i < count; i++) {
-      const layer = pick([0, 0, 1, 1, 2]); // weighted toward mid layers
-      nodes.push({
-        x: rand(x0, x1),
-        y: rand(height * 0.06, height * 0.94),
-        r: layer === 2 ? rand(2.2, 3.4) : layer === 1 ? rand(1.4, 2.4) : rand(0.8, 1.6),
-        isHot: Math.random() < 0.22,
-        layer,
-        phase: rand(0, Math.PI * 2),
-        speed: rand(0.15, 0.4),
-      });
-    }
-  });
-
-  // Right-angle "circuit trace" polylines between nearby nodes in the same band.
+  // Right-angle "circuit trace" polylines between nearby nodes.
   const traces = [];
   const traceCandidates = nodes.filter((n) => n.layer >= 1);
   for (let i = 0; i < traceCandidates.length; i++) {
-    if (Math.random() > 0.45) continue;
+    if (Math.random() > 0.3) continue;
     const a = traceCandidates[i];
     const nearby = traceCandidates
-      .filter((n) => n !== a && Math.abs(n.x - a.x) < width * 0.22 && Math.abs(n.y - a.y) < height * 0.6)
+      .filter((n) => n !== a && Math.abs(n.x - a.x) < width * 0.14 && Math.abs(n.y - a.y) < height * 0.22)
       .sort((n1, n2) => Math.hypot(n1.x - a.x, n1.y - a.y) - Math.hypot(n2.x - a.x, n2.y - a.y));
     const b = nearby[0];
     if (!b) continue;
@@ -63,41 +53,14 @@ function buildScene(width, height) {
     traces.push({
       points,
       color: isHot ? HOT : Math.random() < 0.5 ? WIRE : MUTED,
-      baseAlpha: isHot ? rand(0.18, 0.3) : rand(0.05, 0.12),
-      flashAt: rand(3, 14),
+      baseAlpha: isHot ? rand(0.08, 0.14) : rand(0.025, 0.06),
+      flashAt: rand(4, 18),
       flashDuration: rand(0.8, 1.6),
-      hasParticle: isHot && Math.random() < 0.5,
+      hasParticle: isHot && Math.random() < 0.4,
       particleOffset: Math.random(),
-      particleSpeed: rand(0.05, 0.1),
+      particleSpeed: rand(0.04, 0.08),
     });
   }
-
-  // A small triangulated cluster for visual interest, echoing the reference's node graph.
-  const clusterOrigin = Math.random() < 0.5
-    ? { x: rand(width * 0.7, width * 0.86), y: rand(height * 0.12, height * 0.3) }
-    : { x: rand(width * 0.06, width * 0.2), y: rand(height * 0.1, height * 0.28) };
-  const clusterNodes = [clusterOrigin];
-  for (let i = 0; i < 4; i++) {
-    clusterNodes.push({
-      x: clusterOrigin.x + rand(-width * 0.09, width * 0.09),
-      y: clusterOrigin.y + rand(height * 0.08, height * 0.22),
-    });
-  }
-  for (let i = 0; i < clusterNodes.length; i++) {
-    for (let j = i + 1; j < clusterNodes.length; j++) {
-      if (Math.random() < 0.55) {
-        traces.push({
-          points: [clusterNodes[i], clusterNodes[j]],
-          color: WIRE,
-          baseAlpha: rand(0.08, 0.16),
-          flashAt: rand(4, 16),
-          flashDuration: rand(0.6, 1.2),
-          hasParticle: false,
-        });
-      }
-    }
-  }
-  clusterNodes.forEach((c) => nodes.push({ ...c, r: rand(1.6, 2.4), isHot: true, layer: 2, phase: rand(0, Math.PI * 2), speed: rand(0.2, 0.4) }));
 
   return { nodes, traces };
 }
@@ -127,7 +90,7 @@ function pointAtT(points, t) {
   return points[points.length - 1];
 }
 
-export default function HeroBanner() {
+export default function AmbientBackground() {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -163,14 +126,14 @@ export default function HeroBanner() {
       ctx.clearRect(0, 0, width, height);
 
       // Extremely subtle drift, different amplitude per layer for parallax depth.
-      const driftBack = Math.sin(t * 0.02) * 3;
-      const driftMid = Math.sin(t * 0.03 + 1) * 5;
+      const driftBack = Math.sin(t * 0.015) * 4;
+      const driftMid = Math.sin(t * 0.022 + 1) * 6;
 
       // Soft breathing glow, ±3% opacity, very slow.
-      const breathe = 0.5 + Math.sin(t * 0.05) * 0.03;
-      const glowRadius = Math.max(width, height) * 0.5;
-      const gradient = ctx.createRadialGradient(width * 0.5, height * 0.5, 0, width * 0.5, height * 0.5, glowRadius);
-      gradient.addColorStop(0, `rgba(${HOT_GLOW}, ${0.035 * breathe})`);
+      const breathe = 0.5 + Math.sin(t * 0.04) * 0.03;
+      const glowRadius = Math.max(width, height) * 0.6;
+      const gradient = ctx.createRadialGradient(width * 0.5, height * 0.4, 0, width * 0.5, height * 0.4, glowRadius);
+      gradient.addColorStop(0, `rgba(${HOT_GLOW}, ${0.018 * breathe})`);
       gradient.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
@@ -180,7 +143,7 @@ export default function HeroBanner() {
         const phase = t % cycle;
         const flashing = phase > trace.flashAt;
         const flashProgress = flashing ? (phase - trace.flashAt) / trace.flashDuration : 0;
-        const flashBoost = flashing ? Math.sin(flashProgress * Math.PI) * 0.35 : 0;
+        const flashBoost = flashing ? Math.sin(flashProgress * Math.PI) * 0.2 : 0;
 
         ctx.beginPath();
         trace.points.forEach((p, i) => {
@@ -202,13 +165,13 @@ export default function HeroBanner() {
           ctx.beginPath();
           ctx.moveTo(trailPos.x, trailPos.y);
           ctx.lineTo(pos.x, pos.y);
-          ctx.strokeStyle = `rgba(${HOT}, 0.5)`;
-          ctx.lineWidth = 1.5;
+          ctx.strokeStyle = `rgba(${HOT}, 0.3)`;
+          ctx.lineWidth = 1.3;
           ctx.stroke();
 
           ctx.beginPath();
-          ctx.arc(pos.x, pos.y, 1.8, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${HOT}, 0.9)`;
+          ctx.arc(pos.x, pos.y, 1.4, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${HOT}, 0.6)`;
           ctx.fill();
         }
       });
@@ -218,13 +181,13 @@ export default function HeroBanner() {
         const drift = node.layer === 0 ? driftBack : node.layer === 1 ? driftMid : 0;
         const x = node.x + drift * 0.1;
         const y = node.y;
-        const baseAlpha = node.isHot ? 0.55 : 0.28;
+        const baseAlpha = node.isHot ? 0.32 : 0.14;
         const alpha = baseAlpha * (0.75 + pulse * 0.5);
 
         if (node.isHot) {
           const haloR = node.r * 5;
           const halo = ctx.createRadialGradient(x, y, 0, x, y, haloR);
-          halo.addColorStop(0, `rgba(${HOT_GLOW}, ${0.18 * pulse + 0.05})`);
+          halo.addColorStop(0, `rgba(${HOT_GLOW}, ${0.1 * pulse + 0.02})`);
           halo.addColorStop(1, 'rgba(0,0,0,0)');
           ctx.fillStyle = halo;
           ctx.beginPath();
@@ -256,27 +219,24 @@ export default function HeroBanner() {
     const resizeObserver = new ResizeObserver(() => resize());
     resizeObserver.observe(container);
 
-    const intersectionObserver = new IntersectionObserver(
-      ([entry]) => {
-        visible = entry.isIntersecting;
-        if (visible && !prefersReducedMotion && rafId === null) {
-          rafId = requestAnimationFrame(loop);
-        }
-      },
-      { threshold: 0.01 }
-    );
-    intersectionObserver.observe(container);
+    const handleVisibility = () => {
+      visible = document.visibilityState === 'visible';
+      if (visible && !prefersReducedMotion && rafId === null) {
+        rafId = requestAnimationFrame(loop);
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       resizeObserver.disconnect();
-      intersectionObserver.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
   }, []);
 
   return (
-    <div ref={containerRef} className="hero-banner-canvas-wrap" aria-hidden="true">
-      <canvas ref={canvasRef} className="hero-banner-canvas" />
+    <div ref={containerRef} className="ambient-background" aria-hidden="true">
+      <canvas ref={canvasRef} className="ambient-background-canvas" />
     </div>
   );
 }

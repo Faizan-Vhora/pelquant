@@ -1,6 +1,6 @@
 .trust-bar {
   padding: 4rem 2rem;
-  background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+  background: transparent;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   position: relative;
