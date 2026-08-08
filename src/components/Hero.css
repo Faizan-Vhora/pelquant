@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: var(--bg-primary);
+  background: transparent;
   padding: 130px 2rem 0;
   text-align: center;
 }
@@ -298,27 +298,6 @@
   background: rgba(255,255,255,0.07);
   flex-shrink: 0;
   align-self: center;
-}
-
-/* ── Banner slot — ambient particle-network animation ── */
-.hero-banner-slot {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  margin-top: 2.5rem;
-}
-
-@media (min-width: 768px) {
-  .hero-banner-slot {
-    aspect-ratio: 16 / 7;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-banner-slot {
-    aspect-ratio: 21 / 6;
-  }
 }
 
 /* ═══════════════════════════════════════════

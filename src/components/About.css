@@ -1,7 +1,7 @@
 .about {
   position: relative;
   padding: 7rem 2rem;
-  background: var(--bg-primary);
+  background: transparent;
   overflow: hidden;
 }
 

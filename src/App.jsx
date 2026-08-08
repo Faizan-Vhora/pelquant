@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AmbientBackground from './components/AmbientBackground';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -111,6 +112,7 @@ function App() {
   return (
     <BrowserRouter>
       <SEO />
+      <AmbientBackground />
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }}></div>
       <Header />
       <Routes>

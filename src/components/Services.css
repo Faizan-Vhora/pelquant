@@ -4,7 +4,7 @@
 
 .services {
   padding: 7rem 2rem;
-  background: var(--bg-primary);
+  background: transparent;
   position: relative;
 }
 

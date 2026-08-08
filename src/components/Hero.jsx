@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import HeroBanner from './HeroBanner';
 import './Hero.css';
 
 const headlines = [
@@ -144,11 +143,6 @@ export default function Hero() {
           ))}
         </div>
 
-      </div>
-
-      {/* Ambient particle-network banner */}
-      <div id="hero-banner-slot" className="hero-banner-slot">
-        <HeroBanner />
       </div>
 
       {/* Service marquee — full width, outside inner */}
