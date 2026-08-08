@@ -85,7 +85,46 @@ export default function Header() {
         </Link>
 
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
-          <div className="nav-item dropdown" 
+          {isMobile && (
+            <div className="mobile-search">
+              <form className="search-bar" onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  aria-label="Search services, solutions, and pages"
+                  placeholder="Search services, solutions..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button type="submit" aria-label="Submit search">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                  </svg>
+                </button>
+              </form>
+              {trimmedQuery && (
+                <div className="search-results">
+                  {searchResults.length > 0 ? (
+                    searchResults.map((result) => (
+                      <button
+                        key={result.path}
+                        type="button"
+                        className="search-result-item"
+                        onClick={() => goToResult(result.path)}
+                      >
+                        <span className="search-result-label">{result.label}</span>
+                        <span className="search-result-category">{result.category}</span>
+                      </button>
+                    ))
+                  ) : (
+                    <div className="search-no-results">No results for "{searchQuery}"</div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+
+          <div className="nav-item dropdown"
                onMouseEnter={() => !isMobile && setServicesOpen(true)}
                onMouseLeave={() => !isMobile && setServicesOpen(false)}>
             <Link to="/services" className="nav-link" onClick={handleServicesClick}>
