@@ -13,6 +13,36 @@
   transition: width 0.1s ease;
 }
 
+/* Static accent bars matching .scroll-progress on the remaining 3
+   edges, so the viewport has a consistent 4-sided orange frame. */
+.edge-bar {
+  position: fixed;
+  background: var(--accent);
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.edge-bar-bottom {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+.edge-bar-left {
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+}
+
+.edge-bar-right {
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100%;
+}
+
 .scroll-to-top {
   position: fixed;
   bottom: 2rem;
