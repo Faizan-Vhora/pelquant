@@ -9,17 +9,21 @@
   left: 0;
   height: 3px;
   background: var(--accent);
+  box-shadow: 0 0 8px 1px var(--accent-glow), 0 0 16px 2px var(--accent-glow);
   z-index: 10000;
   transition: width 0.1s ease;
+  animation: edgeGlowPulse 3s ease-in-out infinite;
 }
 
 /* Static accent bars matching .scroll-progress on the remaining 3
-   edges, so the viewport has a consistent 4-sided orange frame. */
+   edges, so the viewport has a soft, gently-pulsing 4-sided frame. */
 .edge-bar {
   position: fixed;
   background: var(--accent);
+  box-shadow: 0 0 8px 1px var(--accent-glow), 0 0 16px 2px var(--accent-glow);
   z-index: 10000;
   pointer-events: none;
+  animation: edgeGlowPulse 3s ease-in-out infinite;
 }
 
 .edge-bar-bottom {
@@ -41,6 +45,11 @@
   right: 0;
   width: 3px;
   height: 100%;
+}
+
+@keyframes edgeGlowPulse {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
 }
 
 .scroll-to-top {
