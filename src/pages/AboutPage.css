@@ -1,5 +1,5 @@
 .about-page {
-  background: #08080f;
+  background: transparent;
   color: #eeeef8;
 }
 
@@ -91,7 +91,7 @@
 }
 
 .mission-section {
-  background: #0d0d18;
+  background: rgba(13, 13, 24, 0.55);
   padding: 8rem 2rem;
 }
 
@@ -183,7 +183,7 @@
 }
 
 .why-section {
-  background: #0d0d18;
+  background: rgba(13, 13, 24, 0.55);
   padding: 8rem 2rem;
 }
 
@@ -257,7 +257,7 @@
 }
 
 .partners-section {
-  background: #08080f;
+  background: transparent;
   padding: 8rem 2rem;
 }
 
@@ -327,7 +327,7 @@
 .tag-orange { background: rgba(255, 107, 43, 0.15); color: #ff8f5a; }
 
 .philosophy-banner {
-  background: linear-gradient(180deg, #08080f 0%, #070710 100%);
+  background: transparent;
   padding: 8rem 2rem;
   text-align: center;
 }
@@ -359,7 +359,7 @@
 }
 
 .cta-strip {
-  background: #0d0d18;
+  background: rgba(13, 13, 24, 0.55);
   padding: 6rem 2rem;
   text-align: center;
 }
