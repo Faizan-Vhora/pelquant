@@ -1,5 +1,5 @@
 .services-page {
-  background: var(--bg-primary);
+  background: transparent;
   color: var(--text-primary);
 }
 
@@ -111,13 +111,13 @@
 
 /* Services Sections */
 .tech-services-section {
-  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  background: linear-gradient(180deg, rgba(8, 8, 16, 0) 0%, rgba(13, 13, 24, 0.55) 100%);
   padding: 8rem 20px;
   border-top: 1px solid var(--border);
 }
 
 .marketing-services-section {
-  background: var(--bg-secondary);
+  background: rgba(13, 13, 24, 0.55);
   padding: 8rem 20px;
 }
 
@@ -233,7 +233,7 @@
 
 /* Process Section */
 .process-section {
-  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  background: linear-gradient(180deg, rgba(13, 13, 24, 0.55) 0%, rgba(8, 8, 16, 0) 100%);
   padding: 8rem 20px;
 }
 
@@ -294,7 +294,7 @@
 
 /* CTA Section */
 .services-cta {
-  background: var(--bg-primary);
+  background: transparent;
   padding: 8rem 20px;
   border-top: 1px solid var(--border);
 }
