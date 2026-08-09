@@ -114,6 +114,9 @@ function App() {
       <SEO />
       <AmbientBackground />
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }}></div>
+      <div className="edge-bar edge-bar-bottom" aria-hidden="true"></div>
+      <div className="edge-bar edge-bar-left" aria-hidden="true"></div>
+      <div className="edge-bar edge-bar-right" aria-hidden="true"></div>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
