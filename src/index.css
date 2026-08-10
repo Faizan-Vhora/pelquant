@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Fonts are loaded from <link> tags in index.html — a CSS @import here would
+   serialise the request behind this stylesheet and delay first text paint. */
 
 :root {
   --bg-primary: #080810;
@@ -7,9 +8,17 @@
   --border: rgba(255,255,255,0.1);
   --text-primary: #EBEBF5;
   --text-secondary: #9090b0;
+  /* Muted tiers, both ≥4.5:1 on --bg-primary so small copy stays legible.
+     Anything dimmer than --text-faint fails WCAG AA — don't add a third tier. */
+  --text-muted: #8b8bb0;
+  --text-faint: #7f7fa8;
   --accent: #FF6B2B;
   --accent-glow: rgba(255,107,43,0.2);
   --accent-light: #ff8555;
+  /* Text/icons sitting ON the accent. White on #FF6B2B is only 2.84:1 — this
+     ink is 6.6:1 and keeps the accent itself at full brand saturation, which
+     darkening the orange to carry white text would not. */
+  --on-accent: #1B0E06;
   --heading-gold: #FFFFFF;
   --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -33,12 +42,10 @@
   --transition-slow: 0.5s ease;
 }
 
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/inter.woff2') format('woff2');
-  font-weight: 300 700;
-  font-display: swap;
-}
+/* NOTE: public/fonts/inter.woff2 is a single-weight subset. It used to be
+   declared here as `font-weight: 300 700`, which made every weight from Light
+   to Bold resolve to that one file — flattening the whole type hierarchy.
+   Inter now comes from Google Fonts with its real weights. */
 
 * {
   margin: 0;
@@ -117,6 +124,34 @@ input, textarea {
   font-family: var(--font-body);
 }
 
+/* Keyboard focus ring. Every interactive element opts out of the UA outline
+   somewhere, so this has to be stated once, globally, for :focus-visible. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  z-index: 10001;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  transition: transform var(--transition-base);
+}
+
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+  outline-offset: -4px;
+}
+
 ::selection {
   background: rgba(255, 107, 43, 0.3);
   color: var(--text-primary);
@@ -147,7 +182,7 @@ input, textarea {
   gap: 0.5rem;
   padding: 0.875rem 2rem;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-  color: white;
+  color: var(--on-accent);
   border-radius: var(--radius-md);
   font-weight: 600;
   font-size: 0.95rem;
@@ -237,5 +272,32 @@ input, textarea {
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
     --spacing-3xl: 4rem;
+  }
+}
+
+/* Reduced motion. Scroll-triggered reveals are opacity:0 until observed, so
+   they can't just be un-animated — they have to be forced visible, otherwise
+   the page reads as blank. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-up,
+  .svc-row,
+  .ind-card,
+  .trust-metric,
+  .process-step {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

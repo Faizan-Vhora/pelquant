@@ -105,7 +105,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: #7070a0;
+  color: var(--text-faint);
 }
 
 /* ── Service rows ── */
@@ -167,14 +167,14 @@
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 4px;
-  color: #6060a0;
+  color: var(--text-faint);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .svc-desc {
   font-size: 0.82rem;
-  color: #6868a0;
+  color: var(--text-muted);
   line-height: 1.6;
 }
 .svc-row:hover .svc-desc { color: #9090b0; }
@@ -219,7 +219,7 @@
 
 .svc-stat-lbl {
   font-size: 0.68rem;
-  color: #6060a0;
+  color: var(--text-faint);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;

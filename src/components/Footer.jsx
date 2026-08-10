@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { submitForm } from '../formEndpoint';
 import './Footer.css';
 
 const techLinks = [
@@ -36,20 +37,13 @@ export default function Footer() {
     setStatus('submitting');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/faizanvhoradev@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          email,
-          _subject: '📧 New Newsletter Subscriber - Pelquant',
-          _template: 'box'
-        }),
+      const ok = await submitForm({
+        email,
+        _subject: '📧 New Newsletter Subscriber - Pelquant',
+        _template: 'box'
       });
 
-      if (response.ok) {
+      if (ok) {
         setStatus('success');
         setEmail('');
       } else {
@@ -76,8 +70,8 @@ export default function Footer() {
             <p className="footer-desc">
               AI-First Technology & Growth Partner transforming businesses with intelligent solutions.
             </p>
-            <a href="mailto:hello@pelquant.com" className="footer-email">
-              hello@pelquant.com
+            <a href="mailto:info@pelquant.com" className="footer-email">
+              info@pelquant.com
             </a>
             <div className="social-icons">
               <a href="#" className="social-icon" aria-label="Twitter">

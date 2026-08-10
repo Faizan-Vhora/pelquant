@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import CountUp from './CountUp';
 import './TrustBar.css';
 
 const metrics = [
@@ -91,20 +92,4 @@ export default function TrustBar() {
       </div>
     </section>
   );
-}
-
-function CountUp({ end, suffix, active }) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!active) return;
-    let n = 0;
-    const step = end / 40;
-    const t = setInterval(() => {
-      n = Math.min(n + step, end);
-      setCount(Math.floor(n));
-      if (n >= end) clearInterval(t);
-    }, 30);
-    return () => clearInterval(t);
-  }, [active, end]);
-  return <>{count}{suffix}</>;
 }

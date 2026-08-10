@@ -213,7 +213,15 @@ export default function SEO() {
 
   useEffect(() => {
     const path = location.pathname;
-    const seo = seoData[path] || seoData['/'];
+    const known = seoData[path];
+    // Unknown paths render the 404 page, so they must not inherit the home
+    // page's title/description or be offered to crawlers as canonical.
+    const seo = known || {
+      title: 'Page Not Found | PELQUANT',
+      description: 'The page you are looking for does not exist or has moved.',
+      keywords: '',
+      ogImage: '/og-home.jpg'
+    };
 
     // Update title
     document.title = seo.title;
@@ -233,6 +241,7 @@ export default function SEO() {
     // Standard meta tags
     updateMeta('description', seo.description);
     updateMeta('keywords', seo.keywords);
+    updateMeta('robots', known ? 'index, follow' : 'noindex, follow');
 
     // Open Graph tags
     updateMeta('og:title', seo.title, true);
@@ -248,14 +257,18 @@ export default function SEO() {
     updateMeta('twitter:description', seo.description);
     updateMeta('twitter:image', `https://pelquant.com${seo.ogImage}`);
 
-    // Canonical URL
+    // Canonical URL — only for real pages; a 404 has nothing to canonicalise.
     let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
+    if (known) {
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', `https://pelquant.com${path}`);
+    } else if (canonical) {
+      canonical.remove();
     }
-    canonical.setAttribute('href', `https://pelquant.com${path}`);
 
     // Structured Data (JSON-LD)
     let script = document.querySelector('script[type="application/ld+json"]');

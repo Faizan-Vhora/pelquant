@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icons } from '../components/Icons';
+import { submitForm } from '../formEndpoint';
 import './ContactPage.css';
 
 export default function CareersPage() {
@@ -22,33 +23,26 @@ export default function CareersPage() {
     setStatus('');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/faizanvhoradev@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          position: formData.position,
-          location: formData.location || 'Not specified',
-          portfolio: formData.portfolio || 'Not provided',
-          resume: formData.resume || 'Not provided',
-          message: formData.message,
-          _subject: '💼 New Job Application - Pelquant',
-          _template: 'box',
-          _captcha: 'false'
-        }),
+      const ok = await submitForm({
+        name: formData.name,
+        email: formData.email,
+        position: formData.position,
+        location: formData.location || 'Not specified',
+        portfolio: formData.portfolio || 'Not provided',
+        resume: formData.resume || 'Not provided',
+        message: formData.message,
+        _subject: '💼 New Job Application - Pelquant',
+        _template: 'box',
+        _captcha: 'false'
       });
 
-      if (response.ok) {
+      if (ok) {
         setStatus('success');
         setFormData({ name: '', email: '', position: '', location: '', portfolio: '', resume: '', message: '' });
       } else {
         setStatus('error');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -65,6 +59,13 @@ export default function CareersPage() {
   return (
     <div className="contact-page">
       <section className="contact-form-section" style={{ paddingTop: '120px' }}>
+        {/* This page had no h1 at all — it opened on an h2, leaving the
+            document outline (and the SEO title) with nothing to anchor to. */}
+        <h1 className="section-heading">Careers at Pelquant</h1>
+        <p className="careers-intro">
+          Remote-first, globally distributed, and building AI-native products for
+          clients across 12 industries.
+        </p>
         <h2 className="section-heading">Why Join Pelquant?</h2>
         <div className="contact-form-container">
           <div className="contact-info">

@@ -96,7 +96,7 @@
 .social-icon:hover {
   background: var(--accent);
   border-color: var(--accent);
-  color: white;
+  color: var(--on-accent);
 }
 
 .footer-links-grid {
@@ -177,7 +177,7 @@
 .newsletter-form button svg {
   width: 14px;
   height: 14px;
-  color: white;
+  color: var(--on-accent);
 }
 
 .subscribed-message {

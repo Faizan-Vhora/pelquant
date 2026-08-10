@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { submitForm } from '../formEndpoint';
 import './ContactPage.css';
 
 export default function ContactPage() {
@@ -44,29 +45,22 @@ export default function ContactPage() {
     setStatus('');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/faizanvhoradev@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company || 'Not provided',
-          message: formData.message,
-          _subject: '📧 New Contact - Pelquant',
-          _template: 'box'
-        }),
+      const ok = await submitForm({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company || 'Not provided',
+        message: formData.message,
+        _subject: '📧 New Contact - Pelquant',
+        _template: 'box'
       });
 
-      if (response.ok) {
+      if (ok) {
         setStatus('success');
         setFormData({ name: '', email: '', company: '', message: '', website: '' });
       } else {
         setStatus('error');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -119,6 +113,7 @@ export default function ContactPage() {
                   type="text"
                   id="name"
                   name="name"
+                  autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
@@ -132,6 +127,7 @@ export default function ContactPage() {
                   type="email"
                   id="email"
                   name="email"
+                  autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="john@company.com"
@@ -145,6 +141,7 @@ export default function ContactPage() {
                   type="text"
                   id="company"
                   name="company"
+                  autoComplete="organization"
                   value={formData.company}
                   onChange={handleChange}
                   placeholder="Your Company"

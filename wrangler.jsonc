@@ -2,6 +2,9 @@
   "name": "pelquant",
   "compatibility_date": "2026-02-23",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    // Client-side routing: serve index.html for paths that aren't real assets,
+    // so deep links and refreshes reach the app instead of a 404.
+    "not_found_handling": "single-page-application"
   }
 }

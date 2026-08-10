@@ -5,9 +5,11 @@
 
 /* Soft smokey accent fades on the bottom/left/right viewport edges —
    a diffuse, gently-pulsing cloudy bleed inward from each edge. */
+/* Sits above page content but below the header (1000) and the scroll-to-top
+   button, so neither picks up an orange wash. */
 .edge-bar {
   position: fixed;
-  z-index: 10000;
+  z-index: 900;
   pointer-events: none;
   animation: edgeGlowPulse 3s ease-in-out infinite;
 }
@@ -41,6 +43,8 @@
   50% { opacity: 1; }
 }
 
+/* Always mounted and toggled with a class, so showing/hiding is a transition
+   rather than a remount — a remount is what made it flicker on fast scrolls. */
 .scroll-to-top {
   position: fixed;
   bottom: 2rem;
@@ -50,18 +54,26 @@
   background: var(--accent);
   border: none;
   border-radius: 50%;
-  color: white;
+  color: var(--on-accent);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px var(--accent-glow);
-  transition: all 0.3s ease;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1001;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
 }
 
-.scroll-to-top:hover {
+.scroll-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-to-top.visible:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px var(--accent-glow);
 }
@@ -71,15 +83,38 @@
   height: 24px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Suspense fallback for lazily-loaded routes. Reserves roughly a viewport so
+   the header/footer don't snap together while a chunk downloads. */
+.route-fallback {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.route-fallback-spinner {
+  width: 34px;
+  height: 34px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: routeSpin 0.7s linear infinite;
+}
+
+@keyframes routeSpin {
+  to { transform: rotate(360deg); }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (max-width: 768px) {
