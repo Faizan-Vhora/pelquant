@@ -59,14 +59,10 @@ function HomePage() {
 }
 
 function App() {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(progress);
       setShowScrollTop(window.scrollY > 300);
     };
 
@@ -113,7 +109,6 @@ function App() {
     <BrowserRouter>
       <SEO />
       <AmbientBackground />
-      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }}></div>
       <div className="edge-bar edge-bar-bottom" aria-hidden="true"></div>
       <div className="edge-bar edge-bar-left" aria-hidden="true"></div>
       <div className="edge-bar edge-bar-right" aria-hidden="true"></div>

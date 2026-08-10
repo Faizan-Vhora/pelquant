@@ -3,21 +3,8 @@
   width: 100%;
 }
 
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 140px;
-  background: linear-gradient(to bottom, rgba(255, 107, 43, 0.32) 0%, rgba(255, 107, 43, 0.1) 40%, transparent 100%);
-  z-index: 10000;
-  transition: width 0.1s ease;
-  animation: edgeGlowPulse 3s ease-in-out infinite;
-  pointer-events: none;
-}
-
-/* Soft smokey accent fades matching .scroll-progress on the remaining
-   3 edges, so the viewport has a diffuse, gently-pulsing 4-sided
-   frame — a cloudy bleed inward from each edge, not a hard line. */
+/* Soft smokey accent fades on the bottom/left/right viewport edges —
+   a diffuse, gently-pulsing cloudy bleed inward from each edge. */
 .edge-bar {
   position: fixed;
   z-index: 10000;
