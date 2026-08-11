@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { submitForm } from '../formEndpoint';
+import { validateFields } from '../formValidation';
 import './Contact.css';
 
 const services = [
@@ -17,25 +18,9 @@ const services = [
   'Other / Not Sure Yet',
 ];
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const FIELDS = { name: 'name', email: 'email', message: 'message' };
 
-function validate(data) {
-  const errors = {};
-  if (!data.name.trim()) {
-    errors.name = 'Please tell us your name.';
-  }
-  if (!data.email.trim()) {
-    errors.email = 'We need an email address to reply to.';
-  } else if (!EMAIL_PATTERN.test(data.email.trim())) {
-    errors.email = 'That email address doesn’t look right.';
-  }
-  if (!data.message.trim()) {
-    errors.message = 'Tell us a little about the project.';
-  } else if (data.message.trim().length < 10) {
-    errors.message = 'A sentence or two helps us point you at the right person.';
-  }
-  return errors;
-}
+const validate = (data) => validateFields(data, FIELDS);
 
 export default function Contact() {
   const [formData, setFormData] = useState({

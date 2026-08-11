@@ -33,6 +33,7 @@
 
 .service-page .breadcrumb {
   display: inline-block;
+  padding: 0.4rem 0;
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.9rem;
@@ -95,7 +96,7 @@
 
 .service-page .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -295,7 +296,7 @@
 
 .service-page .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(28rem, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -407,7 +408,7 @@
 
 .service-page .related-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -529,37 +530,37 @@
 }
 
 /* Responsive */
-.service-page @media (max-width: 768px) {
-  .service-hero {
+@media (max-width: 768px) {
+  .service-page .service-hero {
     padding: 120px 1.5rem 60px;
   }
 
-  .service-hero-headline {
+  .service-page .service-hero-headline {
     font-size: 2.5rem;
   }
 
-  .service-hero-desc {
+  .service-page .service-hero-desc {
     font-size: 1rem;
   }
 
-  .section-headline {
+  .service-page .section-headline {
     font-size: 2rem;
   }
 
-  .process-item {
+  .service-page .process-item {
     flex-direction: column;
     gap: 1rem;
   }
 
-  .process-number {
+  .service-page .process-number {
     min-width: auto;
   }
 
-  .why-content {
+  .service-page .why-content {
     padding: 2rem 1.5rem;
   }
 
-  .cta-headline {
+  .service-page .cta-headline {
     font-size: 2rem;
   }
 }
@@ -596,7 +597,7 @@
 
 .service-page .platforms-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -630,7 +631,7 @@
 /* SOAR Specific Styles */
 .service-page .playbooks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -665,7 +666,7 @@
 /* Automation Specific Styles */
 .service-page .automation-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -735,7 +736,7 @@
 
 .service-page .roi-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
   gap: 3rem;
 }
 
@@ -820,7 +821,7 @@
 
 .service-page .integration-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -879,7 +880,7 @@
 
 .service-page .performance-metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -901,7 +902,7 @@
 /* Cloud Platforms */
 .service-page .cloud-platforms {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1056,7 +1057,7 @@
 
 .service-page .vitals-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(28rem, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -1160,7 +1161,7 @@
 
 .service-page .eeat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -1214,7 +1215,7 @@
 
 .service-page .linkbuilding-methods {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -1253,7 +1254,7 @@
 /* Social Media Specific */
 .service-page .social-platforms {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(28rem, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1328,7 +1329,7 @@
 
 .service-page .metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -1361,7 +1362,7 @@
 /* Paid Ads Specific */
 .service-page .ad-platforms {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1446,7 +1447,7 @@
 
 .service-page .testing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 2rem;
 }
 
@@ -1482,7 +1483,7 @@
 
 .service-page .ad-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1558,7 +1559,7 @@
 /* Performance Marketing Specific */
 .service-page .channels-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -1596,7 +1597,7 @@
 
 .service-page .pm-metrics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(28rem, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;

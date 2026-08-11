@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { submitForm } from '../formEndpoint';
+import { validateFields } from '../formValidation';
 import './ContactPage.css';
 
+const FIELDS = { name: 'name', email: 'email', message: 'message' };
+
 export default function ContactPage() {
-  const observerRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,31 +15,31 @@ export default function ContactPage() {
   });
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+  const formRef = useRef(null);
 
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+  const errorFor = (field) => (touched[field] ? errors[field] : undefined);
 
-    document.querySelectorAll('.fade-up').forEach((el) => {
-      observerRef.current.observe(el);
-    });
-
-    return () => observerRef.current?.disconnect();
-  }, []);
+  const handleBlur = (e) => {
+    setTouched((t) => ({ ...t, [e.target.name]: true }));
+    setErrors(validateFields(formData, FIELDS));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Honeypot: bots fill every field including hidden ones, real users never see this
     if (formData.website) {
+      return;
+    }
+
+    const nextErrors = validateFields(formData, FIELDS);
+    setErrors(nextErrors);
+    setTouched({ name: true, email: true, message: true });
+    const firstInvalid = Object.keys(nextErrors)[0];
+    if (firstInvalid) {
+      formRef.current?.querySelector(`[name="${firstInvalid}"]`)?.focus();
       return;
     }
 
@@ -57,6 +59,8 @@ export default function ContactPage() {
       if (ok) {
         setStatus('success');
         setFormData({ name: '', email: '', company: '', message: '', website: '' });
+        setErrors({});
+        setTouched({});
       } else {
         setStatus('error');
       }
@@ -68,10 +72,13 @@ export default function ContactPage() {
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const next = { ...formData, [e.target.name]: e.target.value };
+    setFormData(next);
+    // Clear a message as soon as the field becomes valid, rather than making
+    // the user submit again to find out.
+    if (errors[e.target.name]) {
+      setErrors(validateFields(next, FIELDS));
+    }
   };
 
   return (
@@ -95,7 +102,7 @@ export default function ContactPage() {
         <div className="contact-main-container">
           {/* Contact Form */}
           <div className="contact-form-wrapper fade-up">
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form" onSubmit={handleSubmit} noValidate ref={formRef}>
               <input
                 type="text"
                 name="website"
@@ -107,7 +114,7 @@ export default function ContactPage() {
                 aria-hidden="true"
               />
 
-              <div className="form-group">
+              <div className={`form-group ${errorFor('name') ? 'has-error' : ''}`}>
                 <label htmlFor="name">Your Name</label>
                 <input
                   type="text"
@@ -116,12 +123,16 @@ export default function ContactPage() {
                   autoComplete="name"
                   value={formData.name}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="John Doe"
                   required
+                  aria-invalid={errorFor('name') ? true : undefined}
+                  aria-describedby={errorFor('name') ? 'name-error' : undefined}
                 />
+                {errorFor('name') && <p className="field-error" id="name-error">{errorFor('name')}</p>}
               </div>
 
-              <div className="form-group">
+              <div className={`form-group ${errorFor('email') ? 'has-error' : ''}`}>
                 <label htmlFor="email">Email Address</label>
                 <input
                   type="email"
@@ -130,9 +141,13 @@ export default function ContactPage() {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="john@company.com"
                   required
+                  aria-invalid={errorFor('email') ? true : undefined}
+                  aria-describedby={errorFor('email') ? 'email-error' : undefined}
                 />
+                {errorFor('email') && <p className="field-error" id="email-error">{errorFor('email')}</p>}
               </div>
 
               <div className="form-group">
@@ -148,17 +163,21 @@ export default function ContactPage() {
                 />
               </div>
 
-              <div className="form-group">
+              <div className={`form-group ${errorFor('message') ? 'has-error' : ''}`}>
                 <label htmlFor="message">Tell Us About Your Project</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="What are you looking to build? What challenges are you facing?"
                   rows="6"
                   required
+                  aria-invalid={errorFor('message') ? true : undefined}
+                  aria-describedby={errorFor('message') ? 'message-error' : undefined}
                 ></textarea>
+                {errorFor('message') && <p className="field-error" id="message-error">{errorFor('message')}</p>}
               </div>
 
               <button type="submit" className="submit-btn" disabled={isSubmitting}>

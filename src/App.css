@@ -43,6 +43,19 @@
   50% { opacity: 1; }
 }
 
+/* 140px per side is a subtle frame on a desktop viewport but most of a phone
+   screen, where the two sides overlap and wash the whole page orange. */
+@media (max-width: 640px) {
+  .edge-bar-left,
+  .edge-bar-right {
+    width: 56px;
+  }
+
+  .edge-bar-bottom {
+    height: 80px;
+  }
+}
+
 /* Always mounted and toggled with a class, so showing/hiding is a transition
    rather than a remount — a remount is what made it flicker on fast scrolls. */
 .scroll-to-top {

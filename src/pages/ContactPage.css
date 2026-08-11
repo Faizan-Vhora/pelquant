@@ -153,6 +153,31 @@
   box-shadow: 0 0 0 3px rgba(255, 107, 43, 0.1);
 }
 
+/* Validation. These forms use a stacked .form-group, so the message is a plain
+   block — unlike Contact.css's floating-label layout, which positions it
+   absolutely. That rule is global, hence the explicit reset here. */
+.contact-page .form-group.has-error input,
+.contact-page .form-group.has-error textarea,
+.contact-page .form-group.has-error select {
+  border-color: #ff6b6b;
+}
+
+.contact-page .form-group.has-error input:focus,
+.contact-page .form-group.has-error textarea:focus,
+.contact-page .form-group.has-error select:focus {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.12);
+}
+
+.contact-page .field-error {
+  position: static;
+  padding: 0;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #ff8f8f;
+}
+
 .contact-page .form-group textarea {
   resize: vertical;
   min-height: 120px;
@@ -242,10 +267,8 @@
   line-height: 1.6;
   margin: 0;
 }
-  .contact-page color: #ff8f5a;
-}
 
-.info-card-text {
+.contact-page .info-card-text {
   font-family: var(--font-body);
   font-size: 20px;
   font-weight: 500;
@@ -327,31 +350,31 @@
 }
 
 /* Responsive */
-.contact-page @media (max-width: 768px) {
-  .contact-hero {
+@media (max-width: 768px) {
+  .contact-page .contact-hero {
     padding: 80px 20px 60px;
   }
 
-  .contact-hero-headline {
+  .contact-page .contact-hero-headline {
     font-size: 42px;
   }
 
-  .contact-main-container {
+  .contact-page .contact-main-container {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .contact-form-wrapper {
+  .contact-page .contact-form-wrapper {
     padding: 28px;
   }
 
-  .faq-grid {
+  .contact-page .faq-grid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 
-  .contact-main,
-  .contact-faq {
+  .contact-page .contact-main,
+  .contact-page .contact-faq {
     padding: 60px 20px;
   }
 }
@@ -450,4 +473,20 @@
 .contact-page .btn-primary:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* Used by the contact info cards but previously unstyled, which left it as a
+   bare inline link below the 24px minimum touch target. */
+.contact-page .info-card-link {
+  display: inline-block;
+  padding: 0.25rem 0;
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.contact-page .info-card-link:hover {
+  color: var(--accent-light);
 }

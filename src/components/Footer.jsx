@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { submitForm } from '../formEndpoint';
+import { rules } from '../formValidation';
 import './Footer.css';
 
 const techLinks = [
@@ -31,9 +32,17 @@ const companyLinks = [
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle');
+  const [error, setError] = useState('');
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
+
+    const message = rules.email(email);
+    if (message) {
+      setError(message);
+      return;
+    }
+    setError('');
     setStatus('submitting');
 
     try {
@@ -127,23 +136,32 @@ export default function Footer() {
                   Thanks!
                 </div>
               ) : (
-                <form className="newsletter-form" onSubmit={handleSubscribe}>
+                <form className={`newsletter-form ${error ? 'has-error' : ''}`} onSubmit={handleSubscribe} noValidate>
                   <input
                     type="email"
                     aria-label="Email address for newsletter"
+                    autoComplete="email"
                     placeholder="Your email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (error) setError('');
+                    }}
                     required
+                    aria-invalid={error ? true : undefined}
+                    aria-describedby={error ? 'newsletter-error' : undefined}
                   />
                   <button type="submit" aria-label="Subscribe to newsletter" disabled={status === 'submitting'}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                       <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                   </button>
                 </form>
               )}
-              {status === 'error' && (
+              {error && (
+                <p className="newsletter-error" id="newsletter-error">{error}</p>
+              )}
+              {status === 'error' && !error && (
                 <p className="newsletter-error">Something went wrong. Please try again.</p>
               )}
             </div>
