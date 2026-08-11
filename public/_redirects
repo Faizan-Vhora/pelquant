@@ -1,5 +1,0 @@
-# SPA fallback. Routing is client-side, so any path that isn't a real file has
-# to be served index.html — otherwise refreshing or sharing a deep link such as
-# /services/siem returns a host 404 instead of the page.
-# Existing static assets are still served directly; this only catches misses.
-/*  /index.html  200
