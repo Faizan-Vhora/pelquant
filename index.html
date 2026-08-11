@@ -7,6 +7,18 @@
     <meta name="theme-color" content="#FF6B2B" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
+    <!-- Hero banner is the LCP element. Preloading it lets the fetch start
+         from the HTML rather than waiting for React to mount; imagesrcset
+         mirrors the <picture> so the browser still picks the right size. -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/hero/pelhero-1682.webp"
+      imagesrcset="/hero/pelhero-828.webp 828w, /hero/pelhero-1280.webp 1280w, /hero/pelhero-1682.webp 1682w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">

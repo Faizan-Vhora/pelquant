@@ -90,6 +90,28 @@ export default function Hero() {
 
   return (
     <section className="hero">
+      {/* Banner. Decorative, so it carries an empty alt — the headline already
+          says what the section is about. fetchPriority high because this is
+          the LCP element; width/height are set to reserve the box and avoid
+          a layout shift while it loads. */}
+      <picture className="hero-banner" aria-hidden="true">
+        <source
+          type="image/webp"
+          srcSet="/hero/pelhero-828.webp 828w, /hero/pelhero-1280.webp 1280w, /hero/pelhero-1682.webp 1682w"
+          sizes="100vw"
+        />
+        <img
+          src="/hero/pelhero-1682.jpg"
+          srcSet="/hero/pelhero-828.jpg 828w, /hero/pelhero-1280.jpg 1280w, /hero/pelhero-1682.jpg 1682w"
+          sizes="100vw"
+          width="1682"
+          height="935"
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
+      <div className="hero-banner-scrim" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-glow"  aria-hidden="true" />
 
