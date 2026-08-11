@@ -88,11 +88,11 @@
 }
 
 @media (max-width: 640px) {
-.notfound-page {
+  .notfound-page {
     padding: 140px 1.5rem 5rem;
   }
 
-.notfound-page .notfound-links {
+  .notfound-page .notfound-links {
     grid-template-columns: 1fr;
   }
 }

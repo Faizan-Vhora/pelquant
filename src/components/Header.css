@@ -496,7 +496,15 @@
     transform: translateY(-120%);
     opacity: 0;
     pointer-events: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* opacity and pointer-events hide the drawer visually but leave the search
+       field and 17 links in the tab order and the accessibility tree, so
+       keyboard and screen-reader users on a phone tabbed straight into an
+       invisible menu. visibility removes them; it is transitioned so the
+       closing animation still plays out. */
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.4s;
     align-items: flex-start;
     max-height: calc(100vh - 70px);
     overflow-y: auto;
@@ -505,6 +513,7 @@
   .nav.open {
     transform: translateY(0);
     opacity: 1;
+    visibility: visible;
     pointer-events: all;
   }
 
