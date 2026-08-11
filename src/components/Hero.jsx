@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import CountUp from './CountUp';
+import useReducedMotion from '../hooks/useReducedMotion';
 import './Hero.css';
 
 const headlines = [
@@ -35,22 +37,47 @@ const stats = [
   { end: 24,  suffix: '/7', label: 'Support' },
 ];
 
+function scrollToSection(id) {
+  const target = document.getElementById(id);
+  if (!target) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+}
+
 export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const [paused, setPaused] = useState(false);
   const statsRef = useRef(null);
   const [statsVisible, setStatsVisible] = useState(false);
+  const reducedMotion = useReducedMotion();
 
+  const goTo = (index) => {
+    if (reducedMotion) {
+      setCurrent(index);
+      return;
+    }
+    setAnimating(true);
+    setTimeout(() => {
+      setCurrent(index);
+      setAnimating(false);
+    }, 300);
+  };
+
+  // Auto-rotation stops for reduced-motion users, and while the reader is
+  // hovering or keyboard-focused inside the headline block — otherwise the
+  // copy you are trying to read swaps out from under you.
   useEffect(() => {
+    if (reducedMotion || paused) return undefined;
     const interval = setInterval(() => {
       setAnimating(true);
       setTimeout(() => {
         setCurrent(prev => (prev + 1) % headlines.length);
         setAnimating(false);
       }, 300);
-    }, 4000);
+    }, 5500);
     return () => clearInterval(interval);
-  }, []);
+  }, [reducedMotion, paused]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,8 +101,13 @@ export default function Hero() {
           Enterprise AI &amp; Digital Transformation
         </div>
 
-        {/* Headline — rotates every 4s, fixed-height wrapper prevents layout shift */}
-        <div className="hero-headline-wrap">
+        {/* Headline — rotates on a timer; the wrapper reserves two lines so the
+            swap never pushes the CTAs and stats down the page. */}
+        <div
+          className="hero-headline-wrap"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           <h1 className={`hero-headline ${animating ? 'fade-out' : 'fade-in'}`}>
             {headlines[current].line1}
             <br />
@@ -84,13 +116,24 @@ export default function Hero() {
         </div>
 
         {/* Dots */}
-        <div className="hero-dots">
-          {headlines.map((_, i) => (
+        <div
+          className="hero-dots"
+          role="tablist"
+          aria-label="Choose a headline"
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          {headlines.map((headline, i) => (
             <button
-              key={i}
+              key={headline.line1}
+              type="button"
+              role="tab"
               className={`dot ${i === current ? 'active' : ''}`}
-              onClick={() => { setAnimating(true); setTimeout(() => { setCurrent(i); setAnimating(false); }, 300); }}
-              aria-label={`Headline ${i + 1}`}
+              onClick={() => goTo(i)}
+              aria-selected={i === current}
+              aria-label={`${headline.line1} ${headline.line2}`}
             />
           ))}
         </div>
@@ -103,19 +146,13 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="hero-ctas">
-          <button
-            className="btn-primary"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
+          <button type="button" className="btn-primary" onClick={() => scrollToSection('contact')}>
             Start a Project
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </button>
-          <button
-            className="btn-ghost"
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-          >
+          <button type="button" className="btn-ghost" onClick={() => scrollToSection('services')}>
             See What We Do
           </button>
         </div>
@@ -136,7 +173,9 @@ export default function Hero() {
             <div key={i} className="stat">
               {i > 0 && <div className="stat-sep" />}
               <div className="stat-inner">
-                <CountUp end={s.end} suffix={s.suffix} active={statsVisible} />
+                <span className="stat-num">
+                  <CountUp end={s.end} suffix={s.suffix} active={statsVisible} />
+                </span>
                 <span className="stat-label">{s.label}</span>
               </div>
             </div>
@@ -145,7 +184,8 @@ export default function Hero() {
 
       </div>
 
-      {/* Service marquee — full width, outside inner */}
+      {/* Service marquee — full width, outside inner. Decorative duplicate of
+          the services nav, so it stays out of the accessibility tree. */}
       <div className="hero-marquee" aria-hidden="true">
         <div className="marquee-track">
           {marqueeItems.map((item, i) => (
@@ -158,20 +198,4 @@ export default function Hero() {
       </div>
     </section>
   );
-}
-
-function CountUp({ end, suffix, active }) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!active) return;
-    let n = 0;
-    const step = end / 40;
-    const t = setInterval(() => {
-      n = Math.min(n + step, end);
-      setCount(Math.floor(n));
-      if (n >= end) clearInterval(t);
-    }, 30);
-    return () => clearInterval(t);
-  }, [active, end]);
-  return <span className="stat-num">{count}{suffix}</span>;
 }

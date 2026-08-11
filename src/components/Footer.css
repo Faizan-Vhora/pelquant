@@ -58,6 +58,8 @@
 
 .footer-email {
   display: inline-block;
+  /* Padding brings the link to the 24px minimum touch target. */
+  padding: 0.25rem 0;
   font-size: 0.875rem;
   color: var(--text-secondary);
   text-decoration: none;
@@ -96,7 +98,7 @@
 .social-icon:hover {
   background: var(--accent);
   border-color: var(--accent);
-  color: white;
+  color: var(--on-accent);
 }
 
 .footer-links-grid {
@@ -148,6 +150,10 @@
   overflow: hidden;
 }
 
+.newsletter-form.has-error {
+  border-color: rgba(239, 68, 68, 0.55);
+}
+
 .newsletter-form input {
   flex: 1;
   background: transparent;
@@ -177,7 +183,7 @@
 .newsletter-form button svg {
   width: 14px;
   height: 14px;
-  color: white;
+  color: var(--on-accent);
 }
 
 .subscribed-message {
@@ -222,6 +228,8 @@
 }
 
 .footer-legal a {
+  /* 24px minimum touch target. */
+  padding: 0.25rem 0.15rem;
   color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.3s;

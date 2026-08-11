@@ -79,17 +79,24 @@
   height: 6px;
   background: var(--accent);
   border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
+  animation: badgeDotPulse 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
+/* Keyframe names are global even with scoped selectors — keep them
+   component-specific so a lazily-loaded page chunk cannot redefine them. */
+@keyframes badgeDotPulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 43, 0.5); }
   50%       { box-shadow: 0 0 0 4px rgba(255, 107, 43, 0); }
 }
 
-/* ── Headline wrapper — fixed height so rotation never shifts content below ── */
+/* ── Headline wrapper — reserves two lines so rotation never shifts the CTAs
+   and stats below it. 2 lines x 1.1 line-height, tracking the same clamp()
+   the headline uses. ── */
 .hero-headline-wrap {
   margin-bottom: 0.75rem;
+  min-height: calc(clamp(2rem, 3.6vw, 3.5rem) * 1.1 * 2);
+  display: flex;
+  align-items: center;
 }
 
 .hero-headline {
@@ -118,7 +125,10 @@
 .hero-dots {
   display: flex;
   justify-content: center;
-  gap: 0.4rem;
+  align-items: center;
+  /* Room for the 24px hit areas without visually separating the dots. */
+  gap: 1.1rem;
+  min-height: 24px;
   margin-bottom: 1.5rem;
 }
 
@@ -131,6 +141,19 @@
   cursor: pointer;
   padding: 0;
   transition: all 0.25s ease;
+  position: relative;
+}
+
+/* The dot is 6px by design, which is far below the 24px minimum touch target.
+   Grow the hit area with a pseudo-element so the visual stays as drawn. */
+.hero-dots .dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
 }
 
 .hero-dots .dot:hover  { background: rgba(255,255,255,0.35); }
@@ -146,7 +169,7 @@
 /* ── Sub ── */
 .hero-sub {
   font-size: 1.05rem;
-  color: #7878a0;
+  color: var(--text-muted);
   line-height: 1.75;
   margin-bottom: 2rem;
   max-width: 480px;
@@ -168,7 +191,7 @@
   gap: 0.5rem;
   padding: 0.8rem 1.6rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   border: none;
   border-radius: 8px;
   font-family: 'Inter', sans-serif;
@@ -224,7 +247,7 @@
   gap: 0.625rem;
   margin-bottom: 3rem;
   font-size: 0.8rem;
-  color: #5a5a80;
+  color: var(--text-faint);
 }
 
 .hero-proof strong { color: #a0a0c0; font-weight: 600; }
@@ -235,14 +258,15 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #cc5520, #ff8555);
+  /* Start stop lightened from #cc5520 so the initial clears 4.5:1 on it. */
+  background: linear-gradient(135deg, #d25c25, #ff8555);
   border: 2px solid var(--bg-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.55rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--on-accent);
   margin-left: -6px;
 }
 
@@ -285,7 +309,7 @@
 
 .stat-label {
   font-size: 0.6rem;
-  color: #50507a;
+  color: var(--text-faint);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -336,7 +360,7 @@
   align-items: center;
   font-size: 0.78rem;
   font-weight: 500;
-  color: #5a5a80;
+  color: var(--text-faint);
   letter-spacing: 0.02em;
   white-space: nowrap;
   padding: 0 1.5rem;
@@ -364,6 +388,11 @@
   .hero-headline {
     font-size: clamp(1.6rem, 5.5vw, 2.4rem);
     white-space: normal;
+  }
+
+  /* Wrapping can push a headline to three lines at narrow widths. */
+  .hero-headline-wrap {
+    min-height: calc(clamp(1.6rem, 5.5vw, 2.4rem) * 1.1 * 3);
   }
 
   .hero-sub {

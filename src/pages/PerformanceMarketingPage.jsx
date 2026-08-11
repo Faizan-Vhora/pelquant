@@ -1,29 +1,8 @@
-import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Icons } from '../components/Icons';
 import './ServicePage.css';
 
 export default function PerformanceMarketingPage() {
-  const observerRef = useRef(null);
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll('.fade-up').forEach((el) => {
-      observerRef.current.observe(el);
-    });
-
-    return () => observerRef.current?.disconnect();
-  }, []);
 
   const process = [
     {

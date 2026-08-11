@@ -2,6 +2,15 @@
   "name": "pelquant",
   "compatibility_date": "2026-02-23",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    // Client-side routing: serve index.html for paths that aren't real assets,
+    // so deep links and refreshes reach the app instead of a 404.
+    //
+    // This is the Workers equivalent of a `_redirects` file containing
+    // `/* /index.html 200`. Workers Assets does not support 200 proxy
+    // rewrites in `_redirects` (only 301/302/303/307/308), so the redirects
+    // file is deliberately absent — if this project is ever served from
+    // Cloudflare Pages or Netlify instead, it needs to come back.
+    "not_found_handling": "single-page-application"
   }
 }

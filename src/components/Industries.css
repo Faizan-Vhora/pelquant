@@ -59,6 +59,7 @@
 .ind-all-link {
   display: inline-flex;
   align-items: center;
+  min-height: 24px;
   gap: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
@@ -139,7 +140,7 @@
 
 .ind-sub {
   font-size: 0.72rem;
-  color: #6060a0;
+  color: var(--text-faint);
   transition: color 0.2s ease;
   white-space: nowrap;
   overflow: hidden;

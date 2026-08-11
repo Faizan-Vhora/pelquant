@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { submitForm } from '../formEndpoint';
+import { validateFields } from '../formValidation';
 import './Contact.css';
 
 const services = [
@@ -16,6 +18,10 @@ const services = [
   'Other / Not Sure Yet',
 ];
 
+const FIELDS = { name: 'name', email: 'email', message: 'message' };
+
+const validate = (data) => validateFields(data, FIELDS);
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '', email: '', company: '', service: '', message: '', website: ''
@@ -23,6 +29,11 @@ export default function Contact() {
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [focused, setFocused] = useState({});
+  const [errors, setErrors] = useState({});
+  // Fields only show errors once they've been left or the form submitted —
+  // flagging "required" while someone is still typing their name is hostile.
+  const [touched, setTouched] = useState({});
+  const formRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,31 +43,35 @@ export default function Contact() {
       return;
     }
 
+    const nextErrors = validate(formData);
+    setErrors(nextErrors);
+    setTouched({ name: true, email: true, message: true });
+    const firstInvalid = Object.keys(nextErrors)[0];
+    if (firstInvalid) {
+      formRef.current?.querySelector(`[name="${firstInvalid}"]`)?.focus();
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus('');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/faizanvhoradev@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company || 'Not provided',
-          service: formData.service || 'Not specified',
-          message: formData.message,
-          _subject: '📧 New Contact - Pelquant',
-          _template: 'box'
-        }),
+      const ok = await submitForm({
+        name: formData.name,
+        email: formData.email,
+        company: formData.company || 'Not provided',
+        service: formData.service || 'Not specified',
+        message: formData.message,
+        _subject: '📧 New Contact - Pelquant',
+        _template: 'box'
       });
 
-      if (response.ok) {
+      if (ok) {
         setStatus('success');
         setFormData({ name: '', email: '', company: '', service: '', message: '', website: '' });
-        setTimeout(() => setStatus(''), 6000);
+        setErrors({});
+        setTouched({});
+        setTimeout(() => setStatus(''), 8000);
       } else {
         setStatus('error');
       }
@@ -68,13 +83,25 @@ export default function Contact() {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const next = { ...formData, [e.target.name]: e.target.value };
+    setFormData(next);
+    // Clear an error as soon as the field becomes valid, so the message goes
+    // away while you type rather than only on the next submit.
+    if (errors[e.target.name]) {
+      setErrors(validate(next));
+    }
   };
 
   const handleFocus = (field) => setFocused(f => ({ ...f, [field]: true }));
-  const handleBlur = (field) => setFocused(f => ({ ...f, [field]: false }));
+
+  const handleBlur = (field) => {
+    setFocused(f => ({ ...f, [field]: false }));
+    setTouched(t => ({ ...t, [field]: true }));
+    setErrors(validate(formData));
+  };
 
   const isFloated = (field) => focused[field] || formData[field];
+  const errorFor = (field) => (touched[field] ? errors[field] : undefined);
 
   return (
     <section className="contact" id="contact">
@@ -93,7 +120,7 @@ export default function Contact() {
         <div className="contact-content">
           {/* Form */}
           <div className="contact-form-wrap fade-up">
-            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+            <form className="contact-form" onSubmit={handleSubmit} noValidate ref={formRef}>
               <input
                 type="text"
                 name="website"
@@ -106,7 +133,7 @@ export default function Contact() {
               />
 
               <div className="form-row">
-                <div className={`form-field ${isFloated('name') ? 'floated' : ''}`}>
+                <div className={`form-field ${isFloated('name') ? 'floated' : ''} ${errorFor('name') ? 'has-error' : ''}`}>
                   <input
                     type="text"
                     name="name"
@@ -117,12 +144,15 @@ export default function Contact() {
                     onBlur={() => handleBlur('name')}
                     required
                     autoComplete="name"
+                    aria-invalid={errorFor('name') ? true : undefined}
+                    aria-describedby={errorFor('name') ? 'name-error' : undefined}
                   />
                   <label htmlFor="name">Your Name *</label>
                   <div className="field-line"></div>
+                  {errorFor('name') && <p className="field-error" id="name-error">{errorFor('name')}</p>}
                 </div>
 
-                <div className={`form-field ${isFloated('email') ? 'floated' : ''}`}>
+                <div className={`form-field ${isFloated('email') ? 'floated' : ''} ${errorFor('email') ? 'has-error' : ''}`}>
                   <input
                     type="email"
                     name="email"
@@ -133,9 +163,12 @@ export default function Contact() {
                     onBlur={() => handleBlur('email')}
                     required
                     autoComplete="email"
+                    aria-invalid={errorFor('email') ? true : undefined}
+                    aria-describedby={errorFor('email') ? 'email-error' : undefined}
                   />
                   <label htmlFor="email">Work Email *</label>
                   <div className="field-line"></div>
+                  {errorFor('email') && <p className="field-error" id="email-error">{errorFor('email')}</p>}
                 </div>
               </div>
 
@@ -177,7 +210,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className={`form-field ${isFloated('message') ? 'floated' : ''}`}>
+              <div className={`form-field ${isFloated('message') ? 'floated' : ''} ${errorFor('message') ? 'has-error' : ''}`}>
                 <textarea
                   name="message"
                   id="message"
@@ -187,9 +220,12 @@ export default function Contact() {
                   onFocus={() => handleFocus('message')}
                   onBlur={() => handleBlur('message')}
                   required
+                  aria-invalid={errorFor('message') ? true : undefined}
+                  aria-describedby={errorFor('message') ? 'message-error' : undefined}
                 ></textarea>
                 <label htmlFor="message">Tell us about your project *</label>
                 <div className="field-line"></div>
+                {errorFor('message') && <p className="field-error" id="message-error">{errorFor('message')}</p>}
               </div>
 
               <button type="submit" className="submit-btn" disabled={isSubmitting}>

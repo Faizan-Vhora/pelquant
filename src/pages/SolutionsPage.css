@@ -4,14 +4,14 @@
 }
 
 /* Hero Section */
-.solutions-hero {
+.solutions-page .solutions-hero {
   padding: 10rem 2rem 6rem;
   background: linear-gradient(180deg, rgba(255, 107, 43, 0.08) 0%, transparent 50%);
   position: relative;
   overflow: hidden;
 }
 
-.solutions-hero::before {
+.solutions-page .solutions-hero::before {
   content: '';
   position: absolute;
   top: 20%;
@@ -23,7 +23,7 @@
   pointer-events: none;
 }
 
-.solutions-hero-container {
+.solutions-page .solutions-hero-container {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
@@ -31,7 +31,7 @@
   z-index: 1;
 }
 
-.solutions-tag {
+.solutions-page .solutions-tag {
   display: inline-block;
   padding: 0.4rem 1rem;
   background: var(--bg-card);
@@ -44,7 +44,7 @@
   margin-bottom: 1.5rem;
 }
 
-.solutions-hero-headline {
+.solutions-page .solutions-hero-headline {
   font-size: 3.5rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -52,14 +52,14 @@
   line-height: 1.1;
 }
 
-.gradient-text {
+.solutions-page .gradient-text {
   background: linear-gradient(135deg, var(--accent) 0%, #ff8c5a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.solutions-hero-desc {
+.solutions-page .solutions-hero-desc {
   font-size: 1.125rem;
   color: var(--text-secondary);
   line-height: 1.7;
@@ -67,23 +67,23 @@
 }
 
 /* Industries Section */
-.industries-section {
+.solutions-page .industries-section {
   padding: 8rem 2rem;
   text-align: center;
 }
 
-.industries-section .section-tag,
-.industries-section .section-headline {
+.solutions-page .industries-section .section-tag,
+.solutions-page .industries-section .section-headline {
   display: block;
   text-align: center;
 }
 
-.solutions-container {
+.solutions-page .solutions-container {
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.section-tag {
+.solutions-page .section-tag {
   display: inline-block;
   padding: 0.4rem 1rem;
   background: var(--bg-card);
@@ -96,26 +96,26 @@
   margin-bottom: 1rem;
 }
 
-.section-headline {
+.solutions-page .section-headline {
   font-size: 2.5rem;
   color: var(--text-primary);
   margin-bottom: 3rem;
   text-align: center;
 }
 
-.orange-text {
+.solutions-page .orange-text {
   color: var(--accent);
 }
 
-.industries-grid {
+.solutions-page .industries-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.industry-card {
+.solutions-page .industry-card {
   padding: 2.5rem;
   background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -128,7 +128,7 @@
   overflow: hidden;
 }
 
-.industry-card::before {
+.solutions-page .industry-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -140,17 +140,17 @@
   transition: opacity 0.3s ease;
 }
 
-.industry-card:hover {
+.solutions-page .industry-card:hover {
   border-color: rgba(255, 107, 43, 0.3);
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(255, 107, 43, 0.15);
 }
 
-.industry-card:hover::before {
+.solutions-page .industry-card:hover::before {
   opacity: 1;
 }
 
-.industry-icon {
+.solutions-page .industry-icon {
   width: 52px;
   height: 52px;
   background: linear-gradient(135deg, rgba(255, 107, 43, 0.15) 0%, rgba(255, 107, 43, 0.05) 100%);
@@ -164,20 +164,20 @@
   transition: all 0.3s ease;
 }
 
-.industry-card:hover .industry-icon {
+.solutions-page .industry-card:hover .industry-icon {
   background: linear-gradient(135deg, var(--accent) 0%, #ff8555 100%);
-  color: white;
+  color: var(--on-accent);
   transform: scale(1.05) rotate(-3deg);
 }
 
-.industry-name {
+.solutions-page .industry-name {
   font-size: 1.5rem;
   color: var(--heading-gold);
   margin-bottom: 0.75rem;
   font-weight: 600;
 }
 
-.industry-desc {
+.solutions-page .industry-desc {
   color: var(--text-secondary);
   line-height: 1.6;
   font-size: 0.95rem;
@@ -185,7 +185,7 @@
   flex: 1;
 }
 
-.industry-arrow {
+.solutions-page .industry-arrow {
   color: var(--accent);
   font-size: 1.5rem;
   font-weight: 700;
@@ -193,25 +193,25 @@
 }
 
 /* Why Domain Section */
-.why-domain {
+.solutions-page .why-domain {
   padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
-.why-domain-content h2 {
+.solutions-page .why-domain-content h2 {
   font-size: 2rem;
   color: var(--text-primary);
   margin-bottom: 3rem;
   text-align: center;
 }
 
-.why-domain-grid {
+.solutions-page .why-domain-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(28rem, 100%), 1fr));
   gap: 2rem;
 }
 
-.why-domain-item {
+.solutions-page .why-domain-item {
   padding: 2rem;
   background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -220,13 +220,13 @@
   transition: all 0.3s ease;
 }
 
-.why-domain-item:hover {
+.solutions-page .why-domain-item:hover {
   border-color: rgba(255, 107, 43, 0.3);
   transform: translateY(-6px);
   box-shadow: 0 15px 35px rgba(255, 107, 43, 0.1);
 }
 
-.why-domain-icon {
+.solutions-page .why-domain-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   width: 52px;
@@ -241,35 +241,35 @@
   transition: all 0.3s ease;
 }
 
-.why-domain-item:hover .why-domain-icon {
+.solutions-page .why-domain-item:hover .why-domain-icon {
   background: linear-gradient(135deg, var(--accent) 0%, #ff8555 100%);
-  color: white;
+  color: var(--on-accent);
   transform: scale(1.1);
 }
 
-.why-domain-icon svg {
+.solutions-page .why-domain-icon svg {
   width: 26px;
   height: 26px;
 }
 
-.why-domain-item h3 {
+.solutions-page .why-domain-item h3 {
   font-size: 1.25rem;
   color: var(--heading-gold);
   margin-bottom: 0.75rem;
 }
 
-.why-domain-item p {
+.solutions-page .why-domain-item p {
   color: var(--text-secondary);
   line-height: 1.6;
   font-size: 0.95rem;
 }
 
 /* CTA Section */
-.solutions-cta {
+.solutions-page .solutions-cta {
   padding: 8rem 2rem;
 }
 
-.solutions-cta-container {
+.solutions-page .solutions-cta-container {
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
@@ -279,13 +279,13 @@
   border-radius: 16px;
 }
 
-.cta-headline {
+.solutions-page .cta-headline {
   font-size: 2.5rem;
   color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
-.cta-subtext {
+.solutions-page .cta-subtext {
   font-size: 1.125rem;
   color: var(--text-secondary);
   margin-bottom: 2rem;
@@ -293,46 +293,46 @@
 }
 
 /* Animations */
-.fade-up {
+.solutions-page .fade-up {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease-out;
 }
 
-.fade-up.visible {
+.solutions-page .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .solutions-hero {
+  .solutions-page .solutions-hero {
     padding: 120px 1.5rem 60px;
   }
 
-  .solutions-hero-headline {
+  .solutions-page .solutions-hero-headline {
     font-size: 2.5rem;
   }
 
-  .solutions-hero-desc {
+  .solutions-page .solutions-hero-desc {
     font-size: 1rem;
   }
 
-  .section-headline {
+  .solutions-page .section-headline {
     font-size: 2rem;
   }
 
-  .industries-grid {
+  .solutions-page .industries-grid {
     grid-template-columns: 1fr;
   }
 
-  .cta-headline {
+  .solutions-page .cta-headline {
     font-size: 2rem;
   }
 }
 
 /* Industry Page Specific Styles */
-.breadcrumb {
+.solutions-page .breadcrumb {
   display: inline-block;
   color: var(--text-secondary);
   text-decoration: none;
@@ -341,20 +341,20 @@
   transition: color 0.3s;
 }
 
-.breadcrumb:hover {
+.solutions-page .breadcrumb:hover {
   color: var(--accent);
 }
 
-.solutions-content {
+.solutions-page .solutions-content {
   padding: 8rem 2rem;
 }
 
-.solutions-list {
+.solutions-page .solutions-list {
   max-width: 900px;
   margin: 0 auto;
 }
 
-.solution-item {
+.solutions-page .solution-item {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
@@ -366,37 +366,37 @@
   transition: all 0.3s;
 }
 
-.solution-item:hover {
+.solutions-page .solution-item:hover {
   border-color: var(--accent);
   transform: translateX(8px);
 }
 
-.solution-bullet {
+.solutions-page .solution-bullet {
   color: var(--accent);
   font-size: 1.25rem;
   font-weight: 600;
 }
 
-.solution-item p {
+.solutions-page .solution-item p {
   color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }
 
-.ai-section {
+.solutions-page .ai-section {
   padding: 8rem 2rem;
   background: rgba(255, 107, 43, 0.02);
 }
 
-.ai-grid {
+.solutions-page .ai-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(28rem, 100%), 1fr));
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.ai-card {
+.solutions-page .ai-card {
   padding: 2rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -404,47 +404,47 @@
   transition: all 0.3s;
 }
 
-.ai-card:hover {
+.solutions-page .ai-card:hover {
   border-color: var(--accent);
   transform: translateY(-4px);
 }
 
-.ai-card-icon {
+.solutions-page .ai-card-icon {
   width: 40px;
   height: 40px;
   color: var(--accent);
   margin-bottom: 1rem;
 }
 
-.ai-card-icon svg {
+.solutions-page .ai-card-icon svg {
   width: 100%;
   height: 100%;
 }
 
-.ai-card h3 {
+.solutions-page .ai-card h3 {
   font-size: 1.125rem;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
-.ai-card p {
+.solutions-page .ai-card p {
   color: var(--text-secondary);
   line-height: 1.6;
   font-size: 0.95rem;
 }
 
-.compliance-section {
+.solutions-page .compliance-section {
   padding: 8rem 2rem;
 }
 
-.compliance-list {
+.solutions-page .compliance-list {
   max-width: 900px;
   margin: 0 auto;
   display: grid;
   gap: 1rem;
 }
 
-.compliance-item {
+.solutions-page .compliance-item {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
@@ -455,17 +455,17 @@
   transition: all 0.3s;
 }
 
-.compliance-item:hover {
+.solutions-page .compliance-item:hover {
   border-color: var(--accent);
 }
 
-.compliance-check {
+.solutions-page .compliance-check {
   color: var(--accent);
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.compliance-item p {
+.solutions-page .compliance-item p {
   color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;

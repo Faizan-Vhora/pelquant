@@ -6,205 +6,205 @@ const seoData = {
     title: 'PELQUANT - AI-First Full-Stack Development & Growth Marketing',
     description: 'Enterprise AI & full-stack development company. We build intelligent software, AI systems, and drive growth across 12+ industries with 13 core services.',
     keywords: 'AI development, full-stack development, AI integration, LLM integration, custom software, growth marketing, technical SEO, enterprise software',
-    ogImage: '/og-home.jpg'
+    ogImage: '/og/og-home.png'
   },
   '/about': {
     title: 'About PELQUANT - Enterprise Technology Partner',
     description: 'Enterprise technology partner across every industry. Full-stack development, AI integration, and performance marketing solutions.',
     keywords: 'enterprise technology, AI partner, full-stack agency, technology consulting',
-    ogImage: '/og-about.jpg'
+    ogImage: '/og/og-about.png'
   },
   '/services': {
     title: 'Services - Technology & Marketing Solutions | PELQUANT',
     description: '13 core services: AI/LLM Integration, SIEM, SOAR, Custom Software, DevOps, Technical SEO, Growth Marketing, and more.',
     keywords: 'AI services, software development services, marketing services, DevOps, cybersecurity, SEO services',
-    ogImage: '/og-services.jpg'
+    ogImage: '/og/og-services.png'
   },
   '/services/ai-llm-integration': {
     title: 'AI & LLM Integration Services - GPT, Claude, Custom Models | PELQUANT',
     description: 'Enterprise AI & LLM integration. Build intelligent systems with GPT, Claude, Gemini, or custom models. Production-ready AI solutions.',
     keywords: 'AI integration, LLM integration, GPT integration, Claude AI, custom AI models, enterprise AI',
-    ogImage: '/og-ai-llm.jpg'
+    ogImage: '/og/og-ai-llm.png'
   },
   '/services/siem': {
     title: 'SIEM Solutions - Security Information & Event Management | PELQUANT',
     description: 'Enterprise SIEM implementation and management. Real-time threat detection, compliance monitoring, and security analytics.',
     keywords: 'SIEM, security monitoring, threat detection, security analytics, compliance monitoring',
-    ogImage: '/og-siem.jpg'
+    ogImage: '/og/og-siem.png'
   },
   '/services/soar': {
     title: 'SOAR Platform - Security Orchestration & Automation | PELQUANT',
     description: 'SOAR platform implementation. Automate security operations, incident response, and threat intelligence workflows.',
     keywords: 'SOAR, security automation, incident response, security orchestration, threat intelligence',
-    ogImage: '/og-soar.jpg'
+    ogImage: '/og/og-soar.png'
   },
   '/services/ai-automation': {
     title: 'AI Automation Services - Intelligent Process Automation | PELQUANT',
     description: 'AI-powered automation solutions. Automate workflows, processes, and operations with intelligent systems.',
     keywords: 'AI automation, process automation, intelligent automation, workflow automation, RPA',
-    ogImage: '/og-ai-automation.jpg'
+    ogImage: '/og/og-ai-automation.png'
   },
   '/services/secops': {
     title: 'SecOps Services - Security Operations & Management | PELQUANT',
     description: 'Security operations services. 24/7 monitoring, threat hunting, incident response, and security management.',
     keywords: 'SecOps, security operations, threat hunting, incident response, security management',
-    ogImage: '/og-secops.jpg'
+    ogImage: '/og/og-secops.png'
   },
   '/services/custom-software-development': {
     title: 'Custom Software Development - Enterprise Solutions | PELQUANT',
     description: 'Custom software development for enterprises. Scalable, secure, and high-performance applications tailored to your needs.',
     keywords: 'custom software development, enterprise software, bespoke software, software engineering',
-    ogImage: '/og-custom-software.jpg'
+    ogImage: '/og/og-custom-software.png'
   },
   '/services/web-mobile-development': {
     title: 'Web & Mobile Development - React, React Native, Flutter | PELQUANT',
     description: 'Modern web and mobile app development. React, React Native, Flutter, and progressive web apps.',
     keywords: 'web development, mobile app development, React development, React Native, Flutter, PWA',
-    ogImage: '/og-web-mobile.jpg'
+    ogImage: '/og/og-web-mobile.png'
   },
   '/services/devops-cloud': {
     title: 'DevOps & Cloud Services - AWS, Azure, GCP | PELQUANT',
     description: 'DevOps and cloud infrastructure services. CI/CD, containerization, Kubernetes, AWS, Azure, GCP.',
     keywords: 'DevOps, cloud services, AWS, Azure, GCP, Kubernetes, CI/CD, infrastructure',
-    ogImage: '/og-devops.jpg'
+    ogImage: '/og/og-devops.png'
   },
   '/services/technical-seo': {
     title: 'Technical SEO Services - Core Web Vitals & Performance | PELQUANT',
     description: 'Technical SEO optimization. Core Web Vitals, site speed, crawlability, indexation, and technical audits.',
     keywords: 'technical SEO, Core Web Vitals, site speed optimization, SEO audit, crawlability',
-    ogImage: '/og-technical-seo.jpg'
+    ogImage: '/og/og-technical-seo.png'
   },
   '/services/growth-seo': {
     title: 'Growth SEO Services - Organic Traffic & Rankings | PELQUANT',
     description: 'Growth-focused SEO strategies. Keyword research, content optimization, link building, and organic growth.',
     keywords: 'growth SEO, organic traffic, keyword research, content SEO, link building, SEO strategy',
-    ogImage: '/og-growth-seo.jpg'
+    ogImage: '/og/og-growth-seo.png'
   },
   '/services/social-media-marketing': {
     title: 'Social Media Marketing - Strategy & Management | PELQUANT',
     description: 'Social media marketing services. Strategy, content creation, community management, and paid social campaigns.',
     keywords: 'social media marketing, social media strategy, content marketing, community management',
-    ogImage: '/og-social-media.jpg'
+    ogImage: '/og/og-social-media.png'
   },
   '/services/paid-advertising': {
     title: 'Paid Advertising Services - Google Ads, Meta Ads | PELQUANT',
     description: 'Paid advertising management. Google Ads, Meta Ads, LinkedIn Ads, and multi-channel campaigns.',
     keywords: 'paid advertising, Google Ads, Meta Ads, PPC, paid search, paid social',
-    ogImage: '/og-paid-ads.jpg'
+    ogImage: '/og/og-paid-ads.png'
   },
   '/services/performance-marketing': {
     title: 'Performance Marketing - ROI-Driven Campaigns | PELQUANT',
     description: 'Performance marketing services. Data-driven campaigns focused on conversions, ROI, and measurable results.',
     keywords: 'performance marketing, ROI marketing, conversion optimization, data-driven marketing',
-    ogImage: '/og-performance-marketing.jpg'
+    ogImage: '/og/og-performance-marketing.png'
   },
   '/solutions': {
     title: 'Industry Solutions - 12+ Verticals | PELQUANT',
     description: 'Industry-specific solutions for FinTech, HealthTech, eCommerce, SaaS, and 8+ more verticals.',
     keywords: 'industry solutions, vertical solutions, enterprise solutions, industry expertise',
-    ogImage: '/og-solutions.jpg'
+    ogImage: '/og/og-solutions.png'
   },
   '/solutions/fintech': {
     title: 'FinTech Solutions - Banking & Financial Software | PELQUANT',
     description: 'FinTech software development. Payment systems, banking apps, trading platforms, and compliance solutions.',
     keywords: 'FinTech development, banking software, payment systems, financial technology, compliance',
-    ogImage: '/og-fintech.jpg'
+    ogImage: '/og/og-fintech.png'
   },
   '/solutions/healthtech': {
     title: 'HealthTech Solutions - HIPAA-Compliant Healthcare Software | PELQUANT',
     description: 'HealthTech software development. HIPAA-compliant systems, telemedicine, EHR/EMR, and healthcare platforms.',
     keywords: 'HealthTech, healthcare software, HIPAA compliance, telemedicine, EHR, EMR',
-    ogImage: '/og-healthtech.jpg'
+    ogImage: '/og/og-healthtech.png'
   },
   '/solutions/ecommerce': {
     title: 'eCommerce Solutions - Online Store Development | PELQUANT',
     description: 'eCommerce platform development. Custom stores, marketplace solutions, and conversion optimization.',
     keywords: 'eCommerce development, online store, marketplace, Shopify, WooCommerce, custom eCommerce',
-    ogImage: '/og-ecommerce.jpg'
+    ogImage: '/og/og-ecommerce.png'
   },
   '/solutions/logistics': {
     title: 'Logistics Solutions - Supply Chain & Fleet Management | PELQUANT',
     description: 'Logistics software development. Supply chain management, fleet tracking, warehouse management systems.',
     keywords: 'logistics software, supply chain management, fleet management, warehouse management, TMS',
-    ogImage: '/og-logistics.jpg'
+    ogImage: '/og/og-logistics.png'
   },
   '/solutions/edtech': {
     title: 'EdTech Solutions - Learning Management Systems | PELQUANT',
     description: 'EdTech platform development. LMS, online courses, student management, and educational technology.',
     keywords: 'EdTech, learning management system, LMS, online education, educational technology',
-    ogImage: '/og-edtech.jpg'
+    ogImage: '/og/og-edtech.png'
   },
   '/solutions/legaltech': {
     title: 'LegalTech Solutions - Legal Practice Management Software | PELQUANT',
     description: 'LegalTech software development. Case management, document automation, and legal practice solutions.',
     keywords: 'LegalTech, legal software, case management, document automation, legal practice management',
-    ogImage: '/og-legaltech.jpg'
+    ogImage: '/og/og-legaltech.png'
   },
   '/solutions/proptech': {
     title: 'PropTech Solutions - Real Estate Technology | PELQUANT',
     description: 'PropTech software development. Property management, real estate platforms, and smart building solutions.',
     keywords: 'PropTech, real estate software, property management, real estate technology',
-    ogImage: '/og-proptech.jpg'
+    ogImage: '/og/og-proptech.png'
   },
   '/solutions/hrtech': {
     title: 'HRTech Solutions - Human Resources Management Systems | PELQUANT',
     description: 'HRTech software development. HRMS, recruitment platforms, payroll systems, and employee management.',
     keywords: 'HRTech, HRMS, recruitment software, payroll systems, employee management',
-    ogImage: '/og-hrtech.jpg'
+    ogImage: '/og/og-hrtech.png'
   },
   '/solutions/govtech': {
     title: 'GovTech Solutions - Government & Public Sector Technology | PELQUANT',
     description: 'GovTech software development. Citizen services, compliance systems, and government platforms.',
     keywords: 'GovTech, government software, public sector technology, citizen services',
-    ogImage: '/og-govtech.jpg'
+    ogImage: '/og/og-govtech.png'
   },
   '/solutions/saas': {
     title: 'SaaS Development - Multi-Tenant Cloud Platforms | PELQUANT',
     description: 'SaaS platform development. Multi-tenant architecture, subscription management, and scalable cloud solutions.',
     keywords: 'SaaS development, multi-tenant, cloud platform, subscription software, SaaS architecture',
-    ogImage: '/og-saas.jpg'
+    ogImage: '/og/og-saas.png'
   },
   '/solutions/media': {
     title: 'Media & Entertainment Solutions - Streaming & Content Platforms | PELQUANT',
     description: 'Media technology development. Streaming platforms, content management, and entertainment solutions.',
     keywords: 'media technology, streaming platform, content management, entertainment software',
-    ogImage: '/og-media.jpg'
+    ogImage: '/og/og-media.png'
   },
   '/solutions/manufacturing': {
     title: 'Manufacturing Solutions - Industry 4.0 & IoT | PELQUANT',
     description: 'Manufacturing software development. Industry 4.0, IoT integration, MES, and production management.',
     keywords: 'manufacturing software, Industry 4.0, IoT, MES, production management, smart manufacturing',
-    ogImage: '/og-manufacturing.jpg'
+    ogImage: '/og/og-manufacturing.png'
   },
   '/contact': {
     title: 'Contact PELQUANT - Let\'s Build Something Real',
     description: 'Get in touch with PELQUANT. Start your project with our enterprise technology and growth marketing team.',
     keywords: 'contact, get in touch, project inquiry, consultation',
-    ogImage: '/og-contact.jpg'
+    ogImage: '/og/og-contact.png'
   },
   '/careers': {
     title: 'Careers at PELQUANT - Join Our Team',
     description: 'Join PELQUANT. Work on cutting-edge AI and full-stack projects. Remote-first, global team, competitive compensation.',
     keywords: 'careers, jobs, hiring, remote jobs, AI jobs, software engineer jobs',
-    ogImage: '/og-careers.jpg'
+    ogImage: '/og/og-careers.png'
   },
   '/privacy': {
     title: 'Privacy Policy | PELQUANT',
     description: 'How PELQUANT collects, uses, and protects your information.',
     keywords: 'privacy policy, data protection',
-    ogImage: '/og-home.jpg'
+    ogImage: '/og/og-privacy.png'
   },
   '/terms': {
     title: 'Terms of Service | PELQUANT',
     description: 'The terms that govern your use of the PELQUANT website.',
     keywords: 'terms of service, terms and conditions',
-    ogImage: '/og-home.jpg'
+    ogImage: '/og/og-terms.png'
   },
   '/cookies': {
     title: 'Cookie Policy | PELQUANT',
     description: 'How PELQUANT uses cookies on this website.',
     keywords: 'cookie policy, cookies',
-    ogImage: '/og-home.jpg'
+    ogImage: '/og/og-cookies.png'
   }
 };
 
@@ -213,7 +213,15 @@ export default function SEO() {
 
   useEffect(() => {
     const path = location.pathname;
-    const seo = seoData[path] || seoData['/'];
+    const known = seoData[path];
+    // Unknown paths render the 404 page, so they must not inherit the home
+    // page's title/description or be offered to crawlers as canonical.
+    const seo = known || {
+      title: 'Page Not Found | PELQUANT',
+      description: 'The page you are looking for does not exist or has moved.',
+      keywords: '',
+      ogImage: '/og/og-cookies.png'
+    };
 
     // Update title
     document.title = seo.title;
@@ -233,6 +241,7 @@ export default function SEO() {
     // Standard meta tags
     updateMeta('description', seo.description);
     updateMeta('keywords', seo.keywords);
+    updateMeta('robots', known ? 'index, follow' : 'noindex, follow');
 
     // Open Graph tags
     updateMeta('og:title', seo.title, true);
@@ -248,14 +257,18 @@ export default function SEO() {
     updateMeta('twitter:description', seo.description);
     updateMeta('twitter:image', `https://pelquant.com${seo.ogImage}`);
 
-    // Canonical URL
+    // Canonical URL — only for real pages; a 404 has nothing to canonicalise.
     let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
+    if (known) {
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', `https://pelquant.com${path}`);
+    } else if (canonical) {
+      canonical.remove();
     }
-    canonical.setAttribute('href', `https://pelquant.com${path}`);
 
     // Structured Data (JSON-LD)
     let script = document.querySelector('script[type="application/ld+json"]');

@@ -1,7 +1,20 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icons } from '../components/Icons';
+import { submitForm } from '../formEndpoint';
+import { validateFields } from '../formValidation';
 import './ContactPage.css';
+
+// Portfolio and resume are optional, but a typo'd link is worth catching —
+// it's the whole point of the field.
+const FIELDS = {
+  name: 'name',
+  email: 'email',
+  position: 'position',
+  message: 'message',
+  portfolio: 'url',
+  resume: 'url',
+};
 
 export default function CareersPage() {
   const [formData, setFormData] = useState({
@@ -15,40 +28,55 @@ export default function CareersPage() {
   });
   const [status, setStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+  const formRef = useRef(null);
+
+  const errorFor = (field) => (touched[field] ? errors[field] : undefined);
+
+  const handleBlur = (e) => {
+    setTouched((t) => ({ ...t, [e.target.name]: true }));
+    setErrors(validateFields(formData, FIELDS));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const nextErrors = validateFields(formData, FIELDS);
+    setErrors(nextErrors);
+    setTouched(Object.fromEntries(Object.keys(FIELDS).map((f) => [f, true])));
+    const firstInvalid = Object.keys(nextErrors)[0];
+    if (firstInvalid) {
+      formRef.current?.querySelector(`[name="${firstInvalid}"]`)?.focus();
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus('');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/faizanvhoradev@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          position: formData.position,
-          location: formData.location || 'Not specified',
-          portfolio: formData.portfolio || 'Not provided',
-          resume: formData.resume || 'Not provided',
-          message: formData.message,
-          _subject: '💼 New Job Application - Pelquant',
-          _template: 'box',
-          _captcha: 'false'
-        }),
+      const ok = await submitForm({
+        name: formData.name,
+        email: formData.email,
+        position: formData.position,
+        location: formData.location || 'Not specified',
+        portfolio: formData.portfolio || 'Not provided',
+        resume: formData.resume || 'Not provided',
+        message: formData.message,
+        _subject: '💼 New Job Application - Pelquant',
+        _template: 'box',
+        _captcha: 'false'
       });
 
-      if (response.ok) {
+      if (ok) {
         setStatus('success');
         setFormData({ name: '', email: '', position: '', location: '', portfolio: '', resume: '', message: '' });
+        setErrors({});
+        setTouched({});
       } else {
         setStatus('error');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -56,15 +84,23 @@ export default function CareersPage() {
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const next = { ...formData, [e.target.name]: e.target.value };
+    setFormData(next);
+    if (errors[e.target.name]) {
+      setErrors(validateFields(next, FIELDS));
+    }
   };
 
   return (
     <div className="contact-page">
       <section className="contact-form-section" style={{ paddingTop: '120px' }}>
+        {/* This page had no h1 at all — it opened on an h2, leaving the
+            document outline (and the SEO title) with nothing to anchor to. */}
+        <h1 className="section-heading">Careers at Pelquant</h1>
+        <p className="careers-intro">
+          Remote-first, globally distributed, and building AI-native products for
+          clients across 12 industries.
+        </p>
         <h2 className="section-heading">Why Join Pelquant?</h2>
         <div className="contact-form-container">
           <div className="contact-info">
@@ -108,22 +144,24 @@ export default function CareersPage() {
 
           <div className="contact-form-wrapper">
             <h2>Apply Now</h2>
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form" onSubmit={handleSubmit} noValidate ref={formRef}>
               <div className="form-row">
-                <div className="form-group">
+                <div className={`form-group ${errorFor('name') ? 'has-error' : ''}`}>
                   <label htmlFor="name">Full Name *</label>
-                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
+                  <input type="text" id="name" name="name" autoComplete="name" value={formData.name} onChange={handleChange} onBlur={handleBlur} required aria-invalid={errorFor('name') ? true : undefined} aria-describedby={errorFor('name') ? 'name-error' : undefined} />
+                  {errorFor('name') && <p className="field-error" id="name-error">{errorFor('name')}</p>}
                 </div>
-                <div className="form-group">
+                <div className={`form-group ${errorFor('email') ? 'has-error' : ''}`}>
                   <label htmlFor="email">Email *</label>
-                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+                  <input type="email" id="email" name="email" autoComplete="email" value={formData.email} onChange={handleChange} onBlur={handleBlur} required aria-invalid={errorFor('email') ? true : undefined} aria-describedby={errorFor('email') ? 'email-error' : undefined} />
+                  {errorFor('email') && <p className="field-error" id="email-error">{errorFor('email')}</p>}
                 </div>
               </div>
 
               <div className="form-row">
-                <div className="form-group">
+                <div className={`form-group ${errorFor('position') ? 'has-error' : ''}`}>
                   <label htmlFor="position">Position *</label>
-                  <select id="position" name="position" value={formData.position} onChange={handleChange} required>
+                  <select id="position" name="position" value={formData.position} onChange={handleChange} onBlur={handleBlur} required aria-invalid={errorFor('position') ? true : undefined} aria-describedby={errorFor('position') ? 'position-error' : undefined}>
                     <option value="">Select a position</option>
                     <option value="fullstack">Full-Stack Engineer</option>
                     <option value="frontend">Frontend Developer</option>
@@ -135,6 +173,7 @@ export default function CareersPage() {
                     <option value="marketing">Performance Marketer</option>
                     <option value="designer">UI/UX Designer</option>
                   </select>
+                  {errorFor('position') && <p className="field-error" id="position-error">{errorFor('position')}</p>}
                 </div>
                 <div className="form-group">
                   <label htmlFor="location">Location</label>
@@ -142,19 +181,22 @@ export default function CareersPage() {
                 </div>
               </div>
 
-              <div className="form-group">
+              <div className={`form-group ${errorFor('portfolio') ? 'has-error' : ''}`}>
                 <label htmlFor="portfolio">Portfolio / LinkedIn / GitHub</label>
-                <input type="url" id="portfolio" name="portfolio" value={formData.portfolio} onChange={handleChange} placeholder="https://" />
+                <input type="url" id="portfolio" name="portfolio" value={formData.portfolio} onChange={handleChange} onBlur={handleBlur} placeholder="https://" aria-invalid={errorFor('portfolio') ? true : undefined} aria-describedby={errorFor('portfolio') ? 'portfolio-error' : undefined} />
+                {errorFor('portfolio') && <p className="field-error" id="portfolio-error">{errorFor('portfolio')}</p>}
               </div>
 
-              <div className="form-group">
+              <div className={`form-group ${errorFor('resume') ? 'has-error' : ''}`}>
                 <label htmlFor="resume">Resume / CV (Link)</label>
-                <input type="url" id="resume" name="resume" value={formData.resume} onChange={handleChange} placeholder="Google Drive, Dropbox, etc." />
+                <input type="url" id="resume" name="resume" value={formData.resume} onChange={handleChange} onBlur={handleBlur} placeholder="Google Drive, Dropbox, etc." aria-invalid={errorFor('resume') ? true : undefined} aria-describedby={errorFor('resume') ? 'resume-error' : undefined} />
+                {errorFor('resume') && <p className="field-error" id="resume-error">{errorFor('resume')}</p>}
               </div>
 
-              <div className="form-group">
+              <div className={`form-group ${errorFor('message') ? 'has-error' : ''}`}>
                 <label htmlFor="message">Why do you want to join Pelquant? *</label>
-                <textarea id="message" name="message" rows="5" value={formData.message} onChange={handleChange} required></textarea>
+                <textarea id="message" name="message" rows="5" value={formData.message} onChange={handleChange} onBlur={handleBlur} required aria-invalid={errorFor('message') ? true : undefined} aria-describedby={errorFor('message') ? 'message-error' : undefined}></textarea>
+                {errorFor('message') && <p className="field-error" id="message-error">{errorFor('message')}</p>}
               </div>
 
               <button type="submit" className="btn-primary" disabled={isSubmitting}>
