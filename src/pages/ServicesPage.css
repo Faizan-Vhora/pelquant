@@ -178,11 +178,19 @@
   margin: 0 auto;
 }
 
+/* The wrapper carries the reveal (and its staggered transition-delay); the card
+   inside carries the hover. Keeping both on one element made the delay apply to
+   the hover transition too. */
+.services-page .service-card-wrap {
+  display: flex;
+}
+
 .services-page .service-card {
   --card-accent: var(--accent);
   --card-accent-soft: rgba(255, 107, 43, 0.1);
   --card-accent-line: rgba(255, 107, 43, 0.22);
   position: relative;
+  flex: 1;
   display: flex;
   flex-direction: column;
   background: linear-gradient(160deg, var(--bg-card) 0%, rgba(19, 19, 31, 0.6) 100%);
@@ -194,8 +202,7 @@
   color: inherit;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               border-color 0.35s ease,
-              box-shadow 0.35s ease,
-              opacity 0.6s ease;
+              box-shadow 0.35s ease;
 }
 
 .services-page .tech-grid .service-card {
@@ -340,22 +347,18 @@
      were previously decorative text with no semantics behind them. */
   list-style: none;
   padding: 0;
-  counter-reset: none;
 }
 
+/* No hover state: these are plain list items, not links. A lift on something
+   you cannot click is the same false affordance the service cards used to have
+   before they became real links. */
 .services-page .process-step {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 34px 28px;
   text-align: left;
-  transition: transform 0.35s ease, border-color 0.35s ease, opacity 0.6s ease;
   position: relative;
-}
-
-.services-page .process-step:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255, 107, 43, 0.28);
 }
 
 .services-page .step-number {
@@ -519,7 +522,6 @@
 
   .services-page .service-card:hover,
   .services-page .service-card:focus-visible,
-  .services-page .process-step:hover,
   .services-page .btn-primary:hover,
   .services-page .btn-ghost:hover {
     transform: none;

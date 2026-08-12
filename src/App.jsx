@@ -78,14 +78,29 @@ function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      return undefined;
+    }
+
+    // Routes are lazily loaded, so on a direct hit to /services#technology the
+    // target does not exist yet — this effect runs before Suspense swaps the
+    // fallback for the real page, and the browser's own fragment handling
+    // already gave up for the same reason. Keep looking for a short while, then
+    // stop rather than hijacking the scroll position later on.
+    let frame;
+    const deadline = performance.now() + 2000;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const find = () => {
       const target = document.getElementById(hash.slice(1));
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-        return;
+        target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+      } else if (performance.now() < deadline) {
+        frame = requestAnimationFrame(find);
       }
-    }
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    };
+    find();
+    return () => cancelAnimationFrame(frame);
   }, [pathname, hash]);
 
   return null;

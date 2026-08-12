@@ -134,22 +134,28 @@ const stagger = (i) => ({ transitionDelay: `${Math.min(i, 5) * 70}ms` });
 function ServiceCard({ service, index }) {
   const Icon = service.icon;
   return (
-    <Link to={service.to} className="service-card fade-up" style={stagger(index)}>
-      <span className="service-icon" aria-hidden="true"><Icon /></span>
-      <h3 className="service-title">{service.title}</h3>
-      <p className="service-desc">{service.desc}</p>
-      <div className="service-features">
-        {service.tags.map((tag) => (
-          <span key={tag} className="feature-tag">{tag}</span>
-        ))}
-      </div>
-      <span className="service-more">
-        Explore service
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </span>
-    </Link>
+    // The reveal lives on the wrapper and the interaction lives on the card.
+    // Sharing one element meant the staggered transition-delay also applied to
+    // the hover transition, so the last cards in a row sat motionless for a
+    // third of a second before lifting — the page read as hung.
+    <div className="service-card-wrap fade-up" style={stagger(index)}>
+      <Link to={service.to} className="service-card" aria-label={service.title}>
+        <span className="service-icon" aria-hidden="true"><Icon /></span>
+        <h3 className="service-title">{service.title}</h3>
+        <p className="service-desc">{service.desc}</p>
+        <div className="service-features">
+          {service.tags.map((tag) => (
+            <span key={tag} className="feature-tag">{tag}</span>
+          ))}
+        </div>
+        <span className="service-more">
+          Explore service
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </span>
+      </Link>
+    </div>
   );
 }
 
@@ -213,7 +219,9 @@ export default function ServicesPage() {
           <h2 className="section-headline fade-up">
             Our <span className="orange-text">Process</span>
           </h2>
-          <ol className="process-grid">
+          {/* role="list" is redundant on paper, but Safari drops list semantics
+              from any list whose marker is removed with list-style: none. */}
+          <ol className="process-grid" role="list">
             {process.map((step, i) => (
               <li className="process-step fade-up" key={step.num} style={stagger(i)}>
                 <span className="step-number" aria-hidden="true">{step.num}</span>
