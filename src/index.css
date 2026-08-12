@@ -19,6 +19,10 @@
      ink is 6.6:1 and keeps the accent itself at full brand saturation, which
      darkening the orange to carry white text would not. */
   --on-accent: #1B0E06;
+  /* Secondary hue that distinguishes technology from marketing. Same cyan the
+     header dropdown uses for its Technology column, so the two groupings read
+     as one taxonomy across the nav and the /services hub. */
+  --svc-tech: #00D9FF;
   --heading-gold: #FFFFFF;
   --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
