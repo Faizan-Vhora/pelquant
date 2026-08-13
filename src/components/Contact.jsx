@@ -106,7 +106,9 @@ export default function Contact() {
   return (
     <section className="contact" id="contact">
       <div className="contact-bg-glow"></div>
-      <div className="contact-watermark">PELQUANT</div>
+      {/* Decorative wordmark at 2% opacity. Without aria-hidden a screen
+          reader announces a stray "PELQUANT" in the middle of the form. */}
+      <div className="contact-watermark" aria-hidden="true">PELQUANT</div>
       <div className="contact-container">
 
         <div className="contact-header fade-up">

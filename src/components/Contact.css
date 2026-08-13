@@ -355,12 +355,20 @@
   margin-bottom: 0.2rem;
 }
 
+/* a.sidebar-value is a real link (email / social handle) but rendered only 19px
+   tall with no expanded hit area, below the 24px minimum touch target. */
 .sidebar-value {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
   transition: color 0.2s ease;
+}
+
+a.sidebar-value {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
 }
 
 .sidebar-value:hover {

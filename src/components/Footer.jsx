@@ -173,10 +173,12 @@ export default function Footer() {
             © {new Date().getFullYear()} Pelquant. All rights reserved.
           </div>
           <div className="footer-legal">
+            {/* Separators are decoration, not content: a screen reader was
+                reading "Privacy middle dot Terms middle dot Cookies". */}
             <Link to="/privacy" onClick={handleLinkClick}>Privacy</Link>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <Link to="/terms" onClick={handleLinkClick}>Terms</Link>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <Link to="/cookies" onClick={handleLinkClick}>Cookies</Link>
           </div>
         </div>
