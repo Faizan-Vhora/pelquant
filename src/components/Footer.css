@@ -57,8 +57,11 @@
 }
 
 .footer-email {
-  display: inline-block;
-  /* Padding brings the link to the 24px minimum touch target. */
+  /* min-height rather than padding: at 0.875rem the padded box came to 23px,
+     one pixel short of the 24px minimum. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   padding: 0.25rem 0;
   font-size: 0.875rem;
   color: var(--text-secondary);

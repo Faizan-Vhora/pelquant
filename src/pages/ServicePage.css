@@ -32,7 +32,9 @@
 }
 
 .service-page .breadcrumb {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   padding: 0.4rem 0;
   color: var(--text-secondary);
   text-decoration: none;

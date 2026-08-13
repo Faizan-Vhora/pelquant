@@ -362,7 +362,10 @@
   gap: 0.5rem;
   padding: 0.875rem 2rem;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-  color: white;
+  /* White on the accent is 2.84:1. This rule and Header's .btn-primary have
+     equal specificity, so whichever loads last wins — this one did, which is
+     why the fix applied to Header never reached the buttons. */
+  color: var(--on-accent);
   border-radius: var(--radius-md);
   font-weight: 600;
   font-size: 0.95rem;

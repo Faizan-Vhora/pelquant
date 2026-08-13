@@ -137,7 +137,10 @@
 .svc-num {
   font-size: 0.7rem;
   font-weight: 700;
-  color: rgba(255,107,43,0.4);
+  /* Was rgba(255,107,43,0.4): 1.95:1 at this size, well under AA. Full accent
+     on the row background measures 5.9:1 and keeps the numeral subordinate
+     through its size and weight rather than by being nearly invisible. */
+  color: var(--accent);
   letter-spacing: 0.05em;
   padding-top: 3px;
 }

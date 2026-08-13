@@ -155,14 +155,24 @@ export default function SolutionsPage() {
             <span className="gradient-text">Industry-Specific Solutions.</span>
           </h1>
           <p className="solutions-hero-desc fade-up">
-            We don't learn your industry on your budget. Our teams bring existing domain knowledge across 12+ 
-            industry verticals — meaning we ask smarter questions and build solutions that actually fit your market.
+            We don&rsquo;t learn your industry on your budget. Our teams bring existing domain
+            knowledge across 12 industry verticals &mdash; meaning we ask smarter questions and
+            build solutions that actually fit your market.
           </p>
+          <div className="solutions-hero-actions fade-up">
+            <a href="#industries" className="btn-primary">
+              Browse all 12 industries
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <path d="M12 5v14M5 12l7 7 7-7" />
+              </svg>
+            </a>
+            <Link to="/services" className="btn-ghost">See our services</Link>
+          </div>
         </div>
       </section>
 
       {/* Industries Grid */}
-      <section className="industries-section">
+      <section className="industries-section" id="industries">
         <div className="solutions-container">
           <span className="section-tag fade-up">INDUSTRIES WE SERVE</span>
           <h2 className="section-headline fade-up">
@@ -170,17 +180,26 @@ export default function SolutionsPage() {
           </h2>
           <div className="industries-grid">
             {industries.map((industry, i) => (
-              <Link 
-                key={i} 
-                to={industry.link} 
-                className="industry-card fade-up" 
-                style={{ animationDelay: `${i * 50}ms` }}
+              // The reveal sits on the wrapper: transition-delay applies to every
+              // transition on an element, so putting the stagger on the card
+              // itself would also delay its hover.
+              <div
+                className="industry-card-wrap fade-up"
+                key={industry.link}
+                style={{ transitionDelay: `${Math.min(i, 7) * 50}ms` }}
               >
-                <div className="industry-icon">{industry.icon}</div>
-                <h3 className="industry-name">{industry.name}</h3>
-                <p className="industry-desc">{industry.desc}</p>
-                <span className="industry-arrow">→</span>
-              </Link>
+                <Link to={industry.link} className="industry-card" aria-label={industry.name}>
+                  <span className="industry-icon" aria-hidden="true">{industry.icon}</span>
+                  <h3 className="industry-name">{industry.name}</h3>
+                  <p className="industry-desc">{industry.desc}</p>
+                  <span className="industry-arrow">
+                    Explore
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -194,22 +213,22 @@ export default function SolutionsPage() {
             Every Industry Solution, <span className="orange-text">Built AI-First</span>
           </h2>
           <div className="ai-grid">
-            <div className="ai-card fade-up" style={{ animationDelay: '0ms' }}>
+            <div className="ai-card fade-up" style={{ transitionDelay: '0ms' }}>
               <div className="ai-card-icon"><Icons.MessageCircle /></div>
               <h3>Conversational AI Agents</h3>
               <p>RAG-powered assistants that answer questions across your documents, products, or systems in natural language — production-deployed, not a demo.</p>
             </div>
-            <div className="ai-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="ai-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="ai-card-icon"><Icons.Cpu /></div>
               <h3>Enterprise Workflow Automation</h3>
               <p>Multi-step agentic automation that handles repetitive operations, approvals, and data pipelines end-to-end, so your team works on what actually needs a human.</p>
             </div>
-            <div className="ai-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="ai-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="ai-card-icon"><Icons.Layers /></div>
               <h3>Retrieval-Augmented Generation</h3>
               <p>Custom knowledge bases wired into LLMs so answers are grounded in your own data — not generic model training, hallucination-prone guesses.</p>
             </div>
-            <div className="ai-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="ai-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="ai-card-icon"><Icons.Link /></div>
               <h3>LLM Integration & Orchestration</h3>
               <p>Production-ready integration of GPT, Claude, and custom models into your existing software stack — architected to scale, not bolted on.</p>
@@ -221,8 +240,13 @@ export default function SolutionsPage() {
       {/* Why Domain Expertise Matters */}
       <section className="why-domain">
         <div className="solutions-container">
+          {/* This was the only section without a tag, and its heading used a
+              one-off size instead of the shared .section-headline. */}
+          <span className="section-tag fade-up">WHY IT MATTERS</span>
+          <h2 className="section-headline fade-up">
+            Why <span className="orange-text">Domain Expertise</span> Matters
+          </h2>
           <div className="why-domain-content fade-up">
-            <h2>Why Domain Expertise Matters</h2>
             <div className="why-domain-grid">
               <div className="why-domain-item">
                 <div className="why-domain-icon"><Icons.Target /></div>
@@ -254,9 +278,17 @@ export default function SolutionsPage() {
         <div className="solutions-cta-container fade-up">
           <h2 className="cta-headline">Ready to Build for Your Industry?</h2>
           <p className="cta-subtext">
-            Let's discuss your industry-specific challenges and build solutions that work.
+            Let&rsquo;s discuss your industry-specific challenges and build solutions that work.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">
+              Get Started
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <Link to="/about" className="btn-ghost">Learn More About Us</Link>
+          </div>
         </div>
       </section>
     </div>

@@ -187,8 +187,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Room for the 24px hit areas without visually separating the dots. */
-  gap: 1.1rem;
+  /* Adjacent hit areas were overlapping, leaving each dot ~23px of exclusive
+     width; this gives every dot its full 24px without visibly spreading them. */
+  gap: 1.35rem;
   min-height: 24px;
   margin-bottom: 1.5rem;
 }
