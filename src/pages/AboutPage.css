@@ -60,21 +60,24 @@
   margin-bottom: 48px;
 }
 
+/* Was 96px at weight 500 — over half again the size of the /services and
+   /solutions h1s, in the light weight the rest of the site has moved off. */
 .about-page .hero-headline {
-  font-family: 'Inter', sans-serif;
-  font-size: 56px;
-  font-weight: 500;
-  line-height: 1.15;
-  margin-bottom: 36px;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 28px;
   color: #FFFFFF;
 }
 
-@media (min-width: 768px) {
-  .about-page .hero-headline { font-size: 76px; }
-}
-
-@media (min-width: 1024px) {
-  .about-page .hero-headline { font-size: 96px; }
+.about-page .hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
 }
 
 .about-page .gradient-text {
@@ -193,9 +196,11 @@
 }
 
 .about-page .section-headline {
-  font-family: 'Inter', sans-serif;
-  font-size: 44px;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 1rem;
@@ -207,14 +212,6 @@
   color: #8888aa;
   text-align: center;
   margin-bottom: 4rem;
-}
-
-@media (min-width: 768px) {
-  .about-page .section-headline { font-size: 60px; }
-}
-
-@media (min-width: 1024px) {
-  .about-page .section-headline { font-size: 72px; }
 }
 
 .about-page .why-grid {
@@ -346,8 +343,13 @@
   margin-bottom: 3rem;
 }
 
+/* inline-flex so the arrow icon sits on the text baseline with a real gap;
+   previously inline-block with a "→" character glued to the label. */
 .about-page .cta-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -370,15 +372,12 @@
 }
 
 .about-page .cta-headline {
-  font-family: 'Inter', sans-serif;
-  font-size: 36px;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: #FFFFFF;
   margin-bottom: 2rem;
-}
-
-@media (min-width: 768px) {
-  .about-page .cta-headline { font-size: 48px; }
 }
 
 .about-page .cta-buttons {
@@ -388,36 +387,79 @@
   flex-wrap: wrap;
 }
 
+.about-page .btn-primary,
+.about-page .btn-ghost,
+.about-page .cta-button {
+  transition: background 0.3s ease, border-color 0.3s ease,
+              color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-page .btn-primary svg,
+.about-page .cta-button svg {
+  width: 17px;
+  height: 17px;
+}
+
 .about-page .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: var(--on-accent);
   background: #ff6b2b;
-  padding: 18px 40px;
+  border: 2px solid #ff6b2b;
+  padding: 16px 38px;
   border-radius: 12px;
   text-decoration: none;
 }
 
+.about-page .btn-primary:hover,
+.about-page .cta-button:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--accent-glow);
+}
+
 .about-page .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: #eeeef8;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.1);
-  padding: 16px 40px;
+  padding: 16px 38px;
   border-radius: 12px;
   text-decoration: none;
 }
 
+.about-page .btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(255, 107, 43, 0.05);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .about-page .about-hero { padding: 8rem 1.5rem; }
-  .about-page .hero-headline { font-size: 42px; }
   .about-page .mission-right { grid-template-columns: 1fr; }
   .about-page .why-grid { grid-template-columns: 1fr; }
   .about-page .partners-grid { grid-template-columns: 1fr; }
   .about-page .cta-buttons { flex-direction: column; }
   .about-page .btn-primary,
 .about-page .btn-ghost { width: 100%; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .btn-primary:hover,
+  .about-page .btn-ghost:hover,
+  .about-page .cta-button:hover {
+    transform: none;
+  }
 }
