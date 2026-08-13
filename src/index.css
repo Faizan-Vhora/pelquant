@@ -305,3 +305,15 @@ input, textarea {
     transform: none !important;
   }
 }
+
+/* Anchor targets clear the fixed header. Without this, jumping to #services or
+   #contact leaves the section's first line tucked behind it. Applies to every
+   in-page target rather than being repeated per page. */
+[id="services"],
+[id="contact"],
+[id="industries"],
+[id="technology"],
+[id="marketing"],
+[id="main-content"] {
+  scroll-margin-top: 96px;
+}

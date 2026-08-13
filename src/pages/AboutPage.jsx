@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './AboutPage.css';
 
 export default function AboutPage() {
@@ -16,6 +17,15 @@ export default function AboutPage() {
               Pelquant is an AI-first technology and growth partner working globally with startups to enterprises, 
               building intelligent systems that solve real problems and drive measurable growth.
             </p>
+            <div className="hero-actions fade-up">
+              <Link to="/contact" className="btn-primary">
+                Start a conversation
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link to="/services" className="btn-ghost">See what we do</Link>
+            </div>
           </div>
         </section>
 
@@ -122,7 +132,13 @@ export default function AboutPage() {
             <p className="philosophy-quote fade-up">
               When you work with Pelquant, you're not hiring a vendor. You're partnering with a team that understands how modern technology and strategic marketing intersect.
             </p>
-            <a href="/contact" className="cta-button fade-up">Let's Talk →</a>
+            {/* Was a raw <a href>, which reloaded the whole app out of the SPA. */}
+            <Link to="/contact" className="cta-button fade-up">
+              Let&rsquo;s Talk
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
         </section>
 
@@ -130,8 +146,13 @@ export default function AboutPage() {
           <div className="cta-container">
             <h2 className="cta-headline">Ready to explore what's possible?</h2>
             <div className="cta-buttons">
-              <a href="/contact" className="btn-primary">Start Building →</a>
-              <a href="/#services" className="btn-ghost">Explore Services</a>
+              <Link to="/contact" className="btn-primary">
+                Start Building
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <Link to="/#services" className="btn-ghost">Explore Services</Link>
             </div>
           </div>
         </section>
