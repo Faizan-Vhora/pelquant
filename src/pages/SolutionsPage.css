@@ -464,11 +464,21 @@
 
 .solutions-page .solutions-content {
   padding: 6.5rem 2rem;
+  text-align: center;
 }
 
 .solutions-page .solutions-list {
   max-width: 900px;
   margin: 0 auto;
+}
+
+/* The reveal lives on the <li>; the item inside owns the hover, so the
+   staggered transition-delay cannot reach the hover transition. */
+.solutions-page .solution-row,
+.solutions-page .compliance-row {
+  display: block;
+  /* the section centres its heading; the rows must not inherit that */
+  text-align: left;
 }
 
 .solutions-page .solution-item {
@@ -480,7 +490,7 @@
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 8px;
-  transition: all 0.3s;
+  transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
 .solutions-page .solution-item:hover {
@@ -488,10 +498,23 @@
   transform: translateX(8px);
 }
 
-.solutions-page .solution-bullet {
+/* SVG rather than a "→" character: screen readers announced "right arrow"
+   before every single row. */
+.solutions-page .solution-bullet,
+.solutions-page .compliance-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 24px;
   color: var(--accent);
-  font-size: 1.25rem;
-  font-weight: 600;
+}
+
+.solutions-page .solution-bullet svg,
+.solutions-page .compliance-check svg {
+  width: 16px;
+  height: 16px;
 }
 
 .solutions-page .solution-item p {
@@ -556,6 +579,7 @@
 
 .solutions-page .compliance-section {
   padding: 6.5rem 2rem;
+  text-align: center;
 }
 
 .solutions-page .compliance-list {
@@ -573,18 +597,14 @@
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 8px;
-  transition: all 0.3s;
+  transition: border-color 0.3s ease;
 }
 
 .solutions-page .compliance-item:hover {
   border-color: var(--accent);
 }
 
-.solutions-page .compliance-check {
-  color: var(--accent);
-  font-size: 1.5rem;
-  font-weight: 700;
-}
+
 
 .solutions-page .compliance-item p {
   color: var(--text-secondary);
@@ -610,5 +630,44 @@
      honoured and the later cards would sit blank. */
   .solutions-page .fade-up {
     transition-delay: 0ms !important;
+  }
+}
+
+/* Industry template: list semantics and reveal wrappers.
+   The solution and compliance rows became <ul>/<li> so assistive tech gets an
+   item count and boundaries; the markers are removed visually. */
+.solutions-page .solutions-list,
+.solutions-page .compliance-list {
+  list-style: none;
+  padding: 0;
+  /* `margin: 0` here would cancel the `margin: 0 auto` these containers already
+     carry and shove the 900px column against the left edge. */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.solutions-page .ai-card-wrap {
+  display: flex;
+}
+
+.solutions-page .ai-card-wrap .ai-card {
+  flex: 1;
+}
+
+.solutions-page .breadcrumb svg {
+  width: 15px;
+  height: 15px;
+  margin-right: 6px;
+  transition: transform 0.3s ease;
+}
+
+.solutions-page .breadcrumb:hover svg {
+  transform: translateX(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solutions-page .solution-item:hover,
+  .solutions-page .breadcrumb:hover svg {
+    transform: none;
   }
 }
