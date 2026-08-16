@@ -567,7 +567,8 @@
   }
 }
 
-/* SIEM Specific Styles */
+/* Explainer block (was .siem-explainer: a page-specific name for a section
+   the shared template now owns). */
 .service-page .siem-explainer {
   max-width: 900px;
   margin: 0 auto;
@@ -1714,5 +1715,37 @@
 @media (max-width: 768px) {
   .service-page .framework-arrow {
     display: none;
+  }
+}
+
+/* ── Hover lifts re-asserted after the reveal rule ────────────────────────
+   `.service-page .fade-up.visible { transform: translateY(0) }` is declared
+   later in this file than these hover rules and carries the same specificity,
+   so it won: the lift on every card that also carries .fade-up never happened.
+   Verified with a real pointer — the card matched :hover but its computed
+   transform stayed at the identity matrix.
+   Re-declaring here, after that rule, lets the hover win on order. */
+.service-page .benefit-card:hover {
+  transform: translateY(-6px);
+}
+
+.service-page .product-item:hover {
+  transform: translateX(10px);
+}
+
+.service-page .tech-category:hover {
+  transform: translateY(-4px);
+}
+
+.service-page .related-card:hover {
+  transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-page .benefit-card:hover,
+  .service-page .product-item:hover,
+  .service-page .tech-category:hover,
+  .service-page .related-card:hover {
+    transform: none;
   }
 }

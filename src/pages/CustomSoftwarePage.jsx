@@ -104,17 +104,17 @@ export default function CustomSoftwarePage() {
               <h3>Tailored to Your Needs</h3>
               <p>No generic templates. Every solution is designed specifically for your business requirements.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.TrendingUp /></div>
               <h3>Built to Scale</h3>
               <p>Architecture designed for growth — from MVP to enterprise scale without rebuilding.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Lock /></div>
               <h3>Security First</h3>
               <p>OWASP compliance, penetration testing, and security best practices built in from day one.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.Lightning /></div>
               <h3>Agile Delivery</h3>
               <p>Working software every 2 weeks. See progress early, provide feedback, iterate fast.</p>
@@ -132,7 +132,7 @@ export default function CustomSoftwarePage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -153,7 +153,7 @@ export default function CustomSoftwarePage() {
           </h2>
           <div className="products-list">
             {useCases.map((useCase, i) => (
-              <div key={i} className="product-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <span className="product-bullet">→</span>
                 <p>{useCase}</p>
               </div>
@@ -171,7 +171,7 @@ export default function CustomSoftwarePage() {
           </h2>
           <div className="tech-grid">
             {techStack.map((tech, i) => (
-              <div key={i} className="tech-category fade-up" style={{ animationDelay: `${i * 100}ms` }}>
+              <div key={i} className="tech-category fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
                 <h3 className="tech-category-name">{tech.category}</h3>
                 <div className="tech-tags">
                   {tech.items.map((item, j) => (
@@ -244,12 +244,12 @@ export default function CustomSoftwarePage() {
               <p>Full-stack applications for web and mobile platforms</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/ai-llm-integration" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/ai-llm-integration" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>AI & LLM Integration</h3>
               <p>Add intelligent capabilities to your software</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/devops-cloud" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/devops-cloud" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>DevOps & Cloud</h3>
               <p>Scalable infrastructure and deployment pipelines</p>
               <span className="related-arrow">→</span>

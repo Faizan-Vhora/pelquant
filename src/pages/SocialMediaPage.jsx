@@ -117,17 +117,17 @@ export default function SocialMediaPage() {
               <h3>Build Community</h3>
               <p>Create engaged audiences that become brand advocates and customers.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Volume2 /></div>
               <h3>Brand Awareness</h3>
               <p>Reach new audiences and stay top-of-mind with consistent, quality content.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.MessageCircle /></div>
               <h3>Direct Engagement</h3>
               <p>Two-way conversations that build trust and gather customer insights.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.Chart /></div>
               <h3>Measurable Results</h3>
               <p>Track reach, engagement, traffic, and conversions — not just follower counts.</p>
@@ -145,7 +145,7 @@ export default function SocialMediaPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -166,7 +166,7 @@ export default function SocialMediaPage() {
           </h2>
           <div className="social-platforms">
             {platforms.map((platform, i) => (
-              <div key={i} className="social-platform-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="social-platform-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="platform-icon">{platform.icon}</div>
                 <h3>{platform.name}</h3>
                 <p>{platform.desc}</p>
@@ -185,7 +185,7 @@ export default function SocialMediaPage() {
           </h2>
           <div className="products-list">
             {contentTypes.map((content, i) => (
-              <div key={i} className="product-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <span className="product-bullet">→</span>
                 <p>{content}</p>
               </div>
@@ -270,12 +270,12 @@ export default function SocialMediaPage() {
               <p>Amplify organic reach with paid social campaigns</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/performance-marketing" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/performance-marketing" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Performance Marketing</h3>
               <p>Complete growth strategy across all channels</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/growth-seo" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/growth-seo" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Growth SEO</h3>
               <p>Drive organic traffic to complement social</p>
               <span className="related-arrow">→</span>

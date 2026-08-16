@@ -75,7 +75,7 @@ export default function TrustBar() {
             <div
               key={i}
               className={`trust-metric ${visible ? 'visible' : ''}`}
-              style={{ animationDelay: `${i * 0.1}s` }}
+              style={{ transitionDelay: `${i * 0.1}s` }}
             >
               <div className="metric-icon">{metric.icon}</div>
               <div className="metric-content">

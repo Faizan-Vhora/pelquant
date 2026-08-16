@@ -201,7 +201,7 @@ export default function ContactPage() {
 
           {/* Contact Info */}
           <div className="contact-info-wrapper">
-            <div className="contact-info-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="contact-info-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3 className="info-card-title">Email Us</h3>
               <a href="mailto:info@pelquant.com" className="info-card-link">
                 info@pelquant.com
@@ -211,7 +211,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="contact-info-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="contact-info-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3 className="info-card-title">Follow Us</h3>
               <a href="https://twitter.com/pelquant" className="info-card-link" target="_blank" rel="noopener noreferrer">
                 @pelquant
@@ -221,7 +221,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="contact-info-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="contact-info-card fade-up" style={{ transitionDelay: '300ms' }}>
               <h3 className="info-card-title">Quick Response</h3>
               <p className="info-card-text">24 Hours</p>
               <p className="info-card-desc">
@@ -237,7 +237,7 @@ export default function ContactPage() {
         <div className="faq-container">
           <h2 className="faq-headline fade-up">Common Questions</h2>
           <div className="faq-grid">
-            <div className="faq-item fade-up" style={{ animationDelay: '0ms' }}>
+            <div className="faq-item fade-up" style={{ transitionDelay: '0ms' }}>
               <h3 className="faq-question">What's your typical project timeline?</h3>
               <p className="faq-answer">
                 Most projects take 4-12 weeks depending on scope. We'll give you a detailed timeline 
@@ -245,7 +245,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="faq-item fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="faq-item fade-up" style={{ transitionDelay: '100ms' }}>
               <h3 className="faq-question">Do you work with startups?</h3>
               <p className="faq-answer">
                 Absolutely. We've helped dozens of startups go from idea to funded product. 
@@ -253,7 +253,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="faq-item fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="faq-item fade-up" style={{ transitionDelay: '200ms' }}>
               <h3 className="faq-question">What's your pricing model?</h3>
               <p className="faq-answer">
                 We offer both project-based and retainer pricing. After understanding your needs, 
@@ -261,7 +261,7 @@ export default function ContactPage() {
               </p>
             </div>
 
-            <div className="faq-item fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="faq-item fade-up" style={{ transitionDelay: '300ms' }}>
               <h3 className="faq-question">Can you help with existing projects?</h3>
               <p className="faq-answer">
                 Yes. We regularly take over stalled projects, modernize legacy systems, 

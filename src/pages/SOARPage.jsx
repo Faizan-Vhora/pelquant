@@ -148,17 +148,17 @@ export default function SOARPage() {
               <h3>60x Faster Response</h3>
               <p>Automate tasks that take analysts 45 minutes down to under 60 seconds.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Link /></div>
               <h3>Unified Tool Ecosystem</h3>
               <p>Connect SIEM, EDR, firewalls, ticketing, and identity systems into one orchestrated workflow.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Cpu /></div>
               <h3>Intelligent Automation</h3>
               <p>Auto-enrich alerts with threat intel, context, and historical data before human review.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.Chart /></div>
               <h3>Measurable ROI</h3>
               <p>Track MTTR reduction, automation coverage, and analyst workload with built-in metrics.</p>
@@ -176,7 +176,7 @@ export default function SOARPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -197,7 +197,7 @@ export default function SOARPage() {
           </h2>
           <div className="playbooks-grid">
             {playbooks.map((playbook, i) => (
-              <div key={i} className="playbook-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="playbook-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <h3>{playbook.title}</h3>
                 <p>{playbook.desc}</p>
               </div>
@@ -215,7 +215,7 @@ export default function SOARPage() {
           </h2>
           <div className="platforms-grid">
             {platforms.map((platform, i) => (
-              <div key={i} className="platform-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="platform-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <h3>{platform.name}</h3>
                 <p>{platform.desc}</p>
               </div>
@@ -261,12 +261,12 @@ export default function SOARPage() {
               <p>Complete security visibility and threat detection</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/secops" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/secops" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SecOps with AI</h3>
               <p>AI-enhanced security operations programs</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/ai-automation" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/ai-automation" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>AI-Powered Automation</h3>
               <p>Intelligent automation for business operations</p>
               <span className="related-arrow">→</span>

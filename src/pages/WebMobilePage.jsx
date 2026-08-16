@@ -129,17 +129,17 @@ export default function WebMobilePage() {
               <h3>Beautiful Design</h3>
               <p>User-centered design that's both visually stunning and highly functional.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Lightning /></div>
               <h3>Lightning Fast</h3>
               <p>Optimized for Core Web Vitals and mobile performance. Sub-second load times.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Smartphone /></div>
               <h3>Cross-Platform</h3>
               <p>One codebase for iOS and Android with React Native or Flutter.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.Lock /></div>
               <h3>Enterprise Security</h3>
               <p>OWASP compliant, penetration tested, and built for regulated industries.</p>
@@ -157,7 +157,7 @@ export default function WebMobilePage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -178,7 +178,7 @@ export default function WebMobilePage() {
           </h2>
           <div className="platforms-grid">
             {features.map((feature, i) => (
-              <div key={i} className="platform-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="platform-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <h3>{feature.title}</h3>
                 <p>{feature.desc}</p>
               </div>
@@ -196,7 +196,7 @@ export default function WebMobilePage() {
           </h2>
           <div className="tech-grid">
             {techStack.map((tech, i) => (
-              <div key={i} className="tech-category fade-up" style={{ animationDelay: `${i * 100}ms` }}>
+              <div key={i} className="tech-category fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
                 <h3 className="tech-category-name">{tech.category}</h3>
                 <div className="tech-tags">
                   {tech.items.map((item, j) => (
@@ -278,12 +278,12 @@ export default function WebMobilePage() {
               <p>Bespoke backend systems and enterprise software</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/ai-llm-integration" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/ai-llm-integration" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>AI & LLM Integration</h3>
               <p>Add intelligent features to your apps</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/devops-cloud" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/devops-cloud" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>DevOps & Cloud</h3>
               <p>Scalable hosting and deployment infrastructure</p>
               <span className="related-arrow">→</span>

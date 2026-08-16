@@ -111,17 +111,17 @@ export default function AIAutomationPage() {
               <h3>24/7 Operation</h3>
               <p>Automation works around the clock without breaks, eliminating bottlenecks and delays.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Target /></div>
               <h3>Near-Zero Errors</h3>
               <p>AI-powered automation achieves near-human accuracy without human error or fatigue.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.DollarSign /></div>
               <h3>Clear ROI</h3>
               <p>Every automation is measured by time saved, cost reduction, and error elimination.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.Link /></div>
               <h3>No Tool Changes</h3>
               <p>We connect your existing systems — no need to replace tools your team already uses.</p>
@@ -139,7 +139,7 @@ export default function AIAutomationPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -160,7 +160,7 @@ export default function AIAutomationPage() {
           </h2>
           <div className="automation-grid">
             {categories.map((category, i) => (
-              <div key={i} className="automation-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="automation-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <h3>{category.title}</h3>
                 <p className="automation-desc">{category.desc}</p>
                 <div className="automation-items">
@@ -214,7 +214,7 @@ export default function AIAutomationPage() {
                 <span className="tech-tag">Custom Code</span>
               </div>
             </div>
-            <div className="tech-category fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="tech-category fade-up" style={{ transitionDelay: '100ms' }}>
               <h3 className="tech-category-name">Document AI</h3>
               <div className="tech-tags">
                 <span className="tech-tag">OCR</span>
@@ -223,7 +223,7 @@ export default function AIAutomationPage() {
                 <span className="tech-tag">LLMs</span>
               </div>
             </div>
-            <div className="tech-category fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="tech-category fade-up" style={{ transitionDelay: '200ms' }}>
               <h3 className="tech-category-name">RPA Tools</h3>
               <div className="tech-tags">
                 <span className="tech-tag">UiPath</span>
@@ -232,7 +232,7 @@ export default function AIAutomationPage() {
                 <span className="tech-tag">Playwright</span>
               </div>
             </div>
-            <div className="tech-category fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="tech-category fade-up" style={{ transitionDelay: '300ms' }}>
               <h3 className="tech-category-name">Integration</h3>
               <div className="tech-tags">
                 <span className="tech-tag">REST APIs</span>
@@ -282,12 +282,12 @@ export default function AIAutomationPage() {
               <p>Advanced AI capabilities for intelligent automation</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/soar" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/soar" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SOAR Implementation</h3>
               <p>Security automation and orchestration</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/custom-software-development" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/custom-software-development" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Custom Software Development</h3>
               <p>Bespoke solutions for unique workflows</p>
               <span className="related-arrow">→</span>

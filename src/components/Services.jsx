@@ -82,7 +82,7 @@ function ServiceRow({ service, index }) {
       to={service.link}
       className="svc-row"
       ref={ref}
-      style={{ animationDelay: `${index * 0.06}s` }}
+      style={{ transitionDelay: `${index * 0.06}s` }}
     >
       <span className="svc-num">{service.num}</span>
       <div className="svc-body">

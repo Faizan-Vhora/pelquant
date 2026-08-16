@@ -64,7 +64,7 @@ export default function Industries() {
               to={ind.link}
               className="ind-card"
               ref={el => (rowRefs.current[i] = el)}
-              style={{ '--c': ind.color, animationDelay: `${i * 0.04}s` }}
+              style={{ '--c': ind.color, transitionDelay: `${i * 0.04}s` }}
             >
               <div className="ind-accent" />
               <div className="ind-content">

@@ -104,17 +104,17 @@ export default function GrowthSEOPage() {
               <h3>Organic Traffic Growth</h3>
               <p>Sustainable traffic growth from high-intent keywords that convert.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Target /></div>
               <h3>Intent-Matched Content</h3>
               <p>Content designed for what users actually want at each stage of their journey.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Link /></div>
               <h3>Quality Backlinks</h3>
               <p>Ethical link building that improves domain authority and rankings.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.DollarSign /></div>
               <h3>ROI-Focused</h3>
               <p>Every keyword and content piece tied to business outcomes and conversions.</p>
@@ -132,7 +132,7 @@ export default function GrowthSEOPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -153,7 +153,7 @@ export default function GrowthSEOPage() {
           </h2>
           <div className="platforms-grid">
             {contentTypes.map((content, i) => (
-              <div key={i} className="platform-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="platform-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <h3>{content.title}</h3>
                 <p>{content.desc}</p>
               </div>
@@ -268,12 +268,12 @@ export default function GrowthSEOPage() {
               <p>Fix technical issues holding your rankings back</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/performance-marketing" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/performance-marketing" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Performance Marketing</h3>
               <p>Complete growth strategy across all channels</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/paid-advertising" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/paid-advertising" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Paid Advertising</h3>
               <p>Complement organic with paid search campaigns</p>
               <span className="related-arrow">→</span>

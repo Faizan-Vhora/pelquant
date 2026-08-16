@@ -113,17 +113,17 @@ export default function DevOpsCloudPage() {
               <h3>Ship Faster</h3>
               <p>Automated CI/CD pipelines reduce deployment time from hours to minutes.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.TrendingUp /></div>
               <h3>Scale Effortlessly</h3>
               <p>Auto-scaling infrastructure that grows with demand and shrinks to save costs.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Eye /></div>
               <h3>Full Observability</h3>
               <p>Complete visibility into metrics, logs, and traces across your entire stack.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.DollarSign /></div>
               <h3>Cost Optimized</h3>
               <p>Continuous cost monitoring and optimization to eliminate cloud waste.</p>
@@ -141,7 +141,7 @@ export default function DevOpsCloudPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -162,7 +162,7 @@ export default function DevOpsCloudPage() {
           </h2>
           <div className="cloud-platforms">
             {cloudPlatforms.map((platform, i) => (
-              <div key={i} className="cloud-platform-card fade-up" style={{ animationDelay: `${i * 100}ms` }}>
+              <div key={i} className="cloud-platform-card fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
                 <h3>{platform.name}</h3>
                 <div className="cloud-services">
                   {platform.services.map((service, j) => (
@@ -184,7 +184,7 @@ export default function DevOpsCloudPage() {
           </h2>
           <div className="tech-grid">
             {tools.map((tool, i) => (
-              <div key={i} className="tech-category fade-up" style={{ animationDelay: `${i * 100}ms` }}>
+              <div key={i} className="tech-category fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
                 <h3 className="tech-category-name">{tool.category}</h3>
                 <div className="tech-tags">
                   {tool.items.map((item, j) => (
@@ -269,12 +269,12 @@ export default function DevOpsCloudPage() {
               <p>Build the applications that run on your infrastructure</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/secops" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/secops" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SecOps with AI</h3>
               <p>Secure your cloud infrastructure and operations</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/siem" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/siem" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>SIEM Implementation</h3>
               <p>Monitor and secure your cloud workloads</p>
               <span className="related-arrow">→</span>

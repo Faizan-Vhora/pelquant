@@ -95,17 +95,17 @@ export default function TechnicalSEOPage() {
               <h3>Better Crawlability</h3>
               <p>Ensure search engines can access and index all your important pages efficiently.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Lightning /></div>
               <h3>Faster Load Times</h3>
               <p>Core Web Vitals optimization for better rankings and user experience.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Chart /></div>
               <h3>Rich Results</h3>
               <p>Structured data implementation to win featured snippets and rich results.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.TrendingUp /></div>
               <h3>Higher Rankings</h3>
               <p>Fix technical issues that are holding your rankings back.</p>
@@ -123,7 +123,7 @@ export default function TechnicalSEOPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -144,7 +144,7 @@ export default function TechnicalSEOPage() {
           </h2>
           <div className="products-list">
             {issues.map((issue, i) => (
-              <div key={i} className="product-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <span className="product-bullet">→</span>
                 <p>{issue}</p>
               </div>
@@ -238,12 +238,12 @@ export default function TechnicalSEOPage() {
               <p>Content strategy and keyword optimization</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/web-mobile-development" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/web-mobile-development" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Web Development</h3>
               <p>Build fast, SEO-optimized websites</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/performance-marketing" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/performance-marketing" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Performance Marketing</h3>
               <p>Complete digital marketing strategy</p>
               <span className="related-arrow">→</span>
