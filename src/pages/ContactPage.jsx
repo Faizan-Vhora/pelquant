@@ -88,11 +88,11 @@ export default function ContactPage() {
         <div className="contact-hero-container">
           <span className="contact-tag fade-up">GET IN TOUCH</span>
           <h1 className="contact-hero-headline fade-up">
-            Let's Build Something Real.
+            Let&rsquo;s Build Something Real.
           </h1>
           <p className="contact-hero-subtext fade-up">
-            Whether you're starting from scratch or scaling fast, we're here to help. 
-            Tell us about your project and we'll get back to you within 24 hours.
+            Whether you&rsquo;re starting from scratch or scaling fast, we&rsquo;re here to help. 
+            Tell us about your project and we&rsquo;ll get back to you within 24 hours.
           </p>
         </div>
       </section>
@@ -238,7 +238,7 @@ export default function ContactPage() {
           <h2 className="faq-headline fade-up">Common Questions</h2>
           <div className="faq-grid">
             <div className="faq-item fade-up" style={{ transitionDelay: '0ms' }}>
-              <h3 className="faq-question">What's your typical project timeline?</h3>
+              <h3 className="faq-question">What&rsquo;s your typical project timeline?</h3>
               <p className="faq-answer">
                 Most projects take 4-12 weeks depending on scope. We'll give you a detailed timeline 
                 after our initial consultation.
@@ -248,16 +248,16 @@ export default function ContactPage() {
             <div className="faq-item fade-up" style={{ transitionDelay: '100ms' }}>
               <h3 className="faq-question">Do you work with startups?</h3>
               <p className="faq-answer">
-                Absolutely. We've helped dozens of startups go from idea to funded product. 
+                Absolutely. We&rsquo;ve helped dozens of startups go from idea to funded product. 
                 We understand the constraints and move fast.
               </p>
             </div>
 
             <div className="faq-item fade-up" style={{ transitionDelay: '200ms' }}>
-              <h3 className="faq-question">What's your pricing model?</h3>
+              <h3 className="faq-question">What&rsquo;s your pricing model?</h3>
               <p className="faq-answer">
                 We offer both project-based and retainer pricing. After understanding your needs, 
-                we'll propose the model that makes the most sense.
+                we&rsquo;ll propose the model that makes the most sense.
               </p>
             </div>
 
