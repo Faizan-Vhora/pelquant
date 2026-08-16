@@ -429,16 +429,51 @@
   }
 }
 
+/* Used only by the careers page. Brought onto the same h2 scale as every other
+   section heading on the site. */
 .contact-page .section-heading {
-  font-family: 'Inter', sans-serif;
-  font-size: 32px;
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: #FFFFFF;
   text-align: center;
   margin: 0 auto 40px;
   max-width: 1200px;
 }
 
-.contact-page h1.section-heading {
+/* Careers hero. The h1 shared .section-heading with the h2 beneath it, so both
+   rendered at 48px/700 and the page read as two equal headings. */
+/* The section does not centre its children, so an inline-block pill hugged the
+   left edge while the heading beneath it was centred. */
+.contact-page .careers-hero {
+  text-align: center;
+}
+
+.contact-page .careers-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 6px 16px;
+  background: rgba(255, 107, 43, 0.08);
+  border: 1px solid rgba(255, 107, 43, 0.2);
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.contact-page .careers-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: #FFFFFF;
+  text-align: center;
   margin-bottom: 1rem;
 }
 
@@ -457,15 +492,9 @@
 }
 
 @media (min-width: 768px) {
-  .contact-page .section-heading {
-    font-size: 42px;
-  }
 }
 
 @media (min-width: 1024px) {
-  .contact-page .section-heading {
-    font-size: 48px;
-  }
 }
 
 .contact-page .form-message {
