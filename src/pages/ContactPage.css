@@ -40,41 +40,33 @@
   text-align: center;
 }
 
+/* Was bare text; every other page renders its eyebrow as a pill. */
 .contact-page .contact-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  display: block;
-  margin-bottom: 24px;
+  letter-spacing: 3px;
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(255, 107, 43, 0.08);
+  border: 1px solid rgba(255, 107, 43, 0.2);
+  border-radius: 20px;
+  margin-bottom: 28px;
 }
 
+/* The FAQ h2 below rendered at 72px against this 52px h1, so the page's most
+   important heading was its smallest. Both now use the shared display scale. */
 .contact-page .contact-hero-headline {
-  font-family: 'Inter', sans-serif;
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 1.15;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
   color: #FFFFFF;
   margin-bottom: 24px;
-  letter-spacing: 0;
-  
   -moz-osx-font-smoothing: grayscale;
-  
-  
-}
-
-@media (min-width: 768px) {
-  .contact-page .contact-hero-headline {
-    font-size: 42px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .contact-page .contact-hero-headline {
-    font-size: 52px;
-  }
 }
 
 .contact-page .contact-hero-subtext {
@@ -108,6 +100,49 @@
 }
 
 /* Contact Form */
+/* .contact-main had padding only inside the mobile media query, so on desktop
+   the form card sat 10px below the hero copy while the FAQ section below it
+   had 100px. */
+.contact-page .contact-main {
+  padding: 72px 20px 100px;
+}
+
+/* Restored: commit 73fdd222 deleted the base rules for the two-column layout
+   and the info cards, leaving only the mobile `grid-template-columns: 1fr`
+   override further down. Without a base rule the container was a plain block,
+   so the form ran the full 1400px width and the info cards rendered as
+   unstyled text flush against the left edge. */
+.contact-page .contact-main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-page .contact-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-page .contact-info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  border-top: 3px solid var(--accent);
+}
+
+.contact-page .info-card-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
 .contact-page .contact-form-wrapper {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -295,30 +330,15 @@
 }
 
 .contact-page .faq-headline {
-  font-family: 'Inter', sans-serif;
-  font-size: 36px;
-  font-weight: 500;
-  color: #FFFFFF;
-  letter-spacing: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
   line-height: 1.15;
-  margin-bottom: 60px;
+  color: #FFFFFF;
+  margin-bottom: 56px;
   text-align: center;
-  
   -moz-osx-font-smoothing: grayscale;
-  
-  
-}
-
-@media (min-width: 768px) {
-  .contact-page .faq-headline {
-    font-size: 56px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .contact-page .faq-headline {
-    font-size: 72px;
-  }
 }
 
 .contact-page .faq-grid {
