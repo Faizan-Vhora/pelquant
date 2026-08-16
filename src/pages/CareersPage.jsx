@@ -94,13 +94,16 @@ export default function CareersPage() {
   return (
     <div className="contact-page">
       <section className="contact-form-section" style={{ paddingTop: '120px' }}>
-        {/* This page had no h1 at all — it opened on an h2, leaving the
-            document outline (and the SEO title) with nothing to anchor to. */}
-        <h1 className="section-heading">Careers at Pelquant</h1>
-        <p className="careers-intro">
-          Remote-first, globally distributed, and building AI-native products for
-          clients across 12 industries.
-        </p>
+        {/* The h1 used to share .section-heading with the h2 below it, so both
+            rendered at 48px and the page had no heading hierarchy at all. */}
+        <div className="careers-hero">
+          <span className="careers-tag">JOIN THE TEAM</span>
+          <h1 className="careers-headline">Careers at Pelquant</h1>
+          <p className="careers-intro">
+            Remote-first, globally distributed, and building AI-native products for
+            clients across 12 industries.
+          </p>
+        </div>
         <h2 className="section-heading">Why Join Pelquant?</h2>
         <div className="contact-form-container">
           <div className="contact-info">
