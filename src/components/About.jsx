@@ -73,7 +73,7 @@ export default function About() {
               key={i}
               className="about-stat fade-up"
               ref={el => (statsRef.current[i] = el)}
-              style={{ animationDelay: `${i * 0.1}s` }}
+              style={{ transitionDelay: `${i * 0.1}s` }}
             >
               <div className="about-stat-value">{stat.value}</div>
               <div className="about-stat-label">{stat.label}</div>
@@ -92,7 +92,7 @@ export default function About() {
                   key={i}
                   className="process-step fade-up"
                   ref={el => (stepsRef.current[i] = el)}
-                  style={{ animationDelay: `${i * 0.12}s` }}
+                  style={{ transitionDelay: `${i * 0.12}s` }}
                 >
                   <div className="step-number">{step.number}</div>
                   <div className="step-connector"></div>

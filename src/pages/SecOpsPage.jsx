@@ -106,17 +106,17 @@ export default function SecOpsPage() {
               <h3>AI-Enhanced Detection</h3>
               <p>ML models catch threats that traditional rule-based systems miss, including zero-day attacks.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Lightning /></div>
               <h3>Automated Response</h3>
               <p>Reduce incident response time from hours to seconds with AI-powered playbooks.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Eye /></div>
               <h3>24/7 Monitoring</h3>
               <p>Continuous security monitoring with intelligent alert prioritization to eliminate fatigue.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.Shield /></div>
               <h3>Compliance Ready</h3>
               <p>Automated compliance evidence collection for SOC 2, ISO 27001, GDPR, HIPAA, PCI-DSS.</p>
@@ -134,7 +134,7 @@ export default function SecOpsPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -155,7 +155,7 @@ export default function SecOpsPage() {
           </h2>
           <div className="platforms-grid">
             {capabilities.map((capability, i) => (
-              <div key={i} className="platform-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="platform-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <h3>{capability.title}</h3>
                 <p>{capability.desc}</p>
               </div>
@@ -228,12 +228,12 @@ export default function SecOpsPage() {
               <p>Complete security visibility and event management</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/soar" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/soar" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SOAR Implementation</h3>
               <p>Automated security orchestration and response</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/devops-cloud" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/devops-cloud" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>DevOps & Cloud</h3>
               <p>Secure cloud infrastructure and deployment</p>
               <span className="related-arrow">→</span>

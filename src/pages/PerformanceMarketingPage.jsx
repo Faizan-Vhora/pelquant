@@ -120,17 +120,17 @@ export default function PerformanceMarketingPage() {
               <h3>Full Attribution</h3>
               <p>Know exactly which channels and campaigns drive revenue, not just clicks.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.DollarSign /></div>
               <h3>Profitable Growth</h3>
               <p>Optimize for unit economics and LTV:CAC ratio, not vanity metrics.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Target /></div>
               <h3>Systematic Testing</h3>
               <p>Structured experimentation framework that compounds learning over time.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.TrendingUp /></div>
               <h3>Scalable Systems</h3>
               <p>Build growth systems that scale predictably with budget increases.</p>
@@ -148,7 +148,7 @@ export default function PerformanceMarketingPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -169,7 +169,7 @@ export default function PerformanceMarketingPage() {
           </h2>
           <div className="channels-grid">
             {channels.map((channel, i) => (
-              <div key={i} className="channel-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="channel-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <h3>{channel.name}</h3>
                 <p>{channel.desc}</p>
               </div>
@@ -187,7 +187,7 @@ export default function PerformanceMarketingPage() {
           </h2>
           <div className="pm-metrics-grid">
             {metrics.map((metric, i) => (
-              <div key={i} className="pm-metric-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="pm-metric-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="pm-metric-name">{metric.name}</div>
                 <div className="pm-metric-full">{metric.full}</div>
                 <div className="pm-metric-desc">{metric.desc}</div>
@@ -272,12 +272,12 @@ export default function PerformanceMarketingPage() {
               <p>Google Ads, Meta Ads, LinkedIn campaigns</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/growth-seo" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/growth-seo" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Growth SEO</h3>
               <p>Organic traffic and content strategy</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/social-media-marketing" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/social-media-marketing" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Social Media Marketing</h3>
               <p>Community building and engagement</p>
               <span className="related-arrow">→</span>

@@ -71,6 +71,21 @@ function RouteFallback() {
   );
 }
 
+// Staggered reveals set an inline transition-delay. transition-delay governs
+// *every* transition on an element, so left in place it also delays the card's
+// hover — measurably: a card with a 350ms stagger sat motionless for a third of
+// a second before lifting. Clearing the delay once the reveal has played keeps
+// the stagger and hands the element back to its own hover timing, without
+// needing a wrapper element on all ~25 pages that use one.
+function releaseStagger(el) {
+  if (!el.style.transitionDelay) return;
+  const clear = () => { el.style.transitionDelay = ''; };
+  el.addEventListener('transitionend', clear, { once: true });
+  // Fallback: under reduced motion the reveal is forced visible with no
+  // transition, so transitionend never fires.
+  setTimeout(clear, 1500);
+}
+
 // React Router preserves scroll position across navigations, which lands you
 // mid-page on the next route. Reset on path change, but keep in-page hash
 // links working and never fight a browser back/forward restore.
@@ -145,6 +160,7 @@ function App() {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             observer.unobserve(entry.target);
+            releaseStagger(entry.target);
           }
         });
       },

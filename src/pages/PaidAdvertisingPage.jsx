@@ -105,17 +105,17 @@ export default function PaidAdvertisingPage() {
               <h3>Immediate Results</h3>
               <p>Start driving qualified traffic and leads within days, not months.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Target /></div>
               <h3>Precise Targeting</h3>
               <p>Reach exactly the right audience based on demographics, interests, and behavior.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Chart /></div>
               <h3>Full Attribution</h3>
               <p>Track every dollar spent to revenue generated with complete transparency.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.TrendingUp /></div>
               <h3>Scalable Growth</h3>
               <p>Scale winning campaigns while maintaining profitability and target ROAS.</p>
@@ -133,7 +133,7 @@ export default function PaidAdvertisingPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -154,7 +154,7 @@ export default function PaidAdvertisingPage() {
           </h2>
           <div className="ad-platforms">
             {platforms.map((platform, i) => (
-              <div key={i} className="ad-platform-card fade-up" style={{ animationDelay: `${i * 100}ms` }}>
+              <div key={i} className="ad-platform-card fade-up" style={{ transitionDelay: `${i * 100}ms` }}>
                 <div className="platform-icon">{platform.icon}</div>
                 <h3>{platform.name}</h3>
                 <div className="ad-formats">
@@ -177,7 +177,7 @@ export default function PaidAdvertisingPage() {
           </h2>
           <div className="products-list">
             {objectives.map((objective, i) => (
-              <div key={i} className="product-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <span className="product-bullet">→</span>
                 <p>{objective}</p>
               </div>
@@ -290,12 +290,12 @@ export default function PaidAdvertisingPage() {
               <p>Complete growth strategy and attribution</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/social-media-marketing" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/social-media-marketing" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Social Media Marketing</h3>
               <p>Organic social to complement paid campaigns</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/growth-seo" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/growth-seo" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Growth SEO</h3>
               <p>Long-term organic traffic to reduce ad dependency</p>
               <span className="related-arrow">→</span>

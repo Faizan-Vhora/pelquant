@@ -120,17 +120,17 @@ export default function SIEMPage() {
               <h3>Complete Visibility</h3>
               <p>Unified view across all systems, users, and data flows in your entire IT environment.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '100ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Target /></div>
               <h3>AI-Enhanced Detection</h3>
               <p>ML-based anomaly detection catches novel attacks that static rules miss.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '200ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '200ms' }}>
               <div className="benefit-icon"><Icons.Lightning /></div>
               <h3>Reduced Alert Fatigue</h3>
               <p>Tuned detection rules minimize false positives while maintaining comprehensive coverage.</p>
             </div>
-            <div className="benefit-card fade-up" style={{ animationDelay: '300ms' }}>
+            <div className="benefit-card fade-up" style={{ transitionDelay: '300ms' }}>
               <div className="benefit-icon"><Icons.Shield /></div>
               <h3>Compliance Ready</h3>
               <p>Built-in compliance reporting for SOC 2, ISO 27001, GDPR, HIPAA, PCI-DSS.</p>
@@ -148,7 +148,7 @@ export default function SIEMPage() {
           </h2>
           <div className="process-timeline">
             {process.map((step, i) => (
-              <div key={i} className="process-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="process-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <div className="process-number">{step.num}</div>
                 <div className="process-content">
                   <h3 className="process-title">{step.title}</h3>
@@ -169,7 +169,7 @@ export default function SIEMPage() {
           </h2>
           <div className="platforms-grid">
             {platforms.map((platform, i) => (
-              <div key={i} className="platform-card fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="platform-card fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <h3>{platform.name}</h3>
                 <p>{platform.desc}</p>
               </div>
@@ -187,7 +187,7 @@ export default function SIEMPage() {
           </h2>
           <div className="products-list">
             {useCases.map((useCase, i) => (
-              <div key={i} className="product-item fade-up" style={{ animationDelay: `${i * 50}ms` }}>
+              <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
                 <span className="product-bullet">→</span>
                 <p>{useCase}</p>
               </div>
@@ -233,12 +233,12 @@ export default function SIEMPage() {
               <p>Automate security response with orchestration platforms</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/secops" className="related-card fade-up" style={{ animationDelay: '100ms' }}>
+            <Link to="/services/secops" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SecOps with AI</h3>
               <p>AI-enhanced security operations and threat detection</p>
               <span className="related-arrow">→</span>
             </Link>
-            <Link to="/services/devops-cloud" className="related-card fade-up" style={{ animationDelay: '200ms' }}>
+            <Link to="/services/devops-cloud" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>DevOps & Cloud</h3>
               <p>Secure cloud infrastructure and deployment pipelines</p>
               <span className="related-arrow">→</span>
