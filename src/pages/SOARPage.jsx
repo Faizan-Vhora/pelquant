@@ -102,7 +102,7 @@ export default function SOARPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">SECURITY AUTOMATION</span>
           <h1 className="service-hero-headline fade-up">
             SOAR Implementation
@@ -114,7 +114,7 @@ export default function SOARPage() {
             at machine speed.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Start Your SOAR Project →</Link>
+            <Link to="/contact" className="btn-primary">Start Your SOAR Project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -231,19 +231,19 @@ export default function SOARPage() {
             <h2 className="why-headline">Why Choose Pelquant for SOAR?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Production Playbook Experience:</strong> We've built and deployed complex playbooks across multiple platforms</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Production Playbook Experience:</strong> We&rsquo;ve built and deployed complex playbooks across multiple platforms</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Multi-Platform Expertise:</strong> Expert in XSOAR, Splunk SOAR, Sentinel, TheHive, Shuffle, QRadar SOAR</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Custom Integration Development:</strong> We build custom connectors when native integrations don't exist</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Custom Integration Development:</strong> We build custom connectors when native integrations don&rsquo;t exist</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>ROI-Focused Implementation:</strong> We measure and demonstrate clear time savings and efficiency gains</p>
               </div>
             </div>
@@ -259,17 +259,17 @@ export default function SOARPage() {
             <Link to="/services/siem" className="related-card fade-up">
               <h3>SIEM Implementation</h3>
               <p>Complete security visibility and threat detection</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/secops" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SecOps with AI</h3>
               <p>AI-enhanced security operations programs</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/ai-automation" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>AI-Powered Automation</h3>
               <p>Intelligent automation for business operations</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -280,9 +280,12 @@ export default function SOARPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Automate Security Response?</h2>
           <p className="cta-subtext">
-            Let's discuss your SOC workflows and design playbooks that save time and reduce risk.
+            Let&rsquo;s discuss your SOC workflows and design playbooks that save time and reduce risk.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

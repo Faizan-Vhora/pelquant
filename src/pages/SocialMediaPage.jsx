@@ -23,7 +23,7 @@ export default function SocialMediaPage() {
     {
       num: '04',
       title: 'Content Creation & Production',
-      desc: 'Monthly content production — carousels, short-form video, static graphics, stories, thought leadership posts — tailored to each platform\'s algorithm and best practices.'
+      desc: 'Monthly content production — carousels, short-form video, static graphics, stories, thought leadership posts — tailored to each platform’s algorithm and best practices.'
     },
     {
       num: '05',
@@ -91,7 +91,7 @@ export default function SocialMediaPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">SOCIAL MEDIA</span>
           <h1 className="service-hero-headline fade-up">
             Social Media Marketing
@@ -102,7 +102,7 @@ export default function SocialMediaPage() {
             business outcomes — not just vanity metrics.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Grow Your Social Presence →</Link>
+            <Link to="/contact" className="btn-primary">Grow Your Social Presence<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function SocialMediaPage() {
           <div className="products-list">
             {contentTypes.map((content, i) => (
               <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
-                <span className="product-bullet">→</span>
+                <span className="product-bullet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
                 <p>{content}</p>
               </div>
             ))}
@@ -240,19 +240,19 @@ export default function SocialMediaPage() {
             <h2 className="why-headline">Why Choose Pelquant for Social Media?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Platform Expertise:</strong> Deep understanding of each platform's algorithm and best practices</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Platform Expertise:</strong> Deep understanding of each platform&rsquo;s algorithm and best practices</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Content Quality:</strong> Professional content creation that stands out in crowded feeds</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Community First:</strong> We build engaged communities, not just follower counts</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Business Outcomes:</strong> Every campaign tied to traffic, leads, and revenue</p>
               </div>
             </div>
@@ -268,17 +268,17 @@ export default function SocialMediaPage() {
             <Link to="/services/paid-advertising" className="related-card fade-up">
               <h3>Paid Advertising</h3>
               <p>Amplify organic reach with paid social campaigns</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/performance-marketing" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Performance Marketing</h3>
               <p>Complete growth strategy across all channels</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/growth-seo" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Growth SEO</h3>
               <p>Drive organic traffic to complement social</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -289,9 +289,12 @@ export default function SocialMediaPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Build Your Social Presence?</h2>
           <p className="cta-subtext">
-            Let's create a social media strategy that builds community and drives business results.
+            Let&rsquo;s create a social media strategy that builds community and drives business results.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

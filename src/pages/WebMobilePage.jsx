@@ -103,7 +103,7 @@ export default function WebMobilePage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">WEB & MOBILE</span>
           <h1 className="service-hero-headline fade-up">
             Web & Mobile Development
@@ -114,7 +114,7 @@ export default function WebMobilePage() {
             infrastructure, and ongoing evolution.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Start Your App →</Link>
+            <Link to="/contact" className="btn-primary">Start Your App<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function WebMobilePage() {
             <div className="benefit-card fade-up">
               <div className="benefit-icon"><Icons.Palette /></div>
               <h3>Beautiful Design</h3>
-              <p>User-centered design that's both visually stunning and highly functional.</p>
+              <p>User-centered design that&rsquo;s both visually stunning and highly functional.</p>
             </div>
             <div className="benefit-card fade-up" style={{ transitionDelay: '100ms' }}>
               <div className="benefit-icon"><Icons.Lightning /></div>
@@ -215,8 +215,8 @@ export default function WebMobilePage() {
           <div className="performance-content fade-up">
             <h2>Performance & Accessibility</h2>
             <p>
-              Every application we build is optimized for Google's Core Web Vitals and WCAG 2.1 accessibility 
-              standards. We don't just build apps that work — we build apps that are fast, accessible to everyone, 
+              Every application we build is optimized for Google&rsquo;s Core Web Vitals and WCAG 2.1 accessibility 
+              standards. We don&rsquo;t just build apps that work — we build apps that are fast, accessible to everyone, 
               and rank well in search engines.
             </p>
             <div className="performance-metrics">
@@ -248,19 +248,19 @@ export default function WebMobilePage() {
             <h2 className="why-headline">Why Choose Pelquant for Web & Mobile?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Full-Stack Ownership:</strong> We own design, frontend, backend, infrastructure — no handoffs</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Production Experience:</strong> We've shipped apps used by millions of users</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Production Experience:</strong> We&rsquo;ve shipped apps used by millions of users</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Performance Obsessed:</strong> Every app optimized for speed, accessibility, and SEO</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>App Store Expertise:</strong> We handle iOS and Android submission end-to-end</p>
               </div>
             </div>
@@ -276,17 +276,17 @@ export default function WebMobilePage() {
             <Link to="/services/custom-software-development" className="related-card fade-up">
               <h3>Custom Software Development</h3>
               <p>Bespoke backend systems and enterprise software</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/ai-llm-integration" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>AI & LLM Integration</h3>
               <p>Add intelligent features to your apps</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/devops-cloud" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>DevOps & Cloud</h3>
               <p>Scalable hosting and deployment infrastructure</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -297,9 +297,12 @@ export default function WebMobilePage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Build Your App?</h2>
           <p className="cta-subtext">
-            Let's turn your idea into a beautiful, fast, and secure application.
+            Let&rsquo;s turn your idea into a beautiful, fast, and secure application.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

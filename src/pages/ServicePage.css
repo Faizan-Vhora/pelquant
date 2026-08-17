@@ -60,9 +60,13 @@
   margin-bottom: 1.5rem;
 }
 
+/* Display scale shared with every other page: was 56px at weight 600 here
+   while the hubs render 57.6 at 800. */
 .service-page .service-hero-headline {
-  font-size: 3.5rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
   line-height: 1.1;
@@ -191,7 +195,11 @@
 }
 
 .service-page .section-headline {
-  font-size: 2.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: var(--text-primary);
   margin-bottom: 3rem;
   text-align: center;
@@ -361,7 +369,11 @@
 }
 
 .service-page .why-headline {
-  font-size: 2rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: var(--text-primary);
   margin-bottom: 2rem;
   text-align: center;
@@ -402,7 +414,11 @@
 }
 
 .service-page .related-headline {
-  font-size: 2rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: var(--text-primary);
   margin-bottom: 2rem;
   text-align: center;
@@ -503,7 +519,11 @@
 }
 
 .service-page .cta-headline {
-  font-size: 2.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: var(--heading-gold);
   margin-bottom: 1rem;
   position: relative;
@@ -537,16 +557,8 @@
     padding: 120px 1.5rem 60px;
   }
 
-  .service-page .service-hero-headline {
-    font-size: 2.5rem;
-  }
-
   .service-page .service-hero-desc {
     font-size: 1rem;
-  }
-
-  .service-page .section-headline {
-    font-size: 2rem;
   }
 
   .service-page .process-item {
@@ -579,7 +591,11 @@
 }
 
 .service-page .siem-explainer h2 {
-  font-size: 2rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
 }
@@ -1746,6 +1762,115 @@
   .service-page .product-item:hover,
   .service-page .tech-category:hover,
   .service-page .related-card:hover {
+    transform: none;
+  }
+}
+
+/* ── Conventions shared with the rest of the site ─────────────────────────
+   Section eyebrows sat against the left edge while their headings were
+   centred, because these sections never set text-align. */
+/* Centre the eyebrow itself rather than its section. Listing sections meant
+   every new one (.service-tech, .service-linkbuilding, .service-ad-metrics …)
+   silently opted out and its pill drifted to the left edge. */
+.service-page .section-tag {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* …but the rows and cards inside them stay left-aligned. */
+.service-page .process-item,
+.service-page .product-item,
+.service-page .why-point,
+.service-page .benefit-card,
+.service-page .related-card,
+.service-page .platform-card {
+  text-align: left;
+}
+
+/* Markers are SVG now, not "→"/"✓" characters that a screen reader announces
+   before every row. */
+.service-page .product-bullet,
+.service-page .why-check,
+.service-page .related-arrow,
+.service-page .maturity-arrow,
+.service-page .framework-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.service-page .product-bullet,
+.service-page .why-check {
+  width: 20px;
+  height: 24px;
+}
+
+.service-page .product-bullet svg,
+.service-page .why-check svg,
+.service-page .related-arrow svg,
+.service-page .maturity-arrow svg,
+.service-page .framework-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Block-level so it keeps its own line: the hero container is a plain block,
+   so an inline-level breadcrumb sat on the same line as the eyebrow pill that
+   follows it and the two overlapped. width:fit-content + auto margins keeps it
+   centred with the rest of the hero. */
+.service-page .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-page .breadcrumb svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s ease;
+}
+
+.service-page .breadcrumb:hover svg {
+  transform: translateX(-3px);
+}
+
+.service-page .related-card:hover .related-arrow svg {
+  transform: translateX(4px);
+  transition: transform 0.3s ease;
+}
+
+/* The closing CTA had a single button where every other page offers two. */
+.service-page .cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.service-page .service-hero-cta .btn-primary,
+.service-page .service-cta .btn-primary,
+.service-page .cta-buttons .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.service-page .btn-primary svg {
+  width: 17px;
+  height: 17px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-page .breadcrumb:hover svg,
+  .service-page .related-card:hover .related-arrow svg {
     transform: none;
   }
 }

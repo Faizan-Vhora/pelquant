@@ -85,7 +85,7 @@ export default function AIAutomationPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">INTELLIGENT AUTOMATION</span>
           <h1 className="service-hero-headline fade-up">
             AI-Powered Automation
@@ -96,7 +96,7 @@ export default function AIAutomationPage() {
             ROI targets — time saved, error rate reduction, and cost per transaction.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Start Automating →</Link>
+            <Link to="/contact" className="btn-primary">Start Automating<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -252,20 +252,20 @@ export default function AIAutomationPage() {
             <h2 className="why-headline">Why Choose Pelquant for Automation?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>AI-First Approach:</strong> We use AI where it adds value, not just for buzzwords</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>ROI-Focused:</strong> Every automation is measured by clear business metrics</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Human-in-the-Loop:</strong> Smart escalation for edge cases, not blind automation</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Production Experience:</strong> We've deployed automation across multiple industries</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Production Experience:</strong> We&rsquo;ve deployed automation across multiple industries</p>
               </div>
             </div>
           </div>
@@ -280,17 +280,17 @@ export default function AIAutomationPage() {
             <Link to="/services/ai-llm-integration" className="related-card fade-up">
               <h3>AI & LLM Integration</h3>
               <p>Advanced AI capabilities for intelligent automation</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/soar" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SOAR Implementation</h3>
               <p>Security automation and orchestration</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/custom-software-development" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Custom Software Development</h3>
               <p>Bespoke solutions for unique workflows</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -301,9 +301,12 @@ export default function AIAutomationPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Eliminate Manual Work?</h2>
           <p className="cta-subtext">
-            Let's identify your highest-ROI automation opportunities and build systems that work 24/7.
+            Let&rsquo;s identify your highest-ROI automation opportunities and build systems that work 24/7.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

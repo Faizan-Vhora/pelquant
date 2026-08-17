@@ -86,7 +86,7 @@ export default function DevOpsCloudPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">INFRASTRUCTURE & DEVOPS</span>
           <h1 className="service-hero-headline fade-up">
             DevOps & Cloud Infrastructure
@@ -98,7 +98,7 @@ export default function DevOpsCloudPage() {
             development teams down.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Modernize Your Infrastructure →</Link>
+            <Link to="/contact" className="btn-primary">Modernize Your Infrastructure<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -209,19 +209,19 @@ export default function DevOpsCloudPage() {
                 <h3>Manual</h3>
                 <p>Manual deployments, no automation</p>
               </div>
-              <div className="maturity-arrow">→</div>
+              <div className="maturity-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></div>
               <div className="maturity-stage">
                 <div className="stage-number">2</div>
                 <h3>Automated</h3>
                 <p>CI/CD pipelines, IaC basics</p>
               </div>
-              <div className="maturity-arrow">→</div>
+              <div className="maturity-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></div>
               <div className="maturity-stage">
                 <div className="stage-number">3</div>
                 <h3>Optimized</h3>
                 <p>Full observability, auto-scaling</p>
               </div>
-              <div className="maturity-arrow">→</div>
+              <div className="maturity-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></div>
               <div className="maturity-stage">
                 <div className="stage-number">4</div>
                 <h3>Elite</h3>
@@ -239,20 +239,20 @@ export default function DevOpsCloudPage() {
             <h2 className="why-headline">Why Choose Pelquant for DevOps & Cloud?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Multi-Cloud Expertise:</strong> Deep experience across AWS, GCP, and Azure</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Security-First:</strong> Every infrastructure design includes security best practices</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Cost Conscious:</strong> We optimize for performance AND cost efficiency</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Production Experience:</strong> We've built and scaled infrastructure for high-traffic applications</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Production Experience:</strong> We&rsquo;ve built and scaled infrastructure for high-traffic applications</p>
               </div>
             </div>
           </div>
@@ -267,17 +267,17 @@ export default function DevOpsCloudPage() {
             <Link to="/services/custom-software-development" className="related-card fade-up">
               <h3>Custom Software Development</h3>
               <p>Build the applications that run on your infrastructure</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/secops" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SecOps with AI</h3>
               <p>Secure your cloud infrastructure and operations</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/siem" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>SIEM Implementation</h3>
               <p>Monitor and secure your cloud workloads</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -288,9 +288,12 @@ export default function DevOpsCloudPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Modernize Your Infrastructure?</h2>
           <p className="cta-subtext">
-            Let's assess your current setup and design a cloud strategy that scales.
+            Let&rsquo;s assess your current setup and design a cloud strategy that scales.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

@@ -77,7 +77,7 @@ export default function CustomSoftwarePage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">SOFTWARE ENGINEERING</span>
           <h1 className="service-hero-headline fade-up">
             Custom Software Development
@@ -89,7 +89,7 @@ export default function CustomSoftwarePage() {
             with your growth trajectory.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Start Your Project →</Link>
+            <Link to="/contact" className="btn-primary">Start Your Project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function CustomSoftwarePage() {
           <div className="products-list">
             {useCases.map((useCase, i) => (
               <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
-                <span className="product-bullet">→</span>
+                <span className="product-bullet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
                 <p>{useCase}</p>
               </div>
             ))}
@@ -214,19 +214,19 @@ export default function CustomSoftwarePage() {
             <h2 className="why-headline">Why Choose Pelquant for Custom Development?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>AI-First Architecture:</strong> We design systems with AI capabilities from the ground up</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Production Experience:</strong> We've built and deployed complex systems across multiple industries</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Production Experience:</strong> We&rsquo;ve built and deployed complex systems across multiple industries</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Security Expertise:</strong> Deep security knowledge ensures your software is protected from day one</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Transparent Process:</strong> Working demos every 2 weeks, clear communication, no surprises</p>
               </div>
             </div>
@@ -242,17 +242,17 @@ export default function CustomSoftwarePage() {
             <Link to="/services/web-mobile-development" className="related-card fade-up">
               <h3>Web & Mobile Development</h3>
               <p>Full-stack applications for web and mobile platforms</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/ai-llm-integration" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>AI & LLM Integration</h3>
               <p>Add intelligent capabilities to your software</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/devops-cloud" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>DevOps & Cloud</h3>
               <p>Scalable infrastructure and deployment pipelines</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -263,9 +263,12 @@ export default function CustomSoftwarePage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Build Your Custom Solution?</h2>
           <p className="cta-subtext">
-            Let's discuss your requirements and design software that fits your business perfectly.
+            Let&rsquo;s discuss your requirements and design software that fits your business perfectly.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>
