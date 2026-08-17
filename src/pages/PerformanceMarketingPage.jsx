@@ -13,7 +13,7 @@ export default function PerformanceMarketingPage() {
     {
       num: '02',
       title: 'Attribution Model Design',
-      desc: 'We design a full multi-touch attribution model using GA4, Northbeam, Triple Whale, or custom data warehouse solutions to accurately credit each channel\'s contribution to revenue.'
+      desc: 'We design a full multi-touch attribution model using GA4, Northbeam, Triple Whale, or custom data warehouse solutions to accurately credit each channel’s contribution to revenue.'
     },
     {
       num: '03',
@@ -94,7 +94,7 @@ export default function PerformanceMarketingPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">GROWTH STRATEGY</span>
           <h1 className="service-hero-headline fade-up">
             Performance Marketing
@@ -105,7 +105,7 @@ export default function PerformanceMarketingPage() {
             attribution systems, and optimization processes that turn marketing from a cost center into a revenue engine.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Build Your Growth System →</Link>
+            <Link to="/contact" className="btn-primary">Build Your Growth System<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -203,7 +203,7 @@ export default function PerformanceMarketingPage() {
           <div className="framework-content fade-up">
             <h2>The Growth Framework</h2>
             <p>
-              We don't just run campaigns — we build complete growth systems with clear feedback loops and 
+              We don&rsquo;t just run campaigns — we build complete growth systems with clear feedback loops and 
               compounding improvements.
             </p>
             <div className="framework-steps">
@@ -212,19 +212,19 @@ export default function PerformanceMarketingPage() {
                 <h3>Hypothesis</h3>
                 <p>Identify growth opportunities based on data</p>
               </div>
-              <div className="framework-arrow">→</div>
+              <div className="framework-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></div>
               <div className="framework-step">
                 <div className="step-icon"><Icons.Search /></div>
                 <h3>Experiment</h3>
                 <p>Design and run controlled tests</p>
               </div>
-              <div className="framework-arrow">→</div>
+              <div className="framework-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></div>
               <div className="framework-step">
                 <div className="step-icon"><Icons.Chart /></div>
                 <h3>Measure</h3>
                 <p>Analyze results with statistical rigor</p>
               </div>
-              <div className="framework-arrow">→</div>
+              <div className="framework-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></div>
               <div className="framework-step">
                 <div className="step-icon"><Icons.Rocket /></div>
                 <h3>Scale</h3>
@@ -242,19 +242,19 @@ export default function PerformanceMarketingPage() {
             <h2 className="why-headline">Why Choose Pelquant for Performance Marketing?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Full-Stack Growth:</strong> We handle strategy, execution, and optimization across all channels</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Data Infrastructure:</strong> We build proper attribution and analytics from day one</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Unit Economics Focus:</strong> We optimize for profitability, not just growth</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Systematic Approach:</strong> Structured experimentation that compounds learning over time</p>
               </div>
             </div>
@@ -270,17 +270,17 @@ export default function PerformanceMarketingPage() {
             <Link to="/services/paid-advertising" className="related-card fade-up">
               <h3>Paid Advertising</h3>
               <p>Google Ads, Meta Ads, LinkedIn campaigns</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/growth-seo" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Growth SEO</h3>
               <p>Organic traffic and content strategy</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/social-media-marketing" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Social Media Marketing</h3>
               <p>Community building and engagement</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -291,9 +291,12 @@ export default function PerformanceMarketingPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Build a Growth System?</h2>
           <p className="cta-subtext">
-            Let's design a performance marketing strategy that turns marketing into a predictable revenue engine.
+            Let&rsquo;s design a performance marketing strategy that turns marketing into a predictable revenue engine.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

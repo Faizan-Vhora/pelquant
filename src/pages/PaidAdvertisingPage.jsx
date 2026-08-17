@@ -79,7 +79,7 @@ export default function PaidAdvertisingPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">PAID ADVERTISING</span>
           <h1 className="service-hero-headline fade-up">
             Meta & Google Ads
@@ -90,7 +90,7 @@ export default function PaidAdvertisingPage() {
             generate positive ROI and scale with your budget.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Start Advertising →</Link>
+            <Link to="/contact" className="btn-primary">Start Advertising<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -178,7 +178,7 @@ export default function PaidAdvertisingPage() {
           <div className="products-list">
             {objectives.map((objective, i) => (
               <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
-                <span className="product-bullet">→</span>
+                <span className="product-bullet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
                 <p>{objective}</p>
               </div>
             ))}
@@ -192,7 +192,7 @@ export default function PaidAdvertisingPage() {
           <div className="testing-content fade-up">
             <h2>Systematic A/B Testing</h2>
             <p>
-              We don't guess — we test. Every campaign includes systematic testing to identify what works and 
+              We don&rsquo;t guess — we test. Every campaign includes systematic testing to identify what works and 
               scale it profitably.
             </p>
             <div className="testing-grid">
@@ -260,19 +260,19 @@ export default function PaidAdvertisingPage() {
             <h2 className="why-headline">Why Choose Pelquant for Paid Ads?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Platform Expertise:</strong> Certified experts in Google Ads, Meta Ads, and LinkedIn Ads</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Data-Driven Optimization:</strong> Every decision backed by performance data and testing</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Full Transparency:</strong> Complete access to ad accounts and detailed performance reports</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Profitable Scaling:</strong> We scale campaigns while maintaining or improving efficiency</p>
               </div>
             </div>
@@ -288,17 +288,17 @@ export default function PaidAdvertisingPage() {
             <Link to="/services/performance-marketing" className="related-card fade-up">
               <h3>Performance Marketing</h3>
               <p>Complete growth strategy and attribution</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/social-media-marketing" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Social Media Marketing</h3>
               <p>Organic social to complement paid campaigns</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/growth-seo" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Growth SEO</h3>
               <p>Long-term organic traffic to reduce ad dependency</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -309,9 +309,12 @@ export default function PaidAdvertisingPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Scale with Paid Ads?</h2>
           <p className="cta-subtext">
-            Let's build profitable ad campaigns that drive qualified leads and sales.
+            Let&rsquo;s build profitable ad campaigns that drive qualified leads and sales.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

@@ -33,7 +33,7 @@ export default function SIEMPage() {
     {
       num: '06',
       title: 'Alert Tuning & False Positive Reduction',
-      desc: 'We methodically tune every detection rule against your environment\'s baseline to minimize false positives without sacrificing coverage — a critical step often skipped that leads to alert fatigue.'
+      desc: 'We methodically tune every detection rule against your environment’s baseline to minimize false positives without sacrificing coverage — a critical step often skipped that leads to alert fatigue.'
     },
     {
       num: '07',
@@ -75,7 +75,7 @@ export default function SIEMPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">SECURITY OPERATIONS</span>
           <h1 className="service-hero-headline fade-up">
             SIEM Implementation
@@ -87,7 +87,7 @@ export default function SIEMPage() {
             intelligence enabling faster and smarter response.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Start Your SIEM Project →</Link>
+            <Link to="/contact" className="btn-primary">Start Your SIEM Project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -188,7 +188,7 @@ export default function SIEMPage() {
           <div className="products-list">
             {useCases.map((useCase, i) => (
               <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
-                <span className="product-bullet">→</span>
+                <span className="product-bullet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
                 <p>{useCase}</p>
               </div>
             ))}
@@ -203,19 +203,19 @@ export default function SIEMPage() {
             <h2 className="why-headline">Why Choose Pelquant for SIEM?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Deep Security Expertise:</strong> Genuine depth in enterprise security operations, not surface-level knowledge</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>AI-Enhanced Detection:</strong> ML-based anomaly detection beyond static rules</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Multi-Platform Experience:</strong> Expert in Splunk, Sentinel, QRadar, Elastic, Wazuh, Chronicle</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Tuned for Your Environment:</strong> We eliminate alert fatigue through methodical tuning</p>
               </div>
             </div>
@@ -231,17 +231,17 @@ export default function SIEMPage() {
             <Link to="/services/soar" className="related-card fade-up">
               <h3>SOAR Implementation</h3>
               <p>Automate security response with orchestration platforms</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/secops" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SecOps with AI</h3>
               <p>AI-enhanced security operations and threat detection</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/devops-cloud" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>DevOps & Cloud</h3>
               <p>Secure cloud infrastructure and deployment pipelines</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -252,9 +252,12 @@ export default function SIEMPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Gain Complete Security Visibility?</h2>
           <p className="cta-subtext">
-            Let's discuss your SIEM requirements and design a solution that fits your environment.
+            Let&rsquo;s discuss your SIEM requirements and design a solution that fits your environment.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

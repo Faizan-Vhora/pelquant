@@ -79,7 +79,7 @@ export default function SecOpsPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">SECURITY OPERATIONS</span>
           <h1 className="service-hero-headline fade-up">
             SecOps with AI
@@ -87,11 +87,11 @@ export default function SecOpsPage() {
           <p className="service-hero-desc fade-up">
             We design and implement security operations programs enhanced with AI capabilities. Our SecOps 
             services combine deep security expertise with intelligent automation to detect threats faster, 
-            respond more effectively, and maintain continuous compliance — reducing your security team's burden 
+            respond more effectively, and maintain continuous compliance — reducing your security team&rsquo;s burden 
             while raising your defensive posture.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Strengthen Your Security →</Link>
+            <Link to="/contact" className="btn-primary">Strengthen Your Security<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -198,19 +198,19 @@ export default function SecOpsPage() {
             <h2 className="why-headline">Why Choose Pelquant for SecOps?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Deep Security Expertise:</strong> Genuine depth in enterprise security operations, not surface-level knowledge</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>AI-Enhanced Detection:</strong> ML-based threat detection beyond traditional rule-based systems</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Full-Stack Security:</strong> From SIEM and SOAR to cloud security and compliance automation</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Compliance Experience:</strong> Proven track record with SOC 2, ISO 27001, GDPR, HIPAA, PCI-DSS</p>
               </div>
             </div>
@@ -226,17 +226,17 @@ export default function SecOpsPage() {
             <Link to="/services/siem" className="related-card fade-up">
               <h3>SIEM Implementation</h3>
               <p>Complete security visibility and event management</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/soar" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>SOAR Implementation</h3>
               <p>Automated security orchestration and response</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/devops-cloud" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>DevOps & Cloud</h3>
               <p>Secure cloud infrastructure and deployment</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -247,9 +247,12 @@ export default function SecOpsPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Elevate Your Security Posture?</h2>
           <p className="cta-subtext">
-            Let's assess your current security operations and design an AI-enhanced program that works.
+            Let&rsquo;s assess your current security operations and design an AI-enhanced program that works.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

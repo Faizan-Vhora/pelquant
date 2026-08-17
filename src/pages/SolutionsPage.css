@@ -446,10 +446,17 @@
 
 /* Industry Page Specific Styles */
 .solutions-page .breadcrumb {
-  /* inline-flex + min-height guarantees the 24px minimum touch target; padding
-     alone left it at 23px, which depends on the font's line metrics. */
-  display: inline-flex;
+  /* min-height guarantees the 24px minimum touch target; padding alone left it
+     at 23px, which depends on the font's line metrics. Block-level (rather than
+     inline-flex) so it keeps its own line — the hero container is a plain
+     block, so inline-level put it on the same line as the eyebrow pill and the
+     two overlapped. */
+  display: flex;
   align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   min-height: 24px;
   color: var(--text-secondary);
   text-decoration: none;

@@ -79,7 +79,7 @@ export default function GrowthSEOPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">SEO SERVICES</span>
           <h1 className="service-hero-headline fade-up">
             On-Page & Growth SEO
@@ -89,7 +89,7 @@ export default function GrowthSEOPage() {
             that target the exact queries your ideal customers use when they are ready to buy, learn, or engage.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Grow Your Traffic →</Link>
+            <Link to="/contact" className="btn-primary">Grow Your Traffic<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -168,7 +168,7 @@ export default function GrowthSEOPage() {
           <div className="eeat-content fade-up">
             <h2>E-E-A-T Optimized Content</h2>
             <p>
-              Google's quality guidelines emphasize Experience, Expertise, Authoritativeness, and Trustworthiness. 
+              Google&rsquo;s quality guidelines emphasize Experience, Expertise, Authoritativeness, and Trustworthiness. 
               Every piece of content we create is optimized for E-E-A-T signals.
             </p>
             <div className="eeat-grid">
@@ -238,19 +238,19 @@ export default function GrowthSEOPage() {
             <h2 className="why-headline">Why Choose Pelquant for Growth SEO?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Data-Driven Strategy:</strong> Every keyword and content piece backed by search data and competitor analysis</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Expert Writers:</strong> Content created by specialists who understand your industry</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>White-Hat Only:</strong> Ethical link building that won't risk penalties</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>White-Hat Only:</strong> Ethical link building that won&rsquo;t risk penalties</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Business Outcomes:</strong> We track rankings, traffic, AND conversions</p>
               </div>
             </div>
@@ -266,17 +266,17 @@ export default function GrowthSEOPage() {
             <Link to="/services/technical-seo" className="related-card fade-up">
               <h3>Technical SEO</h3>
               <p>Fix technical issues holding your rankings back</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/performance-marketing" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Performance Marketing</h3>
               <p>Complete growth strategy across all channels</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/paid-advertising" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Paid Advertising</h3>
               <p>Complement organic with paid search campaigns</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -287,9 +287,12 @@ export default function GrowthSEOPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Grow Organic Traffic?</h2>
           <p className="cta-subtext">
-            Let's build a content strategy that drives sustainable, high-intent traffic.
+            Let&rsquo;s build a content strategy that drives sustainable, high-intent traffic.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

@@ -4,7 +4,7 @@ export default function HRTechPage() {
   const data = {
     industry: 'HR Technology',
     tagline: 'HR Technology & Workforce Management',
-    description: 'Human capital is every company\'s most important asset. We build HR technology that automates administrative burden, improves hiring quality, and creates better employee experiences.',
+    description: 'Human capital is every company’s most important asset. We build HR technology that automates administrative burden, improves hiring quality, and creates better employee experiences.',
     solutions: [
       'Human Resource Information Systems (HRIS)',
       'Applicant Tracking Systems (ATS)',

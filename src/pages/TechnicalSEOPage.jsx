@@ -69,7 +69,7 @@ export default function TechnicalSEOPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">SEO SERVICES</span>
           <h1 className="service-hero-headline fade-up">
             Technical SEO
@@ -80,7 +80,7 @@ export default function TechnicalSEOPage() {
             foundation first.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Get SEO Audit →</Link>
+            <Link to="/contact" className="btn-primary">Get SEO Audit<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -145,7 +145,7 @@ export default function TechnicalSEOPage() {
           <div className="products-list">
             {issues.map((issue, i) => (
               <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
-                <span className="product-bullet">→</span>
+                <span className="product-bullet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
                 <p>{issue}</p>
               </div>
             ))}
@@ -159,8 +159,8 @@ export default function TechnicalSEOPage() {
           <div className="vitals-content fade-up">
             <h2>Core Web Vitals Optimization</h2>
             <p>
-              Google's Core Web Vitals are ranking factors. We optimize all three metrics to ensure your site 
-              meets Google's standards and provides excellent user experience.
+              Google&rsquo;s Core Web Vitals are ranking factors. We optimize all three metrics to ensure your site 
+              meets Google&rsquo;s standards and provides excellent user experience.
             </p>
             <div className="vitals-grid">
               <div className="vital-card">
@@ -208,19 +208,19 @@ export default function TechnicalSEOPage() {
             <h2 className="why-headline">Why Choose Pelquant for Technical SEO?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Technical Depth:</strong> We're developers who understand SEO, not just SEO consultants</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Technical Depth:</strong> We&rsquo;re developers who understand SEO, not just SEO consultants</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Data-Driven:</strong> Every recommendation backed by crawl data and performance metrics</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Implementation Support:</strong> We don't just audit — we can implement fixes too</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Implementation Support:</strong> We don&rsquo;t just audit — we can implement fixes too</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Ongoing Monitoring:</strong> Continuous tracking to catch issues before they impact rankings</p>
               </div>
             </div>
@@ -236,17 +236,17 @@ export default function TechnicalSEOPage() {
             <Link to="/services/growth-seo" className="related-card fade-up">
               <h3>On-Page & Growth SEO</h3>
               <p>Content strategy and keyword optimization</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/web-mobile-development" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Web Development</h3>
               <p>Build fast, SEO-optimized websites</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/performance-marketing" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>Performance Marketing</h3>
               <p>Complete digital marketing strategy</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -259,7 +259,10 @@ export default function TechnicalSEOPage() {
           <p className="cta-subtext">
             Get a comprehensive technical SEO audit and actionable recommendations.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>

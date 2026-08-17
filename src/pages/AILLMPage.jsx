@@ -73,7 +73,7 @@ export default function AILLMPage() {
       {/* Hero */}
       <section className="service-hero">
         <div className="service-hero-container">
-          <Link to="/services" className="breadcrumb fade-up">← Back to Services</Link>
+          <Link to="/services" className="breadcrumb fade-up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>Back to Services</Link>
           <span className="service-tag fade-up">AI & MACHINE LEARNING</span>
           <h1 className="service-hero-headline fade-up">
             AI & LLM Integration
@@ -85,7 +85,7 @@ export default function AILLMPage() {
             across multiple industries.
           </p>
           <div className="service-hero-cta fade-up">
-            <Link to="/contact" className="btn-primary">Start Your AI Project →</Link>
+            <Link to="/contact" className="btn-primary">Start Your AI Project<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
             <a href="#process" className="btn-ghost">See Our Process</a>
           </div>
         </div>
@@ -169,7 +169,7 @@ export default function AILLMPage() {
           <div className="products-list">
             {products.map((product, i) => (
               <div key={i} className="product-item fade-up" style={{ transitionDelay: `${i * 50}ms` }}>
-                <span className="product-bullet">→</span>
+                <span className="product-bullet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
                 <p>{product}</p>
               </div>
             ))}
@@ -206,19 +206,19 @@ export default function AILLMPage() {
             <h2 className="why-headline">Why Choose Pelquant for AI Integration?</h2>
             <div className="why-points">
               <div className="why-point">
-                <span className="why-check">✓</span>
-                <p><strong>Production Experience:</strong> We've deployed multiple production-ready AI systems across industries</p>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
+                <p><strong>Production Experience:</strong> We&rsquo;ve deployed multiple production-ready AI systems across industries</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>AI-First Architecture:</strong> AI is the foundation, not a bolt-on feature</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Domain Expertise:</strong> Experience across FinTech, HealthTech, Legal, and more</p>
               </div>
               <div className="why-point">
-                <span className="why-check">✓</span>
+                <span className="why-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg></span>
                 <p><strong>Outcome-Driven:</strong> We measure success by business impact, not features shipped</p>
               </div>
             </div>
@@ -234,17 +234,17 @@ export default function AILLMPage() {
             <Link to="/services/ai-automation" className="related-card fade-up">
               <h3>AI-Powered Automation</h3>
               <p>Eliminate repetitive tasks with intelligent automation systems</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/custom-software-development" className="related-card fade-up" style={{ transitionDelay: '100ms' }}>
               <h3>Custom Software Development</h3>
               <p>Bespoke software solutions built from the ground up</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
             <Link to="/services/devops-cloud" className="related-card fade-up" style={{ transitionDelay: '200ms' }}>
               <h3>DevOps & Cloud</h3>
               <p>Scalable infrastructure for AI workloads</p>
-              <span className="related-arrow">→</span>
+              <span className="related-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg></span>
             </Link>
           </div>
         </div>
@@ -255,9 +255,12 @@ export default function AILLMPage() {
         <div className="service-cta-container fade-up">
           <h2 className="cta-headline">Ready to Build AI That Works?</h2>
           <p className="cta-subtext">
-            Let's discuss your AI integration project and show you what's possible.
+            Let&rsquo;s discuss your AI integration project and show you what&rsquo;s possible.
           </p>
-          <Link to="/contact" className="btn-primary">Get Started →</Link>
+          <div className="cta-buttons">
+            <Link to="/contact" className="btn-primary">Get Started<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg></Link>
+            <Link to="/services" className="btn-ghost">Explore other services</Link>
+          </div>
         </div>
       </section>
     </div>
