@@ -17,6 +17,7 @@ import './App.css';
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const CareersPage = lazy(() => import('./pages/CareersPage'));
+const TeamPage = lazy(() => import('./pages/TeamPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
 const CookiesPage = lazy(() => import('./pages/CookiesPage'));
@@ -240,6 +241,7 @@ function App() {
             <Route path="/solutions/media" element={<MediaPage />} />
             <Route path="/solutions/manufacturing" element={<ManufacturingPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/team" element={<TeamPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />

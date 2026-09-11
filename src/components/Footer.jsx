@@ -24,6 +24,7 @@ const marketingLinks = [
 const companyLinks = [
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },
+  { name: 'Team', path: '/team' },
   { name: 'Careers', path: '/careers' },
   { name: 'Services', path: '/services' },
   { name: 'Solutions', path: '/solutions' }

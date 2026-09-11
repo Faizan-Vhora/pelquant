@@ -181,6 +181,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://pelquant.com/team</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://pelquant.com/careers</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>

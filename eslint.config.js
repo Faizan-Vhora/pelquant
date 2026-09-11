@@ -5,7 +5,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  // 'build' is stale committed CRA output — minified bundles, not source.
+  globalIgnores(['dist', 'build']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [

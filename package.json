@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "deploy": "npx wrangler deploy --assets=dist",
     "og:generate": "node scripts/generate-og-images.mjs",
-    "hero:encode": "node scripts/encode-hero-banner.mjs"
+    "hero:encode": "node scripts/encode-hero-banner.mjs",
+    "portrait:encode": "node scripts/encode-portrait.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

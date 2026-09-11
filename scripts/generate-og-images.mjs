@@ -114,7 +114,16 @@ const card = ({ route, title }) => {
 
 fs.mkdirSync(OUT, { recursive: true });
 
-for (const page of pages) {
+// Optional route filter, so adding one page does not mean re-rendering all 35
+// cards: `node scripts/generate-og-images.mjs /team`.
+const only = process.argv.slice(2);
+const selected = only.length ? pages.filter((p) => only.includes(p.route)) : pages;
+if (only.length && !selected.length) {
+  console.error(`no route matched ${only.join(', ')}`);
+  process.exit(1);
+}
+
+for (const page of selected) {
   const html = path.join(TMP, `${page.name}.html`);
   fs.writeFileSync(html, card(page));
   execFileSync(CHROME, [
@@ -130,4 +139,4 @@ for (const page of pages) {
   process.stdout.write('.');
 }
 
-console.log(`\ngenerated ${pages.length} cards in ${OUT}`);
+console.log(`\ngenerated ${selected.length} cards in ${OUT}`);
