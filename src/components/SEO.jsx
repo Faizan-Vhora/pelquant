@@ -182,6 +182,12 @@ const seoData = {
     keywords: 'contact, get in touch, project inquiry, consultation',
     ogImage: '/og/og-contact.png'
   },
+  '/team': {
+    title: 'Our Team - Founder-Led Engineering | PELQUANT',
+    description: 'Meet the team behind PELQUANT. Founder-led engineering — you work directly with the people who architect and build your systems.',
+    keywords: 'pelquant team, Faizan Vhora, founder, CTO, leadership, engineering team',
+    ogImage: '/og/og-team.png'
+  },
   '/careers': {
     title: 'Careers at PELQUANT - Join Our Team',
     description: 'Join PELQUANT. Work on cutting-edge AI and full-stack projects. Remote-first, global team, competitive compensation.',
