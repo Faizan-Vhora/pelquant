@@ -25,7 +25,9 @@ const leadership = [
     ],
     links: [
       { href: 'mailto:info@pelquant.com', label: 'info@pelquant.com', icon: Icons.MessageCircle },
-      { href: 'https://linkedin.com/company/pelquant', label: 'LinkedIn', icon: Icons.Linkedin, external: true },
+      // Faizan's own profile, not the company page — this card is about him,
+      // and the company LinkedIn is already linked from the footer and /contact.
+      { href: 'https://www.linkedin.com/in/faizan-vhora-24a889175/', label: 'LinkedIn', icon: Icons.Linkedin, external: true },
     ],
   },
 ];
