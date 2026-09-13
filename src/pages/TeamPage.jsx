@@ -54,6 +54,26 @@ const management = [
       { href: 'mailto:info@pelquant.com', label: 'info@pelquant.com', icon: Icons.MessageCircle },
     ],
   },
+  {
+    name: 'Naved Memon',
+    role: 'Head of Digital Marketing',
+    slug: 'naved-memon',
+    portrait: '/team/naved-memon',
+    widths: [320, 480, 640, 880],
+    bio: [
+      'Naved leads digital marketing at Pelquant, growing businesses through work that is judged on results rather than impressions. His remit covers performance marketing, paid advertising, social media, content and video production.',
+      'He works closely with brands to understand their goals and find the growth actually available to them, then runs the strategy end to end — content and community through to executing and optimising the campaigns — against measurable outcomes rather than activity.',
+    ],
+    focus: [
+      { icon: Icons.TrendingUp, label: 'Performance Marketing' },
+      { icon: Icons.DollarSign, label: 'Paid Advertising' },
+      { icon: Icons.MessageCircle, label: 'Social & Content' },
+      { icon: Icons.Edit, label: 'Video & Creative' },
+    ],
+    links: [
+      { href: 'mailto:info@pelquant.com', label: 'info@pelquant.com', icon: Icons.MessageCircle },
+    ],
+  },
 ];
 
 // The wider team. One sentence each, not a bio — at card size a paragraph
