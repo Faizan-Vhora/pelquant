@@ -18,6 +18,9 @@ const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const PORT = 9341;
 const SERVE_PORT = 9342;
 const OUT = 'public/team';
+// Ladder ceiling. The widths actually emitted are capped to the source, since
+// a variant wider than its source is upscale — more bytes, no more detail,
+// and a 2x display picks it over the sharp one every time.
 const WIDTHS = [320, 480, 640, 960];
 const QUALITY = 0.86;
 
@@ -78,7 +81,23 @@ await send('Runtime.enable');
 await send('Page.navigate', { url: `http://127.0.0.1:${SERVE_PORT}/page` });
 await sleep(800);
 
-for (const w of WIDTHS) {
+const { result: dims } = await send('Runtime.evaluate', {
+  returnByValue: true, awaitPromise: true,
+  expression: `(async () => {
+    const img = new Image();
+    img.src = 'http://127.0.0.1:${SERVE_PORT}/src';
+    await img.decode();
+    return [img.naturalWidth, img.naturalHeight];
+  })()`,
+});
+const sourceWidth = crop ? crop[2] : dims.value[0];
+// Every width below the source, plus the source itself, so the largest variant
+// is always native resolution rather than an upscale of a smaller one.
+const widths = WIDTHS.filter((w) => w < sourceWidth);
+if (sourceWidth <= Math.max(...WIDTHS)) widths.push(sourceWidth);
+console.log(`source ${sourceWidth}px -> widths ${widths.join(', ')}`);
+
+for (const w of widths) {
   for (const [type, ext] of [['image/webp', 'webp'], ['image/jpeg', 'jpg']]) {
     const { result } = await send('Runtime.evaluate', {
       returnByValue: true, awaitPromise: true,
