@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import { Icons } from '../components/Icons';
 import './TeamPage.css';
 
-// Leadership renders as alternating feature rows rather than a card grid.
-// A grid built for three looks broken holding one, and a single small card
-// makes the one person on it read as an afterthought. Adding a second entry
-// here flips the layout side automatically — no markup change needed.
-const leadership = [
+// Management renders as alternating feature rows; the team below renders as a
+// grid. The split is the hierarchy — a feature row carries a full bio and reads
+// as "this is who you deal with", a card carries a sentence and reads as "this
+// is who is on the project". Adding an entry to either list needs no markup
+// change; management alternates sides on its own.
+const management = [
   {
     name: 'Faizan Vhora',
     role: 'Founder & CTO',
@@ -55,6 +56,43 @@ const leadership = [
   },
 ];
 
+// The wider team. One sentence each, not a bio — at card size a paragraph
+// stops being read, and the grid's job is to show who is on the project.
+const team = [
+  {
+    name: 'Khushi Shaikh',
+    role: 'Web Developer',
+    slug: 'khushi-shaikh',
+    portrait: '/team/khushi-shaikh',
+    widths: [320, 480, 500],
+    desc: 'Khushi joined Pelquant as a trainee and now builds production front-ends — turning designs into interfaces that hold up on real devices and real connections.',
+  },
+  {
+    name: 'Rushda Saiyed',
+    role: 'UI/UX Designer',
+    slug: 'rushda-saiyed',
+    portrait: '/team/rushda-saiyed',
+    widths: [320, 480, 640, 700],
+    desc: 'Rushda joined Pelquant as a trainee and now designs the interfaces our clients ship, working from research and wireframes through to accessible, finished screens.',
+  },
+  {
+    name: 'Ilsha Shaikh',
+    role: 'UI/UX Trainee',
+    slug: 'ilsha-shaikh',
+    portrait: '/team/ilsha-shaikh',
+    widths: [320, 480, 632],
+    desc: 'Ilsha is training with the design team on live projects — wireframes, design systems, and the details that separate a screen people can use from one that merely looks good.',
+  },
+  {
+    name: 'Sayma Shaikh',
+    role: 'UI/UX Designer',
+    slug: 'sayma-shaikh',
+    portrait: '/team/sayma-shaikh',
+    widths: [320, 480, 640, 778],
+    desc: 'Sayma joined Pelquant as a trainee and now works across product design — user flows, interface design, and the prototyping that settles a question before it reaches code.',
+  },
+];
+
 // Founder-led is a structural fact about how this company is staffed, not a
 // claim about results — so these stay true no matter how the team grows.
 const principles = [
@@ -78,6 +116,13 @@ const principles = [
 // Kept next to the CSS that sizes the portrait: change one and the other is
 // wrong, and a stale `sizes` silently hands every visitor the wrong variant.
 const PORTRAIT_SIZES = '(max-width: 900px) min(72vw, 340px), 420px';
+// Three columns inside a 1140px container with 24px gaps is a 364px slot.
+const CARD_SIZES = '(max-width: 620px) min(86vw, 400px), (max-width: 960px) 44vw, 364px';
+
+// Capped so the last card in a row does not sit blank while the stagger catches
+// up. The observer in App.jsx clears the delay once the reveal has played, so it
+// never leaks into the element's own hover timing.
+const stagger = (i) => ({ transitionDelay: `${Math.min(i, 5) * 70}ms` });
 
 const srcSet = (member, ext) =>
   member.widths.map((w) => `${member.portrait}-${w}.${ext} ${w}w`).join(', ');
@@ -164,6 +209,33 @@ function MemberFeature({ member, index }) {
   );
 }
 
+function TeamCard({ member, index }) {
+  return (
+    <article className="team-card fade-up" style={stagger(index)}>
+      <div className="team-card-portrait">
+        <picture>
+          <source type="image/webp" srcSet={srcSet(member, 'webp')} sizes={CARD_SIZES} />
+          <img
+            src={`${member.portrait}-${fallbackWidth(member)}.jpg`}
+            srcSet={srcSet(member, 'jpg')}
+            sizes={CARD_SIZES}
+            width="640"
+            height="640"
+            alt={`${member.name}, ${member.role} at Pelquant`}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
+      <div className="team-card-body">
+        <h3 className="team-card-name">{member.name}</h3>
+        <span className="team-card-role">{member.role}</span>
+        <p className="team-card-desc">{member.desc}</p>
+      </div>
+    </article>
+  );
+}
+
 export default function TeamPage() {
   return (
     <div className="team-page">
@@ -189,15 +261,29 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="leadership-section" id="leadership">
+      <section className="management-section" id="management">
         <div className="team-container">
-          <span className="section-tag fade-up">LEADERSHIP</span>
+          <span className="section-tag fade-up">MANAGEMENT</span>
           <h2 className="section-headline fade-up">
             Who You&rsquo;ll <span className="orange-text">Actually Work With</span>
           </h2>
-          <div className="leadership-list">
-            {leadership.map((member, i) => (
+          <div className="management-list">
+            {management.map((member, i) => (
               <MemberFeature key={member.slug} member={member} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="team-section" id="team">
+        <div className="team-container">
+          <span className="section-tag fade-up">THE TEAM</span>
+          <h2 className="section-headline fade-up">
+            The People <span className="orange-text">Building It</span>
+          </h2>
+          <div className="team-grid">
+            {team.map((member, i) => (
+              <TeamCard key={member.slug} member={member} index={i} />
             ))}
           </div>
         </div>
@@ -216,7 +302,7 @@ export default function TeamPage() {
                 <div
                   className="principle-card fade-up"
                   key={principle.title}
-                  style={{ transitionDelay: `${i * 70}ms` }}
+                  style={stagger(i)}
                 >
                   <span className="principle-icon" aria-hidden="true"><Icon /></span>
                   <h3 className="principle-title">{principle.title}</h3>
