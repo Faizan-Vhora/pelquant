@@ -30,6 +30,25 @@ const leadership = [
       { href: 'https://www.linkedin.com/in/faizan-vhora-24a889175/', label: 'LinkedIn', icon: Icons.Linkedin, external: true },
     ],
   },
+  {
+    name: 'Faizan Memon',
+    role: 'Head of Sales',
+    slug: 'faizan-memon',
+    portrait: '/team/faizan-memon',
+    bio: [
+      'Faizan leads business development and solution sales at Pelquant, working with companies to find where AI, automation and custom software genuinely earn their place — and where they do not. His job is to turn a business problem into a scope the engineering side can build against.',
+      'He works across FinTech, PropTech, HealthTech, eCommerce and other technology-led sectors, and stays with an engagement from the first conversation through scoping and into delivery — so the person who set the expectations is the one accountable for meeting them.',
+    ],
+    focus: [
+      { icon: Icons.Briefcase, label: 'Solution Sales' },
+      { icon: Icons.Search, label: 'Discovery & Scoping' },
+      { icon: Icons.Target, label: 'Industry Verticals' },
+      { icon: Icons.Layers, label: 'Delivery Coordination' },
+    ],
+    links: [
+      { href: 'mailto:info@pelquant.com', label: 'info@pelquant.com', icon: Icons.MessageCircle },
+    ],
+  },
 ];
 
 // Founder-led is a structural fact about how this company is staffed, not a

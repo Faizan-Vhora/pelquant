@@ -4,7 +4,11 @@
 // localhost rather than file:// because a file:// canvas is tainted and
 // toDataURL() throws on it.
 //
-//   node scripts/encode-portrait.mjs <source-image> <output-basename>
+//   node scripts/encode-portrait.mjs <source-image> <output-basename> [sx,sy,sw,sh]
+//
+// The optional source rect crops before resizing. Team portraits arrive at
+// whatever framing the photographer chose; cropping them to a comparable head
+// scale is what keeps two cards side by side from looking mismatched.
 import { spawn } from 'node:child_process';
 import http from 'node:http';
 import fs from 'node:fs';
@@ -17,15 +21,30 @@ const OUT = 'public/team';
 const WIDTHS = [320, 480, 640, 960];
 const QUALITY = 0.86;
 
-const [srcPath, name] = process.argv.slice(2);
+const [srcPath, name, cropArg] = process.argv.slice(2);
 if (!srcPath || !name) {
-  console.error('usage: node scripts/encode-portrait.mjs <source-image> <output-basename>');
+  console.error('usage: node scripts/encode-portrait.mjs <source-image> <output-basename> [sx,sy,sw,sh]');
+  process.exit(1);
+}
+const crop = cropArg ? cropArg.split(',').map(Number) : null;
+if (crop && (crop.length !== 4 || crop.some(Number.isNaN))) {
+  console.error('crop must be four numbers: sx,sy,sw,sh');
   process.exit(1);
 }
 
 const bytes = fs.readFileSync(srcPath);
-const server = http.createServer((_, res) => {
-  res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+// Two paths, deliberately: /page must be a real HTML document so the tab gets a
+// normal origin. Navigating to the image bytes instead leaves the tab on an
+// opaque origin and toDataURL() then throws on a tainted canvas.
+const server = http.createServer((req, res) => {
+  if (req.url === '/page') {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end('<!doctype html><meta charset="utf-8"><title>encode</title>');
+    return;
+  }
+  // Content type is a hint only — Chrome sniffs the bytes, so one handler
+  // serves png and jpeg sources alike.
+  res.writeHead(200, { 'Content-Type': 'application/octet-stream' });
   res.end(bytes);
 }).listen(SERVE_PORT);
 
@@ -56,7 +75,7 @@ const send = (method, params = {}) => new Promise((res) => {
 
 await send('Page.enable');
 await send('Runtime.enable');
-await send('Page.navigate', { url: `http://127.0.0.1:${SERVE_PORT}/blank` });
+await send('Page.navigate', { url: `http://127.0.0.1:${SERVE_PORT}/page` });
 await sleep(800);
 
 for (const w of WIDTHS) {
@@ -65,17 +84,23 @@ for (const w of WIDTHS) {
       returnByValue: true, awaitPromise: true,
       expression: `(async () => {
         const img = new Image();
-        img.src = 'http://127.0.0.1:${SERVE_PORT}/src.jpg';
+        img.src = 'http://127.0.0.1:${SERVE_PORT}/src';
         await img.decode();
-        const w = ${w}, h = Math.round(${w} * img.naturalHeight / img.naturalWidth);
+        const crop = ${JSON.stringify(crop)};
+        const [sx, sy, sw, sh] = crop || [0, 0, img.naturalWidth, img.naturalHeight];
+        const w = ${w}, h = Math.round(${w} * sh / sw);
         const c = document.createElement('canvas');
         c.width = w; c.height = h;
         const ctx = c.getContext('2d');
         ctx.imageSmoothingQuality = 'high';
-        ctx.drawImage(img, 0, 0, w, h);
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, w, h);
         return c.toDataURL('${type}', ${QUALITY});
       })()`,
     });
+    if (typeof result.value !== 'string') {
+      console.error('render failed:', JSON.stringify(result));
+      process.exit(1);
+    }
     const data = result.value.split(',')[1];
     const file = path.join(OUT, `${name}-${w}.${ext}`);
     fs.writeFileSync(file, Buffer.from(data, 'base64'));
@@ -85,4 +110,8 @@ for (const w of WIDTHS) {
 
 ws.close();
 chrome.kill();
+// Chrome holds a keep-alive socket to the local server, so close() alone never
+// resolves and the script hangs after writing every file.
+server.closeAllConnections();
 server.close();
+process.exit(0);
