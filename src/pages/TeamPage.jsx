@@ -11,8 +11,11 @@ const leadership = [
     name: 'Faizan Vhora',
     role: 'Founder & CTO',
     slug: 'faizan-vhora',
-    // Square source, so the <img> below reserves a 1:1 box.
+    // Square source, so the <img> below reserves a 1:1 box. The ladder ends at
+    // the source width rather than a round number — a wider variant would be an
+    // upscale, and a 2x display picks the widest candidate every time.
     portrait: '/team/faizan-vhora',
+    widths: [320, 480, 640, 950],
     bio: [
       'Faizan founded Pelquant on a simple conviction: AI belongs in the foundations of a system, not bolted onto the surface of one. He leads the technical direction of every engagement — architecture, model selection, security posture and the call on what not to build.',
       'He works hands-on across the stack, from LLM and retrieval systems through to the cloud infrastructure and security operations that keep them running in production. Clients work with him directly rather than through an account layer.',
@@ -28,6 +31,26 @@ const leadership = [
       // Faizan's own profile, not the company page — this card is about him,
       // and the company LinkedIn is already linked from the footer and /contact.
       { href: 'https://www.linkedin.com/in/faizan-vhora-24a889175/', label: 'LinkedIn', icon: Icons.Linkedin, external: true },
+    ],
+  },
+  {
+    name: 'Faizan Memon',
+    role: 'Head of Sales',
+    slug: 'faizan-memon',
+    portrait: '/team/faizan-memon',
+    widths: [320, 480, 640, 736],
+    bio: [
+      'Faizan leads business development and solution sales at Pelquant, working with companies to find where AI, automation and custom software genuinely earn their place — and where they do not. His job is to turn a business problem into a scope the engineering side can build against.',
+      'He works across FinTech, PropTech, HealthTech, eCommerce and other technology-led sectors, and stays with an engagement from the first conversation through scoping and into delivery — so the person who set the expectations is the one accountable for meeting them.',
+    ],
+    focus: [
+      { icon: Icons.Briefcase, label: 'Solution Sales' },
+      { icon: Icons.Search, label: 'Discovery & Scoping' },
+      { icon: Icons.Target, label: 'Industry Verticals' },
+      { icon: Icons.Layers, label: 'Delivery Coordination' },
+    ],
+    links: [
+      { href: 'mailto:info@pelquant.com', label: 'info@pelquant.com', icon: Icons.MessageCircle },
     ],
   },
 ];
@@ -52,6 +75,18 @@ const principles = [
   },
 ];
 
+// Kept next to the CSS that sizes the portrait: change one and the other is
+// wrong, and a stale `sizes` silently hands every visitor the wrong variant.
+const PORTRAIT_SIZES = '(max-width: 900px) min(72vw, 340px), 420px';
+
+const srcSet = (member, ext) =>
+  member.widths.map((w) => `${member.portrait}-${w}.${ext} ${w}w`).join(', ');
+
+// `src` is what a browser without srcSet support gets, so it wants a usable
+// size rather than the smallest rung of the ladder.
+const fallbackWidth = (member) =>
+  member.widths.filter((w) => w <= 640).pop() ?? member.widths[0];
+
 const ArrowRight = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
     <path d="M5 12h14M12 5l7 7-7 7" />
@@ -65,13 +100,13 @@ function MemberFeature({ member, index }) {
         <picture>
           <source
             type="image/webp"
-            srcSet={`${member.portrait}-320.webp 320w, ${member.portrait}-480.webp 480w, ${member.portrait}-640.webp 640w, ${member.portrait}-960.webp 960w`}
-            sizes="(max-width: 900px) min(72vw, 340px), 420px"
+            srcSet={srcSet(member, 'webp')}
+            sizes={PORTRAIT_SIZES}
           />
           <img
-            src={`${member.portrait}-640.jpg`}
-            srcSet={`${member.portrait}-320.jpg 320w, ${member.portrait}-480.jpg 480w, ${member.portrait}-640.jpg 640w, ${member.portrait}-960.jpg 960w`}
-            sizes="(max-width: 900px) min(72vw, 340px), 420px"
+            src={`${member.portrait}-${fallbackWidth(member)}.jpg`}
+            srcSet={srcSet(member, 'jpg')}
+            sizes={PORTRAIT_SIZES}
             /* Dimensions reserve the box so the bio beside it does not reflow
                when the portrait decodes. */
             width="640"
@@ -114,6 +149,12 @@ function MemberFeature({ member, index }) {
               >
                 <span aria-hidden="true"><Icon /></span>
                 {link.label}
+                {/* Both cards link the same shared inbox, so out of context the
+                    link list would read as two identical "info@pelquant.com"
+                    entries. A visually-hidden suffix rather than an aria-label,
+                    because the accessible name has to still contain the visible
+                    text for speech input to target it (WCAG 2.5.3). */}
+                <span className="sr-only"> &mdash; {member.name}</span>
               </a>
             );
           })}
