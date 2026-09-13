@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import { Icons } from '../components/Icons';
 import './TeamPage.css';
 
-// Management renders as alternating feature rows; the team below renders as a
-// grid. The split is the hierarchy — a feature row carries a full bio and reads
-// as "this is who you deal with", a card carries a sentence and reads as "this
-// is who is on the project". Adding an entry to either list needs no markup
-// change; management alternates sides on its own.
-const management = [
+// Three tiers, and the layout is the hierarchy. The founder gets a feature row:
+// full bio, focus areas, both contact links. The other department heads get
+// cards in the same three-column system as the team below, but keep their focus
+// areas and contact link — that is what separates a management card from a team
+// card. Everything is data; adding a person to any list needs no markup change.
+const founders = [
   {
     name: 'Faizan Vhora',
     role: 'Founder & CTO',
@@ -34,16 +34,16 @@ const management = [
       { href: 'https://www.linkedin.com/in/faizan-vhora-24a889175/', label: 'LinkedIn', icon: Icons.Linkedin, external: true },
     ],
   },
+];
+
+const management = [
   {
     name: 'Faizan Memon',
     role: 'Head of Sales',
     slug: 'faizan-memon',
     portrait: '/team/faizan-memon',
     widths: [320, 480, 640, 736],
-    bio: [
-      'Faizan leads business development and solution sales at Pelquant, working with companies to find where AI, automation and custom software genuinely earn their place — and where they do not. His job is to turn a business problem into a scope the engineering side can build against.',
-      'He works across FinTech, PropTech, HealthTech, eCommerce and other technology-led sectors, and stays with an engagement from the first conversation through scoping and into delivery — so the person who set the expectations is the one accountable for meeting them.',
-    ],
+    desc: 'Faizan leads business development and solution sales, finding where AI, automation and custom software genuinely earn their place. He turns a business problem into a scope engineering can build against, then stays with it from the first conversation through delivery.',
     focus: [
       { icon: Icons.Briefcase, label: 'Solution Sales' },
       { icon: Icons.Search, label: 'Discovery & Scoping' },
@@ -60,10 +60,7 @@ const management = [
     slug: 'naved-memon',
     portrait: '/team/naved-memon',
     widths: [320, 480, 640, 880],
-    bio: [
-      'Naved leads digital marketing at Pelquant, growing businesses through work that is judged on results rather than impressions. His remit covers performance marketing, paid advertising, social media, content and video production.',
-      'He works closely with brands to understand their goals and find the growth actually available to them, then runs the strategy end to end — content and community through to executing and optimising the campaigns — against measurable outcomes rather than activity.',
-    ],
+    desc: 'Naved leads digital marketing, growing businesses through work judged on results rather than impressions. He builds the strategy with the brand and runs it end to end — content and social through to executing and optimising the campaigns.',
     focus: [
       { icon: Icons.TrendingUp, label: 'Performance Marketing' },
       { icon: Icons.DollarSign, label: 'Paid Advertising' },
@@ -229,10 +226,12 @@ function MemberFeature({ member, index }) {
   );
 }
 
-function TeamCard({ member, index }) {
+// One card for both grids. Focus areas and a contact link are what make a
+// management card a management card; a team card simply has neither.
+function PersonCard({ member, index }) {
   return (
-    <article className="team-card fade-up" style={stagger(index)}>
-      <div className="team-card-portrait">
+    <article className="person-card fade-up" style={stagger(index)}>
+      <div className="person-card-portrait">
         <picture>
           <source type="image/webp" srcSet={srcSet(member, 'webp')} sizes={CARD_SIZES} />
           <img
@@ -247,10 +246,47 @@ function TeamCard({ member, index }) {
           />
         </picture>
       </div>
-      <div className="team-card-body">
-        <h3 className="team-card-name">{member.name}</h3>
-        <span className="team-card-role">{member.role}</span>
-        <p className="team-card-desc">{member.desc}</p>
+      <div className="person-card-body">
+        <h3 className="person-card-name">{member.name}</h3>
+        <span className="person-card-role">{member.role}</span>
+        <p className="person-card-desc">{member.desc}</p>
+
+        {member.focus && (
+          <ul className="person-card-focus" role="list">
+            {member.focus.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.label}>
+                  <span className="focus-icon" aria-hidden="true"><Icon /></span>
+                  {item.label}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+
+        {member.links && (
+          <div className="person-card-links">
+            {member.links.map((link) => {
+              const Icon = link.icon;
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="member-link"
+                  {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                >
+                  <span aria-hidden="true"><Icon /></span>
+                  {link.label}
+                  {/* Same shared inbox on several cards, so the accessible name
+                      has to say whose it is — as a suffix, not an aria-label, so
+                      it still contains the visible text (WCAG 2.5.3). */}
+                  <span className="sr-only"> &mdash; {member.name}</span>
+                </a>
+              );
+            })}
+          </div>
+        )}
       </div>
     </article>
   );
@@ -288,8 +324,13 @@ export default function TeamPage() {
             Who You&rsquo;ll <span className="orange-text">Actually Work With</span>
           </h2>
           <div className="management-list">
-            {management.map((member, i) => (
+            {founders.map((member, i) => (
               <MemberFeature key={member.slug} member={member} index={i} />
+            ))}
+          </div>
+          <div className="people-grid management-grid">
+            {management.map((member, i) => (
+              <PersonCard key={member.slug} member={member} index={i} />
             ))}
           </div>
         </div>
@@ -301,9 +342,9 @@ export default function TeamPage() {
           <h2 className="section-headline fade-up">
             The People <span className="orange-text">Building It</span>
           </h2>
-          <div className="team-grid">
+          <div className="people-grid">
             {team.map((member, i) => (
-              <TeamCard key={member.slug} member={member} index={i} />
+              <PersonCard key={member.slug} member={member} index={i} />
             ))}
           </div>
         </div>

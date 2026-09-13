@@ -317,7 +317,7 @@
   transform: translateY(-2px);
 }
 
-/* ── Team grid ── */
+/* ── People grid (management cards + team cards) ── */
 .team-page .team-section {
   background: rgba(13, 13, 24, 0.4);
   padding: 7rem 20px;
@@ -325,21 +325,33 @@
   scroll-margin-top: 90px;
 }
 
-.team-page .team-grid {
+/* Fixed 364px tracks rather than 1fr, with the track set centred: a row that
+   cannot fill three columns — the two management cards — sits in the middle
+   instead of hugging the left edge, and cards stay the same width in both
+   grids so the two sections read as one system. auto-fit collapses the tracks
+   that have nothing in them. */
+.team-page .people-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 364px));
+  justify-content: center;
   gap: 24px;
 }
 
-/* Four people in a three-column grid leaves one alone on the second row, hard
-   against the left edge, which reads as a layout bug rather than a roster.
-   The selector only matches when the last card *is* the orphan, so the rule
-   stops applying by itself the moment a fifth person is added. */
-.team-page .team-grid .team-card:last-child:nth-child(3n + 1) {
+/* Management cards sit under the founder's feature row, not under a heading of
+   their own, so they need the separation. */
+.team-page .management-grid {
+  margin-top: 4.5rem;
+}
+
+/* An odd card left alone on a second row hugs the left edge, which reads as a
+   layout bug rather than a roster. The selector only matches while that card
+   *is* the orphan, so the rule switches itself off when the next person is
+   added. */
+.team-page .people-grid .person-card:last-child:nth-child(3n + 1) {
   grid-column: 2;
 }
 
-.team-page .team-card {
+.team-page .person-card {
   display: flex;
   flex-direction: column;
   background: linear-gradient(160deg, var(--bg-card) 0%, rgba(19, 19, 31, 0.6) 100%);
@@ -351,14 +363,14 @@
      one — and a lift is a promise of interaction the card cannot keep. */
 }
 
-.team-page .team-card-portrait {
+.team-page .person-card-portrait {
   position: relative;
   background: var(--bg-secondary);
 }
 
 /* Sources are square crops, so the box is square and object-fit only ever has
    rounding to absorb. */
-.team-page .team-card-portrait img {
+.team-page .person-card-portrait img {
   display: block;
   width: 100%;
   height: auto;
@@ -368,7 +380,7 @@
 
 /* These headshots are lit on pale and mid-tone backgrounds; without this the
    bottom edge of the photo meets the card body as a hard bright line. */
-.team-page .team-card-portrait::after {
+.team-page .person-card-portrait::after {
   content: '';
   position: absolute;
   inset: auto 0 0;
@@ -377,11 +389,20 @@
   pointer-events: none;
 }
 
-.team-page .team-card-body {
+.team-page .person-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   padding: 22px 22px 26px;
 }
 
-.team-page .team-card-name {
+/* Pushes whatever follows to the bottom of the card, so focus tags and contact
+   rows line up across a row whose descriptions differ in length. */
+.team-page .person-card-desc {
+  margin-bottom: auto;
+}
+
+.team-page .person-card-name {
   font-family: var(--font-display);
   font-size: 1.2rem;
   font-weight: 800;
@@ -391,7 +412,7 @@
   margin-bottom: 6px;
 }
 
-.team-page .team-card-role {
+.team-page .person-card-role {
   display: block;
   font-family: 'DM Mono', monospace;
   font-size: 10px;
@@ -402,11 +423,53 @@
   margin-bottom: 14px;
 }
 
-.team-page .team-card-desc {
+.team-page .person-card-desc {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.7;
+}
+
+/* Card variants of the feature row's focus list and contact links: same
+   components, tightened for a 364px column. */
+.team-page .person-card-focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+}
+
+.team-page .person-card-focus li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+}
+
+.team-page .person-card-focus .focus-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.team-page .person-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.team-page .person-card-links .member-link {
+  font-size: 0.82rem;
+  padding: 9px 14px;
 }
 
 /* ── Principles ── */
@@ -585,22 +648,24 @@
 }
 
 @media (max-width: 960px) {
-  .team-page .team-grid {
+  .team-page .people-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   /* The orphan rule is written for three columns; at two, four cards fill both
      rows exactly and nothing needs centring. */
-  .team-page .team-grid .team-card:last-child:nth-child(3n + 1) {
+  .team-page .people-grid .person-card:last-child:nth-child(3n + 1) {
     grid-column: auto;
   }
 }
 
 @media (max-width: 620px) {
-  .team-page .team-grid {
+  .team-page .people-grid {
     grid-template-columns: minmax(0, 1fr);
     max-width: 400px;
-    margin: 0 auto;
+    /* Inline axis only — the shorthand would reset .management-grid's
+       margin-top and collapse it against the founder's row above. */
+    margin-inline: auto;
   }
 }
 
