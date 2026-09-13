@@ -100,7 +100,7 @@
 }
 
 /* ── Section shells ── */
-.team-page .leadership-section {
+.team-page .management-section {
   background: linear-gradient(180deg, rgba(8, 8, 16, 0) 0%, rgba(13, 13, 24, 0.55) 100%);
   padding: 7rem 20px;
   border-top: 1px solid var(--border);
@@ -150,8 +150,8 @@
   color: var(--accent);
 }
 
-/* ── Leadership feature ── */
-.team-page .leadership-list {
+/* ── Management feature rows ── */
+.team-page .management-list {
   display: flex;
   flex-direction: column;
   gap: 5rem;
@@ -315,6 +315,98 @@
   border-color: var(--accent);
   background: rgba(255, 107, 43, 0.05);
   transform: translateY(-2px);
+}
+
+/* ── Team grid ── */
+.team-page .team-section {
+  background: rgba(13, 13, 24, 0.4);
+  padding: 7rem 20px;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: 90px;
+}
+
+.team-page .team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* Four people in a three-column grid leaves one alone on the second row, hard
+   against the left edge, which reads as a layout bug rather than a roster.
+   The selector only matches when the last card *is* the orphan, so the rule
+   stops applying by itself the moment a fifth person is added. */
+.team-page .team-grid .team-card:last-child:nth-child(3n + 1) {
+  grid-column: 2;
+}
+
+.team-page .team-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, var(--bg-card) 0%, rgba(19, 19, 31, 0.6) 100%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: left;
+  /* No hover lift. These cards are not links — nothing happens when you click
+     one — and a lift is a promise of interaction the card cannot keep. */
+}
+
+.team-page .team-card-portrait {
+  position: relative;
+  background: var(--bg-secondary);
+}
+
+/* Sources are square crops, so the box is square and object-fit only ever has
+   rounding to absorb. */
+.team-page .team-card-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* These headshots are lit on pale and mid-tone backgrounds; without this the
+   bottom edge of the photo meets the card body as a hard bright line. */
+.team-page .team-card-portrait::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 38%;
+  background: linear-gradient(to top, rgba(13, 13, 24, 0.85), transparent);
+  pointer-events: none;
+}
+
+.team-page .team-card-body {
+  padding: 22px 22px 26px;
+}
+
+.team-page .team-card-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.team-page .team-card-role {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 14px;
+}
+
+.team-page .team-card-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
 
 /* ── Principles ── */
@@ -492,7 +584,31 @@
   }
 }
 
+@media (max-width: 960px) {
+  .team-page .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* The orphan rule is written for three columns; at two, four cards fill both
+     rows exactly and nothing needs centring. */
+  .team-page .team-grid .team-card:last-child:nth-child(3n + 1) {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .team-page .team-grid {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 768px) {
+  .team-page .team-section {
+    padding: 72px 20px;
+  }
+
   .team-page .team-hero {
     padding: 8rem 20px 72px;
   }
@@ -512,11 +628,11 @@
     margin-bottom: 44px;
   }
 
-  .team-page .leadership-list {
+  .team-page .management-list {
     gap: 3.5rem;
   }
 
-  .team-page .leadership-section,
+  .team-page .management-section,
   .team-page .principles-section,
   .team-page .team-cta {
     padding: 72px 20px;
