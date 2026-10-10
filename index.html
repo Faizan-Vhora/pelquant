@@ -7,6 +7,11 @@
     <meta name="theme-color" content="#FF6B2B" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
+    <!-- Google Search Console ownership. It lives here rather than in SEO.jsx
+         because verification is checked against the served HTML: a tag React
+         injects after mount is not guaranteed to be seen. Google re-checks
+         periodically, so removing it un-verifies the property. -->
+    <meta name="google-site-verification" content="9DyOraeqXJu4Qu_26wkc6iVNvcB_F4iloFkjf6atuvI" />
     <!-- Hero banner is the LCP element. Preloading it lets the fetch start
          from the HTML rather than waiting for React to mount; imagesrcset
          mirrors the <picture> so the browser still picks the right size. -->
