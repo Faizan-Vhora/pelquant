@@ -289,7 +289,7 @@ export default function SEO() {
       "@type": "Organization",
       "name": "PELQUANT",
       "url": "https://pelquant.com",
-      "logo": "https://pelquant.com/logo.png",
+      "logo": "https://pelquant.com/logo.svg",
       "description": "Enterprise AI & full-stack development company specializing in intelligent software, AI systems, and growth marketing.",
       "address": {
         "@type": "PostalAddress",

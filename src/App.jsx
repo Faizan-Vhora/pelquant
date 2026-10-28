@@ -10,6 +10,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SEO from './components/SEO';
+import Analytics from './components/Analytics';
 import './App.css';
 
 // Only the home page ships in the initial bundle — every other route is
@@ -201,6 +202,7 @@ function App() {
   return (
     <BrowserRouter>
       <SEO />
+      <Analytics />
       <ScrollToTop />
       <a className="skip-link" href="#main-content">Skip to content</a>
       <AmbientBackground />
