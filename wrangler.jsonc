@@ -11,6 +11,11 @@
     // rewrites in `_redirects` (only 301/302/303/307/308), so the redirects
     // file is deliberately absent — if this project is ever served from
     // Cloudflare Pages or Netlify instead, it needs to come back.
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "single-page-application",
+    // Serve files at their exact path. The default ("auto-trailing-slash")
+    // 308-redirects /google….html to /google…, and Search Console's HTML-file
+    // check wants the .html URL to answer directly. Every real page here is a
+    // client-side route, so nothing depends on extensionless .html rewriting.
+    "html_handling": "none"
   }
 }
